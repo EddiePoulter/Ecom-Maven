@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --dark-text: #dad7cd;
+--dark-background: #18191b;
+--dark-primary: #9cf2f7;
+--dark-secondary: #174a46;
+--dark-accent: #085f63;
+--light-text: #252832;
+--light-background: #FDFAF2;
+--light-primary: #49beb7;
+--light-secondary: #B5E8E4;
+--light-accent: #085f63;
+}
+
+* {
+    font-family: 'Advent Pro', sans-serif;
+    color: var(--light-text);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--light-accent);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--light-text);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--light-background);
+}
+body {
+    background-color: var(--light-background);
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+nav {
+    background-color: var(--light-primary);
+    border-bottom: solid 2px var(--light-text);
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+nav .toprow {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+}
+nav .right-side {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--light-text);
+}
+.right-side a {
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+}
+.right-side a:link {
+    color: var(--light-text);
+}
+
+.welcome {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.welcome img {
+    border: solid 2px var(--light-text);
+    padding: 2px;
+    border-radius: 10px;
+    width: 50vw;
+    height: 40vh;
+}
+.welcome p {
+    font-size: 30px;
+}
