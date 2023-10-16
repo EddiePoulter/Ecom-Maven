@@ -78,9 +78,27 @@ nav .right-side .item {
     padding-left: 10px;
     padding-right: 10px;
     text-decoration: none;
+    min-width: 100px;
+    transition: all 0.3s;
+
 }
 .right-side a:link {
     color: var(--light-text);
+    transition: all 0.3s;
+
+}
+.right-side a .text {
+    opacity: 0;
+    position:relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+.right-side a:hover .text {
+    opacity: 1;
+    transition: all 0.2s;
 }
 
 .welcome {
