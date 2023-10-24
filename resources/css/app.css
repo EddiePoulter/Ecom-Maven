@@ -6,6 +6,7 @@
 --dark-primary: #9cf2f7;
 --dark-secondary: #174a46;
 --dark-accent: #085f63;
+--footer: #6a6a6a;
 --light-text: #252832;
 --light-background: #FDFAF2;
 --light-primary: #49beb7;
@@ -43,7 +44,10 @@ body {
     padding: 0;
     overflow-y: scroll;
     overflow-x: hidden;
+    min-height: 100vh;
 }
+
+
 nav {
     background-color: var(--light-primary);
     border-bottom: solid 2px var(--light-text);
@@ -56,6 +60,18 @@ nav .toprow {
     justify-content: space-between;
     align-items: center;
     padding: 5px 50px;
+}
+.toprow .brand {
+    font-size: 50px;
+}
+.toprow a {
+    text-decoration: none;
+    color: var(--light-text);
+    transition: all 0.2s;
+}
+.toprow a:hover {
+    color: var(--light-background);
+    transition: all 0.2s;
 }
 nav .right-side {
     display: flex;
@@ -78,26 +94,18 @@ nav .right-side .item {
     padding-left: 10px;
     padding-right: 10px;
     text-decoration: none;
-    min-width: 100px;
     transition: all 0.3s;
-
 }
-.right-side a:link {
-    color: var(--light-text);
+.right-side a:hover {
+    color: var(--light-background);
     transition: all 0.3s;
 
 }
 .right-side a .text {
-    opacity: 0;
-    position:relative;
-    z-index: 1;
+    opacity: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.2s;
-}
-.right-side a:hover .text {
-    opacity: 1;
     transition: all 0.2s;
 }
 
@@ -110,7 +118,6 @@ nav .right-side .item {
 }
 
 .welcome img {
-    border: solid 2px var(--light-text);
     padding: 2px;
     border-radius: 10px;
     width: 50vw;
@@ -120,6 +127,7 @@ nav .right-side .item {
     font-size: 30px;
 }
 
+<<<<<<< Updated upstream
 .contact-info h1, p {
     text-align: center;
     align-items: center;
@@ -223,3 +231,17 @@ nav .right-side .item {
     line-height: 1.5;
 }
 /* contact.html - Talhah */
+=======
+
+footer {
+    min-height: 50px;
+    background-color: var(--footer);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 25px;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+>>>>>>> Stashed changes
