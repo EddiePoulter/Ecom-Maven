@@ -1,0 +1,71 @@
+nav {
+    background-color: var(--light-primary);
+    border-bottom: solid 2px var(--light-text);
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+nav .toprow {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 25px;
+}
+.toprow .brand {
+    font-size: 50px;
+}
+.toprow a {
+    text-decoration: none;
+    color: var(--light-text);
+    transition: all 0.2s;
+}
+.toprow a:hover {
+    color: var(--light-background);
+    transition: all 0.2s;
+}
+nav .right-side {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--light-text);
+}
+nav .right-side .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.right-side a {
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.right-side a:hover {
+    color: var(--light-background);
+    transition: all 0.3s;
+
+}
+.right-side a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+footer {
+    min-height: 50px;
+    background-color: var(--footer);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 25px;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: baseline;
+}

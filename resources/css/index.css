@@ -1,0 +1,18 @@
+.welcome {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.welcome img {
+    padding: 2px;
+    border-radius: 10px;
+    width: 50vw;
+    height: 40vh;
+}
+
+.welcome p {
+    font-size: 30px;
+}

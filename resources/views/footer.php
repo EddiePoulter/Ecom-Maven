@@ -4,7 +4,7 @@
                     About Us
                 </div>
             </a>
-    <a href="contact.html" class="item contact">
+    <a href="contact.php" class="item contact">
                 <div class="text">
                     Contact
                 </div>
