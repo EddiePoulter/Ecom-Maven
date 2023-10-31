@@ -6,11 +6,16 @@
     justify-content: space-evenly;
 }
 
+@media (max-width: 630px) {
+.welcome{
+    flex-direction: column;
+} 
+}
 .welcome img {
     padding: 2px;
-    border-radius: 10px;
-    width: 50vw;
-    height: 40vh;
+    border-radius: 10px;    
+    width: 450px;
+    height: 200px;
 }
 
 .welcome p {
