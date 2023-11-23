@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-6">
                 <div class="welcome-text">
-                    <p>Welcome to Maven</p>
+                    <p>Welcome to Maven.</p>
                 </div>
             </div>
         </div>
