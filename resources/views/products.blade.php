@@ -11,9 +11,6 @@
 </head>
 <body>
     <?php include "nav.blade.php"; ?>
-
-    <?php include "footer.blade.php"; ?>
-
 <div class="small-container">
     <h2>Products</h2>
     <div class="row">
@@ -24,19 +21,7 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+<?php include "footer.blade.php"; ?>
 
 
 
