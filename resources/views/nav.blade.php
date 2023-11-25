@@ -66,7 +66,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="basket.blade.php">Basket</a>
+                    <a class="nav-link" href="cart.blade.php">Basket</a>
                 </li>
             </ul>
         </div>

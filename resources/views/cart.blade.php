@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,11 +77,11 @@
                             <input type="text" class="form-control" id="city" name="city">
                         </div>
                         <div class="col-md-4">
-                            <label for="inputState" class="form-label">State</label>
+                            <label for="inputState" class="form-label">Region</label>
                             <input type="text" class="form-control" id="state" name="state">
                         </div>
                         <div class="col-md-2">
-                            <label for="zip" class="form-label">Zip</label>
+                            <label for="zip" class="form-label">Postcode</label>
                             <input type="text" class="form-control" id="zip" name="zip">
                         </div>
                     </div>
