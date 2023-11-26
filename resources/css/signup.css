@@ -1,0 +1,126 @@
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+  }
+  
+  p {
+    font-size: 0.9em;
+    text-align: center;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: auto;
+    padding-top: 45px;
+  }
+  
+  .register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    font-size: 1.45em;
+    text-align: center;
+  }
+  
+  .formation {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 125px;
+    font-size: 0.6em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .email_match,
+  .password_match,
+  .phone_match {
+    font-size: 0.6em;
+  }
+
+  input[type="email"] {
+    margin-bottom: 10px;
+}
+
+input[type="password"] {
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    margin-bottom: 10px;
+}
+
+input[type="tel"] {
+    margin-bottom: 30px;
+}
+
+input[type="reset"] {
+    margin-bottom: 10px;
+}
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+  }
+  
+  footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    }
+  
+  .main-container-2 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    bottom: 0;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    color: transparent;
+  }
+  
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    color: #aaa;
+  }
+  
+  input[type="submit"],
+  input[type="button"] {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover,
+  input[type="button"]:hover {
+    background-color: #45a049;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  h1.register-heading {
+    font-size: 2em;
+  }
