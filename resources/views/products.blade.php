@@ -11,9 +11,6 @@
 </head>
 <body>
     <?php include "nav.blade.php"; ?>
-
-    <?php include "footer.blade.php"; ?>
-
     <title>Products</title>
 
 <!-- Bootstrap core CSS -->
@@ -27,7 +24,7 @@
 <header>
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Products</h1>
+      <h1 class="jumbotron-heading"><br>Products</h1>
     </div>
   </section>
 
@@ -167,13 +164,17 @@
 
 </main>
 
+
+
 <footer class="text-muted">
   <div class="container">
     <p class="float-right">
       <a href="#">Back to top</a>
     </p>
   </div>
+  <?php include "footer.blade.php"; ?>
 </footer>
+
 
 </body>
 </html>
