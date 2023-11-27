@@ -61,8 +61,8 @@
                         Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Log In</a></li>
-                        <li><a class="dropdown-item" href="#">Sign Up</a></li>
+                        <li><a class="dropdown-item" href="login.blade.php">Log In</a></li>
+                        <li><a class="dropdown-item" href="signup.blade.php">Sign Up</a> </li>
                     </ul>
                 </li>
                 <li class="nav-item">

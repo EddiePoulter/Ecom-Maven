@@ -12,7 +12,6 @@
 </head>
 <body>
     <?php include "nav.blade.php"; ?>
-    <title>Products</title>
 
 <!-- Bootstrap core CSS -->
 <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
