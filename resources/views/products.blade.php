@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <!---Bootstrap CSS--->
-    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
     <title>Products</title>
     <?php include "css.blade.php"; ?>
 </head>
@@ -18,6 +17,7 @@
 
 <!-- Custom styles for this template -->
 <link href="products.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -37,6 +37,13 @@
             <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skiingequipmentset.png">
             <div class="card-body">
               <p class="card-text">Unisex Ski(178cm) Equipment Set</p>
+              <div class="rating">
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bx-star' ></i>
+            </div>
               <p>£284.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -51,6 +58,12 @@
           <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skiingcoat.png">
             <div class="card-body">
               <p class="card-text">Blue Ski Jacket</p>
+              <div class="rating">
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>     
               <p>£49.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -64,7 +77,12 @@
           <div class="card mb-4 box-shadow">
             <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/pairofski.jpg">
             <div class="card-body">
-              <p class="card-text">Unisex Ski (178cm)</p>
+              <p class="card-text">Unisex Ski(178cm)</p>
+             
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>  
               <p>£94.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -79,6 +97,12 @@
             <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skigoggles2.jpg" >
             <div class="card-body">
               <p class="card-text">Unisex Ski Goggles</p>
+              
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bx-star' ></i>     
               <p>£59.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -93,6 +117,11 @@
             <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skihelmet.jpg">
             <div class="card-body">
               <p class="card-text">Unisex Ski Helmet</p>
+            
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>    
               <p>£79.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -107,6 +136,10 @@
             <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/snowboard.jpg" >
             <div class="card-body">
               <p class="card-text">Unisex Snowboard(155cm)</p>
+              
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>   
               <p>£309.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -119,8 +152,14 @@
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/pairofskiandpoleset.jpg" >
-            <div class="card-body">
+           
               <p class="card-text">Unisex Ski(178cm) and Pole Set</p>
+              <div class="rating">
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bx-star' ></i>     
               <p>£169.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -135,6 +174,11 @@
             <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skipoles.jpg" >
             <div class="card-body">
               <p class="card-text">Unisex Ski Poles</p>
+              
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>    
               <p>£69.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -149,6 +193,11 @@
             <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skigloves.jpg" >
             <div class="card-body">
               <p class="card-text">Unisex Ski Gloves</p>
+             
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
               <p>£14.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -166,7 +215,7 @@
 
 
 
-<footer class="text-muted">
+<footer class="text-muted text-center">
   <div class="container">
     <p class="float-right">
       <a href="#">Back to top</a>
