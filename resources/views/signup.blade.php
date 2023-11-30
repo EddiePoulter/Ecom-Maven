@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up to Maven</title>
-    <link rel="stylesheet" href="/Ecom-Maven/resources/css/signup.css">
-    <?php include "css.blade.php"; ?>
+    <link rel="stylesheet" href="{{ asset('Ecom-Maven/resources/css/signup.css') }}">
+    @include('css')
 </head>
-
 
 <div class="register-container">
 <div class="formation">
@@ -24,7 +23,7 @@
     <input type="submit" value="Register" />
     <input type="reset" value="Clear" />
     <input type="hidden" name="submitted" value="true" />
-    <p> <br> Already a user? <a href="login.blade.php">Log in</a></p>
+    <p> <br> Already a user? <a href="{{ route('login') }}">Log in</a></p>
   </form>
 </div>
 </div>
@@ -66,7 +65,7 @@
   </script>
 <footer>
 <body>
-    <?php include "footer.blade.php"; ?>
+  @include('footer')
 </body>
 </footer>
 </html>

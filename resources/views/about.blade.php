@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About us</title>
-    <?php include "css.blade.php"; ?>
+    @include('css')
 </head>
 <body>
-    <?php include "nav.blade.php"; ?>
+    @include('nav')
 
-    <?php include "footer.blade.php"; ?>
+    <!-- Your page content goes here -->
+
+    @include('footer')
 </body>
 </html>

@@ -40,7 +40,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container">
-        <a class="navbar-brand" href="index.blade.php">Maven.</a>
+        <a class="navbar-brand" href="{{ route('index') }}">Maven.</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,7 +53,7 @@
             </form>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="products.blade.php">Products</a>
+                    <a class="nav-link" href="{{ route('products') }}">Products</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -61,12 +61,12 @@
                         Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="login.blade.php">Log In</a></li>
-                        <li><a class="dropdown-item" href="signup.blade.php">Sign Up</a> </li>
+                        <li><a class="dropdown-item" href="{{ route('login') }}">Log In</a></li>
+                        <li><a class="dropdown-item" href="{{ route('signup') }}">Sign Up</a> </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.blade.php">Basket</a>
+                    <a class="nav-link" href="{{ route('cart') }}">Basket</a>
                 </li>
             </ul>
         </div>

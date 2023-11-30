@@ -7,10 +7,10 @@
     <!---Bootstrap CSS--->
   
     <title>Products</title>
-    <?php include "css.blade.php"; ?>
+    @include('css')
 </head>
 <body>
-    <?php include "nav.blade.php"; ?>
+  @include('nav')
 
 <!-- Bootstrap core CSS -->
 <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skiingequipmentset.png">
+            <img class="card-img-top" src="{{ asset('images/product-images/skiingequipmentset.png') }}">
             <div class="card-body">
               <p class="card-text">Unisex Ski(178cm) Equipment Set</p>
               <div class="rating">
@@ -55,7 +55,7 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-          <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skiingcoat.png">
+            <img class="card-img-top" src="{{ asset('images/product-images/skiingcoat.png') }}"> 
             <div class="card-body">
               <p class="card-text">Blue Ski Jacket</p>
               <div class="rating">
@@ -75,7 +75,7 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/pairofski.jpg">
+            <img class="card-img-top" src="{{ asset('images/product-images/pairofski.jpg') }}">  
             <div class="card-body">
               <p class="card-text">Unisex Ski(178cm)</p>
              
@@ -94,7 +94,8 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skigoggles2.jpg" >
+            <div class="card-body">
+              <img class="card-img-top" src="{{ asset('images/product-images/skigoggles2.jpg') }}"> 
             <div class="card-body">
               <p class="card-text">Unisex Ski Goggles</p>
               
@@ -114,7 +115,7 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skihelmet.jpg">
+            <img class="card-img-top" src="{{ asset('images/product-images/skihelmet.jpg') }}">
             <div class="card-body">
               <p class="card-text">Unisex Ski Helmet</p>
             
@@ -133,7 +134,7 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/snowboard.jpg" >
+            <img class="card-img-top" src="{{ asset('images/product-images/snowboard.jpg') }}">
             <div class="card-body">
               <p class="card-text">Unisex Snowboard(155cm)</p>
               
@@ -151,8 +152,7 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/pairofskiandpoleset.jpg" >
-           
+            <img class="card-img-top" src="{{ asset('images/product-images/pairofskiandpoleset.jpg') }}">
               <p class="card-text">Unisex Ski(178cm) and Pole Set</p>
               <div class="rating">
               <i class='bx bxs-star'></i>
@@ -171,10 +171,9 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skipoles.jpg" >
+            <img class="card-img-top" src="{{ asset('images/product-images/skipoles.jpg') }}">
             <div class="card-body">
               <p class="card-text">Unisex Ski Poles</p>
-              
               <i class='bx bxs-star'></i>
               <i class='bx bxs-star'></i>
               <i class='bx bxs-star'></i>
@@ -190,7 +189,7 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" img src="/Ecom-Maven/resources/images/public/product%20images/skigloves.jpg" >
+            <img class="card-img-top" src="{{ asset('images/product-images/skigloves.jpg') }}">
             <div class="card-body">
               <p class="card-text">Unisex Ski Gloves</p>
              
@@ -213,15 +212,13 @@
 
 </main>
 
-
-
 <footer class="text-muted text-center">
   <div class="container">
     <p class="float-right">
       <a href="#">Back to top</a>
     </p>
   </div>
-  <?php include "footer.blade.php"; ?>
+  @include('footer')
 </footer>
 
 

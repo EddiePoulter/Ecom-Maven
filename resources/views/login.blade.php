@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login to Maven</title>
     <link rel="icon" href="/resources/images/public/Icon.png">
-    <link rel="stylesheet" href="/Ecom-Maven/resources/css/login.css">
-    <?php include "css.blade.php"; ?>
-
+    <link rel="stylesheet" href="{{ asset('resources/css/login.css') }}">
+    @include('css')
 </head>
 
 <nav>
-  <?php include("nav.blade.php"); ?>
+    @include('nav')
 </nav>
-    
+
     <div class="login-container">
         <div class="formation">
         <h1>Login to Maven</h1>
@@ -22,7 +21,7 @@
             <input type="email" name="email" placeholder="Enter your email address" required>
             <input type="password" name="password" placeholder="Enter your password" required>
             <input type="submit" value="Login" />
-            <input type="button" value="Register" onclick="window.location.href='signup.blade.php'" />
+            <input type="button" value="Register" onclick="window.location.href='{{ route('signup') }}'" />
             <?php if (!empty($error_message)) { ?>
                 <p class="error-message"><?php echo $error_message; ?></p>
             <?php } ?>
@@ -33,5 +32,5 @@
     </div>
 
 <footer>
-    <?php include "footer.blade.php"; ?>
+    @include('footer')
 </footer>

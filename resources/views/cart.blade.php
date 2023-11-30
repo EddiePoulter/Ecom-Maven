@@ -13,7 +13,7 @@
 
     <!-- Cusotm CSS -->
     <link rel="stylesheet" href="checkout.css">
-    <?php include "css.blade.php"; ?>
+    @include('css')>
     <!-- Option 1: Bootstrap Bundle with Popper -->
 
 
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <?php include("nav.blade.php"); ?>
+    @include('nav')
 
     <section id="main" class="container">
         <h1>Checkout</h1>
@@ -251,7 +251,7 @@
 
         </main>
     </section>
-    <?php include "footer.blade.php"; ?>
+    @include('footer')
 </body>
 
 </html>

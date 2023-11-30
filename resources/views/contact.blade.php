@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maven - Contact Us</title>
-    <?php include "css.blade.php"; ?>
+    @include('css')
     <link rel="icon" href="/resources/images/public/Icon.png">
 </head>
 <body>
-    <?php include("nav.blade.php"); ?>
+    @include('nav')
     <div class="container mt-5">
     <div class="row">
         <div class="col-lg-6">
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-    <?php include("footer.blade.php"); ?>
+    @include('footer')
 </body>
 
 </html>
