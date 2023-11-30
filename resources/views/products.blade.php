@@ -34,15 +34,9 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ asset('images/product-images/skiingequipmentset.png') }}">
+            <img class="card-img-top" src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\skiingequipmentset.png">
             <div class="card-body">
               <p class="card-text">Unisex Ski(178cm) Equipment Set</p>
-              <div class="rating">
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bx-star' ></i>
             </div>
               <p>£284.99<p>
               <div class="d-flex justify-content-between align-items-center">
@@ -55,15 +49,9 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ asset('images/product-images/skiingcoat.png') }}"> 
+            <img class="card-img-top" src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\skiingcoat.png"> 
             <div class="card-body">
-              <p class="card-text">Blue Ski Jacket</p>
-              <div class="rating">
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>     
+              <p class="card-text">Blue Ski Jacket</p>  
               <p>£49.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -75,14 +63,9 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ asset('images/product-images/pairofski.jpg') }}">  
+            <img class="card-img-top" src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\pairofski.jpg">  
             <div class="card-body">
               <p class="card-text">Unisex Ski(178cm)</p>
-             
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>  
               <p>£94.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -95,15 +78,9 @@
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             <div class="card-body">
-              <img class="card-img-top" src="{{ asset('images/product-images/skigoggles2.jpg') }}"> 
+              <img class="card-img-top" src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\skigoggles.jpg"> 
             <div class="card-body">
-              <p class="card-text">Unisex Ski Goggles</p>
-              
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bx-star' ></i>     
+              <p class="card-text">Unisex Ski Goggles</p>  
               <p>£59.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -115,14 +92,9 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ asset('images/product-images/skihelmet.jpg') }}">
+            <img class="card-img-top" src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\skihelmet.jpg">
             <div class="card-body">
-              <p class="card-text">Unisex Ski Helmet</p>
-            
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>    
+              <p class="card-text">Unisex Ski Helmet</p>   
               <p>£79.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -134,13 +106,9 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ asset('images/product-images/snowboard.jpg') }}">
+            <img class="card-img-top" src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\snowboard.jpg">
             <div class="card-body">
-              <p class="card-text">Unisex Snowboard(155cm)</p>
-              
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>   
+              <p class="card-text">Unisex Snowboard(155cm)</p>  
               <p>£309.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -152,14 +120,9 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ asset('images/product-images/pairofskiandpoleset.jpg') }}">
-              <p class="card-text">Unisex Ski(178cm) and Pole Set</p>
-              <div class="rating">
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bx-star' ></i>     
+            <img class="card-img-top" img src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\pairofskiandpoleset.jpg" >
+           
+              <p class="card-text">Unisex Ski(178cm) and Pole Set</p>  
               <p>£169.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -171,13 +134,9 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ asset('images/product-images/skipoles.jpg') }}">
+            <img class="card-img-top" src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\skipoles.jpg">
             <div class="card-body">
-              <p class="card-text">Unisex Ski Poles</p>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>    
+              <p class="card-text">Unisex Ski Poles</p>  
               <p>£69.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -189,14 +148,9 @@
         </div>
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{ asset('images/product-images/skigloves.jpg') }}">
+            <img class="card-img-top" src="C:\xampp\htdocs\Ecom-Maven\public\images\product-images\skigloves.jpg">
             <div class="card-body">
               <p class="card-text">Unisex Ski Gloves</p>
-             
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
-              <i class='bx bxs-star'></i>
               <p>£14.99<p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
