@@ -1,17 +1,3 @@
-nav {
-    position: fixed;
-    top: 0;
-    display: flex;
-    flex-wrap: nowrap;
-    left: 0;
-    width: 100%;
-    }
-
-  footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    }
 
     h1 {
         text-align: center;

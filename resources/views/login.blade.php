@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login to Maven</title>
     <link rel="icon" href="/resources/images/public/Icon.png">
-    <link rel="stylesheet" href="{{ asset('resources/css/login.css') }}">
     @include('css')
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 
 <nav>
