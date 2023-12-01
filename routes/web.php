@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,17 +34,21 @@ Route::get("/contact/", function () {
     return view("contact");
 })->name('contact');
 
-Route::get("/products/", function () {
-    return view("products");
-})->name('products');
+// Corrected route for displaying products using the ProductController's index method
+Route::get('/products', [ProductController::class, 'index'])->name('products');
 
 Route::get("/login/", function () {
     return view("login");
 })->name('login');
 
-Route::get("/singup/", function () {
+Route::get("/signup/", function () {
     return view("signup");
 })->name('signup');
+
+Route::get("/checkout/", function () {
+    return view("checkout");
+})->name('checkout');
+
 
 Route::get('/dashboard', [ProductController::class, 'index']);  
 Route::get('/shopping-cart', [ProductController::class, 'productCart'])->name('shopping.cart');

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
 return new class extends Migration
 {
     /**
@@ -14,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string("name")->nullable();
             $table->longtext("description")->nullable();
-            $table->integer("price");  
+            $table->integer("price");
+            $table->string("image_path")->nullable(); // New column for storing image path
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */

@@ -1,257 +1,130 @@
+@extends('shop')
 
-
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="{{ asset('path/to/font-awesome/css/font-awesome.min.css') }}">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="{{ asset('../../../../dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('products.css') }}" rel="stylesheet">
+    <title>Products</title>
+    @include('css')
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    <!-- Cusotm CSS -->
-    <link rel="stylesheet" href="checkout.css">
-    @include('css')>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-
-
-    <title>Checkout</title>
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 
 <body>
     @include('nav')
 
-    <section id="main" class="container">
-        <h1>Checkout</h1>
+    <main>
+        <table id="cart" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @php $total = 0 @endphp
+                @if(session('cart'))
+                    @foreach(session('cart') as $id => $details)
+                        <tr rowId="{{ $id }}">
+                            <td data-th="Product">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="nomargin">{{ $details['name'] }}</h4>
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-th="Price">£{{ $details['price'] }}</td>
+                            <td data-th="Subtotal" class="text-center">£{{ $details['price'] * $details['quantity'] }}</td>
+                            <td class="actions">
+                                <a class="btn btn-outline-danger btn-sm delete-product"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        @php $total += $details['price'] * $details['quantity'] @endphp
+                    @endforeach
+                @endif
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="text-right">
+                        <strong>Total: £{{ $total }}</strong>
+                        <a href="{{ url('/dashboard') }}" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                        <a href="{{ route('checkout') }}" class="btn btn-danger">Checkout</a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
 
-        <main class="row">
-            <div class="col-1"></div>
-            <!-- form -->
-            <div id="chekout-form" class="col-md-6">
-                <form action="" method="POST">
-                    <h3>Delivery</h3>
-                    <div class="mini-heading">
-                        <p>Add Address</p>
-                    </div>
-                    <!-- first name -->
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="fname" name="fname" placeholder="John" required>
-                        <label for="fname">First Name *</label>
-                    </div>
-                    <!-- last name -->
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="lanem" name="lname" placeholder="Doe" required>
-                        <label for="lanem">Last Name *</label>
-                    </div>
-                    <!-- phone -->
-                    <div class="form-floating mb-3">
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="012 345 6789"
-                            min="10" max="10" required>
-                        <label for="phone">Phone *</label>
-                    </div>
-                    <!-- email -->
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
-                            required>
-                        <label for="email">Email Address *</label>
-                    </div>
+    <footer class="text-muted text-center">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+        </div>
+        @include('footer')
+    </footer>
 
-                    <!-- address line 1 -->
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="address1" name="address1"
-                            placeholder="Am Funkturm 47" required>
-                        <label for="address1">Address Line 1 *</label>
-                    </div>
+    @section('scripts')
+    <script type="text/javascript">
 
-                    <!-- address line 2 -->
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="address2" name="address2" placeholder="">
-                        <label for="address2">Address Line 2</label>
-                    </div>
+        $(".edit-cart-info").change(function (e) {
+            e.preventDefault();
+            var ele = $(this);
+            $.ajax({
+                url: '{{ route('update.sopping.cart') }}',
+                method: "patch",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: ele.parents("tr").attr("rowId"),
+                },
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        });
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="city" name="city">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inputState" class="form-label">Region</label>
-                            <input type="text" class="form-control" id="state" name="state">
-                        </div>
-                        <div class="col-md-2">
-                            <label for="zip" class="form-label">Postcode</label>
-                            <input type="text" class="form-control" id="zip" name="zip">
-                        </div>
-                    </div>
+        $(".delete-product").click(function (e) {
+            e.preventDefault();
 
-                    <br>
-                    <br>
-                    <br>
-                    <h3>Payment</h3>
+            var ele = $(this);
 
-                    <div class="mini-heading">
-                        <p> Enter your payment details </p>
-                    </div>
-                    <!-- Name on Card -->
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nameOnCard" name="nameOnCard" placeholder="John Doe"
-                            required>
-                        <label for="nameOnCard">Name on Card *</label>
-                    </div>
-                    <!-- Card Number -->
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder=""
-                            required>
-                        <label for="cardNumber">Card Number *</label>
-                    </div>
-                    <!-- Month -->
-                    <div class="row g-3 justify-content-between">
-                        <div class="form-floating col-4">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                <option selected disabled>MM *</option>
-                                <option value="1">01</option>
-                                <option value="2">02</option>
-                                <option value="3">03</option>
-                                <option value="4">04</option>
-                                <option value="5">05</option>
-                                <option value="6">06</option>
-                                <option value="7">07</option>
-                                <option value="8">08</option>
-                                <option value="9">09</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-                            <label for="floatingSelect">Month</label>
-                        </div>
+            if (confirm("Do you really want to delete?")) {
+                $.ajax({
+                    url: '{{ route('delete.cart.product') }}',
+                    method: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: ele.parents("tr").attr("rowId")
+                    },
+                    success: function (response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
 
-                        <div class="form-floating col-4">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                <option selected disabled>YY *</option>
-                    
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                <option value="2028">2028</option>
-                                <option value="2029">2029</option>
-                                <option value="2030">2030</option>
-
-                            </select>
-                            <label for="floatingSelect">Year *</label>
-                        </div>
-
-                        <div class="form-floating col-3">
-                            <input type="text" class="form-control" id="CVV" name="CVV" placeholder="CVV" min="3"
-                                max="3" pattern="[0-9]" required>
-                            <label for="CVV">CVV *</label>
-                        </div>
-
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-primary">Submit Order</button>
-                        </div>
-                    </div>
-
-
-                </form>
-
-
-            </div>
-
-            <!-- summary -->
-            <div id="chekout-summary" class="col-md-4">
-                <h3>Summary</h3>
-
-                <div class="sub-total-sec">
-                    <div class="row">
-                        <div class="col-6">
-                            <p> Subtotal (2 Items)</p>
-                        </div>
-                        <div class="col-6">
-                            <p>SAR 1,550.00</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <p> Standard delivery</p>
-                        </div>
-                        <div class="col-6">
-                            <p>FREE</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="total-sec">
-                    <div class="row">
-                        <div class="col-6">
-                            <p> Total <br> <span class="small"> Including SAR 202.18 in taxes </span></p>
-                        </div>
-                        <div class="col-6">
-                            <p>SAR 1,550.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="items-preview-sec">
-                    <!-- item -->
-                    <div class="row">
-                        <div class="col-6 item-img">
-                            <img src="https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw21c2dffe/nk/32b/0/f/1/7/a/32b0f17a_38ba_40fa_9de7_31c5bb1661e3.png?sw=520&sh=520&sm=fit"
-                                alt="">
-                        </div>
-                        <div class="col-6 item-info">
-                            <p><a href="#"> Air Jordan 1 Low Men's Shoes</a></p>
-                            <div class="d-flex flex-column gap-2
-                            ">
-                                <span>QTY - <span> 1 </span></span>
-                                <span>Size - <span> EU 44.5 </span></span>
-                                <span>SAR 775.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="row">
-                        <div class="col-6 item-img">
-                            <img src="https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw21c2dffe/nk/32b/0/f/1/7/a/32b0f17a_38ba_40fa_9de7_31c5bb1661e3.png?sw=520&sh=520&sm=fit"
-                                alt="">
-                        </div>
-                        <div class="col-6 item-info">
-                            <p><a href="#"> Air Jordan 1 Low Men's Shoes</a></p>
-                            <div class="d-flex flex-column gap-2
-                            ">
-                                <span>QTY - <span> 1 </span></span>
-                                <span>Size - <span> EU 44.5 </span></span>
-                                <span>SAR 775.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="row">
-                        <div class="col-6 item-img">
-                            <img src="https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw21c2dffe/nk/32b/0/f/1/7/a/32b0f17a_38ba_40fa_9de7_31c5bb1661e3.png?sw=520&sh=520&sm=fit"
-                                alt="">
-                        </div>
-                        <div class="col-6 item-info">
-                            <p><a href="#"> Air Jordan 1 Low Men's Shoes</a></p>
-                            <div class="d-flex flex-column gap-2
-                            ">
-                                <span>QTY - <span> 1 </span></span>
-                                <span>Size - <span> EU 44.5 </span></span>
-                                <span>SAR 775.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-1"></div>
-
-        </main>
-    </section>
-    @include('footer')
+    </script>
+    @endsection
 </body>
 
 </html>
+@endsection

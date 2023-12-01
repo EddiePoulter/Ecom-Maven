@@ -1,14 +1,18 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 class Product extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'name', 
+        'name',
         'description',
-        'price'
-    ];  
+        'price',
+        'image_path', // Add the 'image_path' attribute
+    ];
 }
