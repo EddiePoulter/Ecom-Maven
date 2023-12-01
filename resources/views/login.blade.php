@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login to Maven</title>
     <link rel="icon" href="/resources/images/public/Icon.png">
-    @include('css')
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    @include('css')
 </head>
 
-<nav>
-    @include('nav')
-</nav>
+@include('nav')
 
     <div class="login-container">
         <div class="formation">
@@ -26,7 +24,7 @@
                 <p class="error-message"><?php echo $error_message; ?></p>
             <?php } ?>
             <input type="hidden" name="submitted" value="TRUE" />
-            <p><a href="forgot_password.php"><br>Forgot Your Password?</a></p>
+            <p><a href="forgot_password.php">Forgot Your Password?</a></p>
         </form>
         </div>
     </div>

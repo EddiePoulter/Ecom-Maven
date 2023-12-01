@@ -1,4 +1,11 @@
 
+
+  footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    }
+
     h1 {
         text-align: center;
         padding: 20px;
@@ -14,21 +21,23 @@
         width: 100%;
         max-width: 400px;
         margin: auto;
-        font-size: 1.6em;
         display: flex;
-        flex-direction: column;
+        font-size: 1.6em;
         align-items: center;
         justify-content: center;
-    }
+        height: 80vh;
+        }
     
     .formation {
         background-color: #fff;
         border-radius: 4px;
         padding: 15px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-top: 285px;
         font-size: 0.5em;
-    }
+        width: 100%;
+        max-width: 400px;
+        justify-content: center;
+        }
     
     form {
         width: 100%;
@@ -47,17 +56,12 @@
         border: 1px solid #ccc;
         border-radius: 4px;
     }
-    
-    .formation input[type="email"],
-    .formation input[type="password"]::placeholder {
-        color: #aaa;
-    }
 
-    input[type="email"] {
+    .formation input[type="email"] {
         margin-bottom: 10px;
     }
 
-    input[type="password"] {
+    .formation input[type="password"] {
         margin-bottom: 20px;
     }
     
@@ -66,10 +70,14 @@
         background-color: #4caf50;
         color: #fff;
         padding: 10px;
+        margin-bottom: 10px;
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        margin-top: 10px;
+    }
+
+    .formation input[type="button"] {
+        margin-bottom: 20px;
     }
     
     .formation input[type="submit"]:hover,
@@ -80,4 +88,3 @@
     .error-message {
         color: red;
     }
-    

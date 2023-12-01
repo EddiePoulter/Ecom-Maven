@@ -24,17 +24,23 @@
     width: 100%;
     max-width: 400px;
     margin: auto;
-    font-size: 1.45em;
+    display: flex;
+    font-size: 1.6em;
     text-align: center;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
   }
   
   .formation {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
-    margin-top: 125px;
-    font-size: 0.6em;
+    font-size: 0.5em;
+    width: 100%;
+    max-width: 400px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
   }
 
   .email_match,
@@ -94,13 +100,10 @@ input[type="reset"] {
   
   input[type="text"],
   input[type="password"] {
-    color: transparent;
+    color: black;
   }
   
-  input[type="text"]::placeholder,
-  input[type="password"]::placeholder {
-    color: #aaa;
-  }
+
   
   input[type="submit"],
   input[type="button"] {

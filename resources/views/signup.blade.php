@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up to Maven</title>
-    @include('css')
     <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
-
+    @include('css')
 </head>
 
 <div class="register-container">
 <div class="formation">
   <h2>Register a Maven Account</h2><br>
   <form method="post" action="register.php">
-    <input type="email" name="email" id="email" placeholder="Enter your email address" required /><br>
+    <input type="email" name="email" id="email" placeholder="Enter your email address" required />
     <input type="email" name="confirm_email" id="confirm_email" placeholder="Confirm your email address" required />
-    <span id="email_match"></span><br>
-    <input type="password" name="password" id="password" placeholder="Enter your password" required /><br>
+    <span id="email_match"></span>
+    <input type="password" name="password" id="password" placeholder="Enter your password" required />
     <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password" required />
-    <span id="password_match"></span><br>
+    <span id="password_match"></span>
     <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" required />
-    <span id="phone_match"></span><br>
-    <input type="submit" value="Register" />
+    <span id="phone_match"></span>
+    <br><input type="submit" value="Register" />
     <input type="reset" value="Clear" />
     <input type="hidden" name="submitted" value="true" />
     <p> <br> Already a user? <a href="{{ route('login') }}">Log in</a></p>
@@ -60,7 +59,7 @@
       document.getElementById('phone_match').innerHTML = '';
     } else {
       document.getElementById('phone_match').style.color = 'red';
-      document.getElementById('phone_match').innerHTML = 'Enter a valid phone number';
+      document.getElementById('phone_match').innerHTML = 'Enter a valid phone number.<br>';
     }
   });
   </script>
