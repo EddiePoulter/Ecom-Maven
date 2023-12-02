@@ -36,9 +36,13 @@
                 <div class="col-md-4 col-6 mb-4">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
-                            <h4 class="card-title">{{ $product->name }}</h4>
                             <img class="card-img-top" src="{{ asset($product->image_path) }}">
+                            <h4 class="card-title">{{ $product->name }}</h4>
                             <p>{{ $product->description }}</p>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
                             <p class="card-text"><strong>Price: </strong> £{{ $product->price }}</p>
                              <!-- <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">

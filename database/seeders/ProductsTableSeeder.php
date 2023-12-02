@@ -13,21 +13,21 @@ class ProductsTableSeeder extends Seeder
     public function run(): void
     {
         Product::create([
-            'name' => 'Unisex Ski(178cm) Equipment Set',
+            'name' => 'Ski(178cm) Equipment Set',
             'price' => 299,
-            'description' => 'An all-in-one skiing package designed for both men and women, featuring skis measuring 178 centimeters for versatile use.',
+            'description' => 'An all-in-one skiing Unisex package , featuring skis measuring 178 centimeters for versatile use.',
             'image_path' => 'images/product-images/skiingequipmentset.png', 
         ]);
 
         Product::create([
-            'name' => 'Blue Ski Jacket',
+            'name' => 'Unisex Blue Ski Jacket',
             'price' => 49,
             'description' => 'A stylish and functional blue ski jacket for your winter adventures.',
             'image_path' => 'images/product-images/skiingcoat.png', 
         ]);
 
         Product::create([
-            'name' => 'Unisex Ski(178cm)',
+            'name' => 'Ski(178cm)',
             'price' => 94,
             'description' => 'Versatile 178cm skis suitable for both men and women.',
             'image_path' => 'images/product-images/pairofski.jpg', 
@@ -48,21 +48,21 @@ class ProductsTableSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Unisex Snowboard(155cm)',
+            'name' => 'Snowboard(155cm)',
             'price' => 309,
             'description' => 'A versatile 155cm snowboard suitable for all skill levels.',
             'image_path' => 'images/product-images/snowboard.jpg', 
         ]);
 
         Product::create([
-            'name' => 'Unisex Ski(178cm) and Pole Set',
+            'name' => 'Ski(178cm) and Pole Set',
             'price' => 169,
             'description' => 'A comprehensive set including 178cm skis and poles, designed for both men and women.',
             'image_path' => 'images/product-images/pairofskiandpoleset.jpg', 
         ]);
 
         Product::create([
-            'name' => 'Unisex Ski Poles',
+            'name' => 'Ski Poles',
             'price' => 69,
             'description' => 'Durable and adjustable ski poles suitable for all genders.',
             'image_path' => 'images/product-images/skipoles.jpg', 
