@@ -16,6 +16,30 @@
 
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
+    <style>
+        .special-offers-tab {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translate(0, -50%);
+            background-color: #f8f9fa; /* Customize background color */
+            padding: 5px; /* Smaller padding */
+            border-radius: 3px; /* Smaller border radius */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            cursor: pointer;
+            transition: right 0.3s ease-out;
+        }
+
+        .special-offers-tab:hover {
+            right: 0; /* Adjust the tab position on hover */
+        }
+
+        .special-offers-tab img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
   </head>
   <body>
 
@@ -127,6 +151,74 @@
         <!-- /END THE FEATURETTES -->
 
       </div><!-- /.container -->
+      <!-- News and Updates Section -->
+<section class="container mt-5">
+    <h2 class="text-center mb-4">News and Updates</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ asset('images/news1.jpg') }}" class="card-img-top" alt="News Image 1">
+                <div class="card-body">
+                    <h5 class="card-title">Exciting News Title</h5>
+                    <p class="card-text">Stay tuned for our upcoming events and promotions. We have some exciting news to share with you!</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ asset('images/news2.jpg') }}" class="card-img-top" alt="News Image 2">
+                <div class="card-body">
+                    <h5 class="card-title">Latest Updates</h5>
+                    <p class="card-text">Learn about the newest additions to our product lineup. We're constantly updating our inventory to enhance your skiing experience.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ asset('images/news3.jpg') }}" class="card-img-top" alt="News Image 3">
+                <div class="card-body">
+                    <h5 class="card-title">Special Announcement</h5>
+                    <p class="card-text">We are thrilled to share a special announcement with our community. Check out the details and be part of the excitement!</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="special-offers-tab">
+        <!-- Close button for the special offers tab -->
+        <button type="button" class="close" aria-label="Close" onclick="closeSpecialOffersTab()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        <!-- Special offers content -->
+        <div class="card-body">
+            <h5 class="card-title">Special Offer</h5>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- ... (remaining HTML code) ... -->
+
+<!-- Add this script to handle closing the special offers tab -->
+<script>
+    function closeSpecialOffersTab() {
+        // Get the special offers tab element
+        var specialOffersTab = document.querySelector('.special-offers-tab');
+
+        // Hide the special offers tab
+        specialOffersTab.style.display = 'none';
+    }
+</script>
+
+</section>
+
 
 
       <!-- FOOTER -->
