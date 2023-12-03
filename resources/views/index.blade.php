@@ -51,10 +51,10 @@
 
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="first-slide" style="width: 100%; height: auto;" src="{{ asset('images/indexBannerSki.jpg') }}" alt="First slide">
-          <div class="carousel-caption d-none d-md-block" style="top: 40%;">
+          <img class="first-slide" style="width: 100%; height: 50%;" src="{{ asset('images/men-snowboard.jpg') }}" alt="First slide">
+          <div class="carousel-caption d-none d-md-block" style="top: 34%;">
             <h1>Welcome to Maven</h1>
-            <p>Hi, we are Maven, a home for skiers</p>
+            <p>We are Maven, a home for skiers.</p>
           </div>
         </div>
       </div>
