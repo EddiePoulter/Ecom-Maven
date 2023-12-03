@@ -158,9 +158,9 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <img src="{{ asset('images/news1.jpg') }}" class="card-img-top" alt="News Image 1">
+              <!---  <img src="{{ asset('images/skiresort.jpg') }}" class="card-img-top" alt="News Image 1">--->
                 <div class="card-body">
-                    <h5 class="card-title">Exciting News Title</h5>
+                    <h5 class="card-title">The Best Ski Resort For This Christmas Holiday</h5>
                     <p class="card-text">Stay tuned for our upcoming events and promotions. We have some exciting news to share with you!</p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
@@ -169,9 +169,9 @@
 
         <div class="col-md-4">
             <div class="card">
-                <img src="{{ asset('images/news2.jpg') }}" class="card-img-top" alt="News Image 2">
+              <!---  <img src="{{ asset('images/skiingclub.jpg') }}" class="card-img-top" alt="News Image 2">--->
                 <div class="card-body">
-                    <h5 class="card-title">Latest Updates</h5>
+                    <h5 class="card-title">Have You Heard Of The New Skiing Club?</h5>
                     <p class="card-text">Learn about the newest additions to our product lineup. We're constantly updating our inventory to enhance your skiing experience.</p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
@@ -180,7 +180,7 @@
 
         <div class="col-md-4">
             <div class="card">
-                <img src="{{ asset('images/news3.jpg') }}" class="card-img-top" alt="News Image 3">
+             <!---   <img src="{{ asset('images/news3.jpg') }}" class="card-img-top" alt="News Image 3">--->
                 <div class="card-body">
                     <h5 class="card-title">Special Announcement</h5>
                     <p class="card-text">We are thrilled to share a special announcement with our community. Check out the details and be part of the excitement!</p>
