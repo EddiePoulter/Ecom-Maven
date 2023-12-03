@@ -1,5 +1,4 @@
 @extends('shop')
-
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +14,6 @@
     <title>Products</title>
     @include('css')
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
 
         main {
             flex: 1;
@@ -29,7 +23,7 @@
 
 <body>
     @include('nav')
-
+    <div class="container">
     <main>
         <table id="cart" class="table table-bordered">
             <thead>

@@ -6,8 +6,13 @@
     <title>Sign up to Maven</title>
     <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
     @include('css')
+    <style>
+      body {
+        padding: 0
+      }
+    </style>
 </head>
-
+@include('nav')
 <div class="register-container">
 <div class="formation">
   <h2>Register a Maven Account</h2><br>

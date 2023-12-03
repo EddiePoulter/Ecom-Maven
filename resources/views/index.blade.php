@@ -8,9 +8,6 @@
     @include('css')
     <link rel="icon" href="/resources/images/public/Icon.png">
 </head>
-
-    @include('nav')
-
     <!-- Bootstrap core CSS -->
     <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -39,26 +36,30 @@
             max-width: 100%;
             height: auto;
         }
+        body {
+          overflow-x: hidden;
+        }
     </style>
   </head>
   <body>
+    @include('nav')
 
     <header>
 
 
     <main role="main">
 
-        <div class="carousel-inner">
-  <div class="carousel-item active" style="position: relative;">
-    <img class="first-slide" style="width: 100%; height: 100%;" src="{{ asset('images/indexBannerSki.jpg') }}" alt="First slide">
-    <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-      <div class="carousel-caption text-left">
-        <h1>Welcome to Maven</h1>
-        <p>Hi, we are Maven, a home for skiers</p>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="first-slide" style="width: 100%; height: auto;" src="{{ asset('images/indexBannerSki.jpg') }}" alt="First slide">
+          <div class="carousel-caption d-none d-md-block" style="top: 40%;">
+            <h1>Welcome to Maven</h1>
+            <p>Hi, we are Maven, a home for skiers</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>  
+      
+      
 
 
 
@@ -100,7 +101,7 @@
 
         <hr class="featurette-divider">
 
-        <div class="row featurette">
+        <div class="row featurette" style="margin: 10px">
           <div class="col-md-7">
             <br>
             <h2 class="featurette-heading">About Us</h2>
@@ -110,7 +111,7 @@
             <br>
             At Maven, we believe that every skier, from the novice to the seasoned pro, deserves access to the best gear. Our curated selection of skis, boots, apparel, and accessories reflects our commitment to quality, innovation, and a seamless blend of style and functionality.</p>
             <br>
-            <button type="button" class="btn btn-primary">About Us</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='about.blade.php'">About Us</button>
           </div>
           <div class="col-md-5">
             <img class="featurette-image img-fluid mx-auto" src="{{ asset('images/manskiing.jpg') }}" alt="Generic placeholder image">
@@ -120,23 +121,26 @@
         <hr class="featurette-divider">
 
         <div class="row featurette">
-          <div class="col-md-7 order-md-2">
+          <div class="col-md-7 order-md-2" style="padding-right: 0;">
             <h2 class="featurette-heading">Why Do I Need Ski Clothing?</h2>
-            <p class="lead">Ski clothes are different from other cold weather gear, they’re built to handle the specific conditions of skiing – its level of breathability, waterproofness, insulation and durability are all carefully balanced to match your activity and level of intensity on or off the slopes.
+            <p class="lead">Ski clothes are different from other cold weather gear, they're built to handle the specific conditions of skiing - 
+              its level of breathability, waterproofness, insulation and durability are all carefully balanced to match your activity and level of intensity on or off the slopes.
+              <br>
+              <br> 
+              While a parka is great for sub-zero temperatures, it would quickly make you too sweaty during more intense skiing, and it lacks the mobility needed for performance on the mountain</p>
             <br>
-            <br>  
-            While a parka is great for sub-zero temperatures, it would quickly make you too sweaty during more intense skiing, and it lacks the mobility needed for performance on the mountain</p>
-            <br>
-            <button type="button" class="btn btn-primary">Products</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='products.blade.php'">Products</button>
           </div>
-          <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" src="{{ asset('images/skiingclothes.jpg') }}" alt="Generic placeholder image">
+          <div class="col-md-4 order-md-1" >
+            <img class="img-fluid mx-auto" src="{{ asset('images/skiingclothes.jpg') }}" alt="Generic placeholder image">
           </div>
         </div>
+        
+        
 
         <hr class="featurette-divider">
 
-        <div class="row featurette">
+        <div class="row featurette p-4">
           <div class="col-md-7">
             <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
             <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
@@ -145,6 +149,7 @@
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
         </div>
+        
 
         <hr class="featurette-divider">
 
@@ -237,6 +242,7 @@
     <script src="../../../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="../../../../assets/js/vendor/holder.min.js"></script>
+    @include('footer')
   </body>
 </html>
 
