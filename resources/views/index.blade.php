@@ -135,20 +135,7 @@
             <img class="img-fluid mx-auto" src="{{ asset('images/skiingclothes.jpg') }}" alt="Generic placeholder image">
           </div>
         </div>
-        
-        
 
-        <hr class="featurette-divider">
-
-        <div class="row featurette p-4">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
         
 
         <hr class="featurette-divider">
@@ -166,7 +153,7 @@
               <!---  <img src="{{ asset('images/skiresort.jpg') }}" class="card-img-top" alt="News Image 1">--->
                 <div class="card-body">
                     <h5 class="card-title">The Best Ski Resort For This Christmas Holiday</h5>
-                    <p class="card-text">Stay tuned for our upcoming events and promotions. We have some exciting news to share with you!</p>
+                    <p class="card-text"> Embrace the magic of the holiday season at our premier ski resort, where winter dreams come alive!</p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
             </div>
@@ -177,7 +164,7 @@
               <!---  <img src="{{ asset('images/skiingclub.jpg') }}" class="card-img-top" alt="News Image 2">--->
                 <div class="card-body">
                     <h5 class="card-title">Have You Heard Of The New Skiing Club?</h5>
-                    <p class="card-text">Learn about the newest additions to our product lineup. We're constantly updating our inventory to enhance your skiing experience.</p>
+                    <p class="card-text">Excitement is carving its way into the skiing community with the launch of our new Skiing Club! Have you heard the buzz? </p>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
             </div>
