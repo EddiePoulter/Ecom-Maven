@@ -129,7 +129,7 @@
               <br> 
               While a parka is great for sub-zero temperatures, it would quickly make you too sweaty during more intense skiing, and it lacks the mobility needed for performance on the mountain</p>
             <br>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='products.blade.php'">Products</button>
+            <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">Products</button>
           </div>
           <div class="col-md-4 order-md-1" >
             <img class="img-fluid mx-auto" src="{{ asset('images/skiingclothes.jpg') }}" alt="Generic placeholder image">
@@ -191,7 +191,7 @@
         <div class="card-body">
             <h5 class="card-title">Special Offer</h5>
             <p class="card-text"></p>
-            <a href="#" class="btn btn-primary">Shop Now</a>
+            <a href="#" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">Shop Now</a>
         </div>
     </div>
 </section>

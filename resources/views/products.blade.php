@@ -30,7 +30,6 @@
 
 <div class="products py-5 bg-light">
     <div class="container">
-
         <div class="row">
             @foreach($products as $product)
                 <div class="col-md-4 col-6 mb-4">

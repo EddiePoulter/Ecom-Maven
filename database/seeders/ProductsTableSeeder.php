@@ -15,7 +15,7 @@ class ProductsTableSeeder extends Seeder
         Product::create([
             'name' => 'Ski(178cm) Equipment Set',
             'price' => 299,
-            'description' => 'An all-in-one skiing Unisex package , featuring skis measuring 178 centimeters for versatile use.',
+            'description' => 'An all-in-one skiing Unisex package, featuring skis measuring 178 centimeters for versatile use.',
             'image_path' => 'images/product-images/skiingequipmentset.png', 
         ]);
 
