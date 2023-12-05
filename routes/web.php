@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -41,16 +42,15 @@ Route::get("/login/", function () {
     return view("login");
 })->name('login');
 
-Route::get("/signup/", function () {
-    return view("signup");
-})->name('signup');
+Route::get("/signup/", [UserController::class, "signup_page"])->name('signup');
+Route::post("/register", [UserController::class, "create_user"]);
 
 Route::get("/checkout/", function () {
     return view("checkout");
 })->name('checkout');
 
 
-Route::get('/dashboard', [ProductController::class, 'index']);  
+Route::get('/dashboard', [ProductController::class, 'index']);
 Route::get('/shopping-cart', [ProductController::class, 'productCart'])->name('shopping.cart');
 Route::get('/product/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart');
 Route::patch('/update-shopping-cart', [ProductController::class, 'updateCart'])->name('update.sopping.cart');

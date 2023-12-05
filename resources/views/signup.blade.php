@@ -16,7 +16,8 @@
 <div class="register-container">
 <div class="formation">
   <h2>Register a Maven Account</h2><br>
-  <form method="post" action="register.php">
+  <form method="post" action="{{ url('register') }}">
+      <input type="username" name="username" id="username" placeholder="Enter your username" required>
     <input type="email" name="email" id="email" placeholder="Enter your email address" required />
     <input type="email" name="confirm_email" id="confirm_email" placeholder="Confirm your email address" required />
     <span id="email_match"></span>
