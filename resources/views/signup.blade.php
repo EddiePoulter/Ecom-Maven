@@ -17,12 +17,13 @@
 <div class="formation">
   <h2>Register a Maven Account</h2><br>
   <form method="post" action="{{ url('register') }}">
-      <input type="username" name="username" id="username" placeholder="Enter your username" required>
+    <input type="text" name="first_name" id="first_name" placeholder="Enter your first name" required>
+    <input type="text" name="last_name" id="last_name" placeholder="Enter your last name" required>    
     <input type="email" name="email" id="email" placeholder="Enter your email address" required />
     <input type="email" name="confirm_email" id="confirm_email" placeholder="Confirm your email address" required />
     <span id="email_match"></span>
-    <input type="password" name="password" id="password" placeholder="Enter your password" required />
-    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password" required />
+    <input type="password" name="password" id="password" placeholder="Enter your password" required pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="Password must be at least 8 characters long and contain at least 1 letter and 1 number">
+    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password" required>    
     <span id="password_match"></span>
     <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" required />
     <span id="phone_match"></span>
@@ -68,6 +69,78 @@
       document.getElementById('phone_match').innerHTML = 'Enter a valid phone number.<br>';
     }
   });
+
+  function validateEmail() {
+  var email = document.getElementById('email').value;
+  var confirmEmail = document.getElementById('confirm_email').value;
+  
+  // Regular expression for validating email format
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (email.trim() === '' || confirmEmail.trim() === '') {
+    // Handle case when either field is empty
+    // You can show a message or perform other actions
+    return false;
+  }
+
+  if (!emailRegex.test(email) || !emailRegex.test(confirmEmail)) {
+    // Handle case when either field does not have a valid email format
+    // You can show a message or perform other actions
+    return false;
+  }
+
+  if (email !== confirmEmail) {
+    // Handle case when emails do not match
+    // You can show a message or perform other actions
+    return false;
+  }
+
+  // If the emails match and have valid format
+  // Perform any other actions or form submissions here
+  // Return true if the validation is successful
+  return true;
+}
+
+// Attach the validation function to the input event of both email fields
+document.getElementById('email').addEventListener('input', validateEmail);
+document.getElementById('confirm_email').addEventListener('input', validateEmail);
+
+function validatePassword() {
+  var password = document.getElementById('password').value;
+  var confirmPassword = document.getElementById('confirm_password').value;
+
+  // Regular expression for validating password complexity
+  var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+  if (password.trim() === '' || confirmPassword.trim() === '') {
+    // Handle case when either field is empty
+    // You can show a message or perform other actions
+    return false;
+  }
+
+  if (!passwordRegex.test(password)) {
+    // Handle case when password does not meet complexity requirements
+    // You can show a message or perform other actions
+    return false;
+  }
+
+  if (password !== confirmPassword) {
+    // Handle case when passwords do not match
+    // You can show a message or perform other actions
+    return false;
+  }
+
+  // If the passwords match and meet complexity requirements
+  // Perform any other actions or form submissions here
+  // Return true if the validation is successful
+  return true;
+}
+
+// Attach the validation function to the input event of both password fields
+document.getElementById('password').addEventListener('input', validatePassword);
+document.getElementById('confirm_password').addEventListener('input', validatePassword);
+
+
   </script>
 <footer>
 <body>

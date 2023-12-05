@@ -159,6 +159,11 @@
                                     <label for="email">Email:</label>
                                     <input type="email" class="form-control" id="email" name="email" disabled>
                                 </div>
+                                <div class="form-group col-md-6">
+                                    <label for="password">Password:</label>
+                                    <input type="password" class="form-control" id="password" name="password" disabled>
+                                </div>
+                                
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
