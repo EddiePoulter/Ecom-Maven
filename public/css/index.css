@@ -44,3 +44,20 @@
     max-width: 100%;
     height: auto;
 }
+/* Add this to your existing styles or in a new style block */
+.social-icons-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icon {
+    margin-right: 15px; /* Adjust as needed for spacing between icons */
+  }
+  
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black; /* Adjust the color as needed */
+  }
+  

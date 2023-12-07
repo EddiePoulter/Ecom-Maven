@@ -111,7 +111,7 @@
             <br>
             At Maven, we believe that every skier, from the novice to the seasoned pro, deserves access to the best gear. Our curated selection of skis, boots, apparel, and accessories reflects our commitment to quality, innovation, and a seamless blend of style and functionality.</p>
             <br>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='about.blade.php'">About Us</button>
+            <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('about') }}'">About Us</button>
           </div>
           <div class="col-md-5">
             <img class="featurette-image img-fluid mx-auto" src="{{ asset('images/manskiing.jpg') }}" alt="Generic placeholder image">
@@ -195,6 +195,7 @@
         </div>
     </div>
 </section>
+<hr class="featurette-divider">
 
 <!-- ... (remaining HTML code) ... -->
 
@@ -213,12 +214,13 @@
 
 
 
-      <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2023-2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
-    </main>
+     <!-- FOOTER -->
+<footer class="container" style="display: flex; justify-content: space-between; align-items: center;">
+  <p>&copy; 2023-2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+</footer>
+</main>
+
+</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
