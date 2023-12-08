@@ -78,19 +78,19 @@
         <img src="{{ asset('images/product-images/skiingcoat.png') }}" alt="Generic placeholder image" width="140" height="140">
         <h2>Blue Ski Jacket</h2>
         <p>A stylish and functional blue ski jacket for your winter adventures.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">View</button>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
         <img src="{{ asset('images/product-images/skigloves.jpg') }}" alt="Generic placeholder image" width="140" height="140">
         <h2>Unisex Gloves</h2>
         <p>Comfortable and warm ski gloves designed for both men and women.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">View</button>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
         <img src="{{ asset('images/product-images/skiingequipmentset.png') }}" alt="Generic placeholder image" width="140" height="140">
         <h2>Unisex Ski Helmet</h2>
         <p>A protective and comfortable helmet for skiing, suitable for all genders.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">View</button>
     </div><!-- /.col-lg-4 -->
 </div><!-- /.row -->
 </div><!-- /.container marketing -->
@@ -154,7 +154,7 @@
                 <div class="card-body">
                     <h5 class="card-title">The Best Ski Resort For This Christmas Holiday</h5>
                     <p class="card-text"> Embrace the magic of the holiday season at our premier ski resort, where winter dreams come alive!</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <a href="https://cntraveller.com/gallery/best-places-to-go-at-christmas" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
@@ -163,9 +163,9 @@
             <div class="card">
               <!---  <img src="{{ asset('images/skiingclub.jpg') }}" class="card-img-top" alt="News Image 2">--->
                 <div class="card-body">
-                    <h5 class="card-title">Have You Heard Of The New Skiing Club?</h5>
-                    <p class="card-text">Excitement is carving its way into the skiing community with the launch of our new Skiing Club! Have you heard the buzz? </p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <h5 class="card-title">Olympic Racer Offers Crucial Skiing Advice</h5>
+                    <p class="card-text">Here is Olympic medalist racer Deb Armstrong with some amazing skiing advice! Make sure not to miss out!</p>
+                    <a href="https://www.powder.com/trending-news/olympic-racer-counterintuitive-advice" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
@@ -174,9 +174,9 @@
             <div class="card">
              <!---   <img src="{{ asset('images/news3.jpg') }}" class="card-img-top" alt="News Image 3">--->
                 <div class="card-body">
-                    <h5 class="card-title">Special Announcement</h5>
-                    <p class="card-text">We are thrilled to share a special announcement with our community. Check out the details and be part of the excitement!</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <h5 class="card-title">Europa Cup: The 2023 “Queens Of Goasleitn” To Be Crowned</h5>
+                    <p class="card-text">After three successful editions, the women's FIS European Cup is returning to Skiworld Ahrntal!</p>
+                    <a href="https://www.fis-ski.com/en/alpine-skiing/alpine-news-multimedia/news-multimedia/news/season-2023-24/europa-cup-the-2023-queens-of-goasleitn-to-be-crowned-in-ahrntal" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
