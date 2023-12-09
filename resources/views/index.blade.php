@@ -19,9 +19,9 @@
             top: 50%;
             right: 0;
             transform: translate(0, -50%);
-            background-color: #f8f9fa; /* Customize background color */
-            padding: 5px; /* Smaller padding */
-            border-radius: 3px; /* Smaller border radius */
+            background-color: #f8f9fa; 
+            padding: 5px;
+            border-radius: 3px; 
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             cursor: pointer;
@@ -29,7 +29,7 @@
         }
 
         .special-offers-tab:hover {
-            right: 0; /* Adjust the tab position on hover */
+            right: 0; 
         }
 
         .special-offers-tab img {
@@ -61,15 +61,8 @@
       
       
 
-
-
-      <!-- Marketing messaging and featurettes
-      ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
-
-      <div class="container marketing">
-
-<!-- Three columns of text below the carousel -->
+     
+<div class="container marketing">
 <br>
 <br>
 <div class="row">
@@ -79,22 +72,21 @@
         <h2>Blue Ski Jacket</h2>
         <p>A stylish and functional blue ski jacket for your winter adventures.</p>
         <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">View</button>
-    </div><!-- /.col-lg-4 -->
+    </div>
     <div class="col-lg-4">
         <img src="{{ asset('images/product-images/skigloves.jpg') }}" alt="Generic placeholder image" width="140" height="140">
         <h2>Unisex Gloves</h2>
         <p>Comfortable and warm ski gloves designed for both men and women.</p>
         <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">View</button>
-    </div><!-- /.col-lg-4 -->
+    </div>
     <div class="col-lg-4">
         <img src="{{ asset('images/product-images/skiingequipmentset.png') }}" alt="Generic placeholder image" width="140" height="140">
         <h2>Unisex Ski Helmet</h2>
         <p>A protective and comfortable helmet for skiing, suitable for all genders.</p>
         <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">View</button>
-    </div><!-- /.col-lg-4 -->
-</div><!-- /.row -->
-</div><!-- /.container marketing -->
-
+      </div>
+</div>
+</div>
 
 
         <!-- START THE FEATURETTES -->
@@ -135,14 +127,11 @@
             <img class="img-fluid mx-auto" src="{{ asset('images/skiingclothes.jpg') }}" alt="Generic placeholder image">
           </div>
         </div>
-
-        
-
         <hr class="featurette-divider">
 
-        <!-- /END THE FEATURETTES -->
 
-      </div><!-- /.container -->
+      </div>
+
       <!-- News and Updates Section -->
 <section class="container mt-5">
     <h2 class="text-center mb-4">News and Updates</h2>
@@ -197,23 +186,16 @@
 </section>
 <hr class="featurette-divider">
 
-<!-- ... (remaining HTML code) ... -->
-
-<!-- Add this script to handle closing the special offers tab -->
 <script>
     function closeSpecialOffersTab() {
         // Get the special offers tab element
         var specialOffersTab = document.querySelector('.special-offers-tab');
-
         // Hide the special offers tab
         specialOffersTab.style.display = 'none';
     }
 </script>
 
 </section>
-
-
-
      <!-- FOOTER -->
 <footer class="container" style="display: flex; justify-content: space-between; align-items: center;">
   <p>&copy; 2023-2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
