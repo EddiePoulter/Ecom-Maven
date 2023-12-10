@@ -57,7 +57,7 @@
                                 <a class="nav-link" href="#improve">Help us Improve</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sign Out</a>
+                                <a class="nav-link" href="logout">Sign Out</a>
                             </li>
                         </ul>
                     </div>
@@ -163,7 +163,7 @@
                                     <label for="password">Password:</label>
                                     <input type="password" class="form-control" id="password" name="password" disabled>
                                 </div>
-                                
+
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">

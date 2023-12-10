@@ -43,6 +43,8 @@ Route::get("/login/", function () {
 })->name('login');
 Route::post("/signin", [UserController::class, "login"]);
 
+Route::get("/logout/", [UserController::class, "logout"]);
+
 Route::get("/signup/", [UserController::class, "signup_page"])->name('signup');
 Route::post("/register", [UserController::class, "create_user"]);
 

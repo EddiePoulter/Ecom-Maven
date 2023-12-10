@@ -38,7 +38,7 @@ class UserController extends Controller
             $user->phone_number = $phone_num;
             $user->save();
             auth()->login($user);
-            return redirect("signup_success");
+            return redirect("account");
         }
     }
 
@@ -58,4 +58,11 @@ class UserController extends Controller
         ])->onlyInput('email');
     }
 
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect("/");
+    }
 }
