@@ -13,10 +13,7 @@
 
     <!-- Cusotm CSS -->
     <link rel="stylesheet" href="checkout.css">
-    @include('css')>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-
-
+    @include('css')
     <title>Checkout</title>
 </head>
 

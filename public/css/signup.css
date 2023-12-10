@@ -127,3 +127,8 @@ input[type="reset"] {
   h1.register-heading {
     font-size: 2em;
   }
+
+  input[type="text"],
+input[type="email"] {
+    margin-bottom: 10px;
+}

@@ -30,7 +30,6 @@
 
 <div class="products py-5 bg-light">
     <div class="container">
-
         <div class="row">
             @foreach($products as $product)
                 <div class="col-md-4 col-6 mb-4">
@@ -44,11 +43,6 @@
                             <i class='bx bxs-star' ></i>
                             <i class='bx bxs-star' ></i>
                             <p class="card-text"><strong>Price: </strong> £{{ $product->price }}</p>
-                             <!-- <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                   <button typeQ="button" class="btn btn-sm btn-outline-secondary">View</button> 
-                                </div> 
-                            </div> -->
                             <p class="btn-holder"><a href="{{ route('addProduct.to.cart', $product->id) }}" class="btn btn-outline-danger">Add to cart</a> </p>
                         </div>
                     </div>

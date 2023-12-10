@@ -1,4 +1,4 @@
-/* .welcome {
+.welcome {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -20,16 +20,18 @@
 
 .welcome p {
     font-size: 30px;
-} */
+}
+
+
 
 .special-offers-tab {
     position: fixed;
     top: 50%;
     right: 0;
     transform: translate(0, -50%);
-    background-color: #f8f9fa; /* Customize background color */
-    padding: 5px; /* Smaller padding */
-    border-radius: 3px; /* Smaller border radius */
+    background-color: #f8f9fa; 
+    padding: 5px;
+    border-radius: 3px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     cursor: pointer;
@@ -37,10 +39,27 @@
 }
 
 .special-offers-tab:hover {
-    right: 0; /* Adjust the tab position on hover */
+    right: 0; 
 }
 
 .special-offers-tab img {
     max-width: 100%;
     height: auto;
 }
+
+.social-icons-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-icon {
+    margin-right: 15px;
+  }
+  
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black; 
+  } 
+  
