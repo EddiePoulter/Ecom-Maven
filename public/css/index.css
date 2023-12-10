@@ -1,4 +1,4 @@
-/* .welcome {
+.welcome {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -20,7 +20,9 @@
 
 .welcome p {
     font-size: 30px;
-} */
+}
+
+
 
 .special-offers-tab {
     position: fixed;
@@ -59,5 +61,5 @@
     align-items: center;
     text-decoration: none;
     color: black; 
-  }
+  } 
   

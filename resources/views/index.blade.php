@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maven Home Page</title>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @include('css')
     <link rel="icon" href="/resources/images/public/Icon.png">
 </head>
@@ -14,31 +15,7 @@
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
     <style>
-        .special-offers-tab {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translate(0, -50%);
-            background-color: #f8f9fa; 
-            padding: 5px;
-            border-radius: 3px; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            cursor: pointer;
-            transition: right 0.3s ease-out;
-        }
-
-        .special-offers-tab:hover {
-            right: 0; 
-        }
-
-        .special-offers-tab img {
-            max-width: 100%;
-            height: auto;
-        }
-        body {
-          overflow-x: hidden;
-        }
+       
     </style>
   </head>
   <body>
