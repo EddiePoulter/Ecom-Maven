@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,8 @@
     <div class="login-container">
         <div class="formation">
         <h1>Login to Maven</h1>
-        <form action="index.php" method="post">
+        <form action="{{ url('signin') }}" method="post">
+            @csrf
             <input type="email" name="email" placeholder="Enter your email address" required>
             <input type="password" name="password" placeholder="Enter your password" required>
             <input type="submit" value="Login" />

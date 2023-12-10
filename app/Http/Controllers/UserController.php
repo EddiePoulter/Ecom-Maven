@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use function Laravel\Prompts\alert;
 
 class UserController extends Controller
@@ -12,7 +16,7 @@ class UserController extends Controller
         return view("signup");
     }
     public function create_user(Request $request) {
-        $username = $request->username;
+        $username = $request->first_name . " " . $request->last_name;
         $email = $request->email;
         $conf_email = $request->confirm_email;
         $password = $request->password;
@@ -21,13 +25,37 @@ class UserController extends Controller
         if ($email != $conf_email || $password != $conf_password) {
             return redirect("signup")->with("status", "Something went wrong...\nPlease check details and try again");
         } else {
-            DB::table("users")->insert([
-                "name" => $username,
-                "email" => $email,
-                "password" => $password,
-                "phone_number" => $phone_num,
-            ]);
+//            DB::table("users")->insert([
+//                "name" => $username,
+//                "email" => $email,
+//                "password" => $password,
+//                "phone_number" => $phone_num,
+//            ]);
+            $user = new User();
+            $user->password = Hash::make($password);
+            $user->email = $email;
+            $user->name = $username;
+            $user->phone_number = $phone_num;
+            $user->save();
+            auth()->login($user);
             return redirect("signup_success");
         }
     }
+
+    public function login(Request $request) {
+        $credentials = $request->validate([
+           "email" => ["required", "email"],
+            "password" => ["required"]
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('account');
+        }
+        return back()->withErrors([
+            'email' => 'The provided credentials are incorrect',
+        ])->onlyInput('email');
+    }
+
 }
