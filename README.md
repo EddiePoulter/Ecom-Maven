@@ -2,7 +2,7 @@
 
 Welcome to the Maven Ecommerce Project repository! This project aims to develop a comprehensive ecommerce website for a fictional ski goods retailer.
 
-<img src="./resources/images/public/maven-high-resolution-color-logo.png" width="400" height="300">
+<img src="./public/images/maven-high-resolution-color-logo.png" width="400" height="300">
 
 ## Project Overview
 
@@ -22,13 +22,41 @@ Welcome to the Maven Ecommerce Project repository! This project aims to develop 
 - **Software Engineering Process:** Agile methodology.
 - **Task and Project Tracking:** Trello for comprehensive task management and progress tracking.
 
-<!-- ## Getting Started
+ ## Getting Started
 
-To get started with the Maven Ecommerce Project, follow these steps:
+### Installation
 
-1. Clone the repository: `git clone [repository_link]`
-2. Install dependencies: `[instructions if any]`
-3. Run the project: `[instructions if any]`
+1. Clone the repo
+   ```sh
+   git clone https://github.com/EddiePoulter/Ecom-Maven.git
+   ```
+2. Install Composer packages and enable the required extensions within the php folder i.e. sqlite
+   ```sh
+   composer install
+   ```
+3. Copy the environment file & edit it accordingly
+   ```sh
+   cp .env.example .env
+   ```
+
+4. Generate application key
+   ```sh
+   php artisan key:generate
+   ```
+
+5. Create Database then migrate and seed
+   ```sh
+   php artisan migrate --seed
+
+6. Linking Storage folder to public
+   ```sh
+   php artisan storage:link
+   ```
+   
+8. Serve the application
+   ```sh
+   php artisan serve
+   ```
 
 Feel free to explore our Trello Board for detailed task breakdowns and ongoing progress. 
 
