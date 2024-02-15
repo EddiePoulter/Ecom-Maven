@@ -26,7 +26,7 @@ Route::get("/about/", function () {
 
 Route::get("/account/", function () {
     return view("account");
-})->middleware(["auth", "verified"]);
+})->middleware(["auth", "verified"])->name('account');
 
 Route::get("/basket/", function () {
     return view("cart");
@@ -44,7 +44,7 @@ Route::get("/login/", function () {
 })->name('login');
 Route::post("/signin", [UserController::class, "login"]);
 
-Route::get("/logout/", [UserController::class, "logout"]);
+Route::get("/logout/", [UserController::class, "logout"])->name('logout');
 
 Route::get("/signup/", [UserController::class, "signup_page"])->name('signup');
 Route::post("/register", [UserController::class, "create_user"]);

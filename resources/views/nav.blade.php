@@ -61,8 +61,13 @@
                         Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ route('login') }}">Log In</a></li>
-                        <li><a class="dropdown-item" href="{{ route('signup') }}">Sign Up</a> </li>
+                        @if (Auth::check())
+                            <li><a href="{{ route('account') }}" class="dropdown-item">Manage Account</a></li>
+                            <li><a href="{{ route('logout') }}" class="dropdown-item">Log Out</a></li>
+                        @else
+                            <li><a class="dropdown-item" href="{{ route('login') }}">Log In</a></li>
+                            <li><a class="dropdown-item" href="{{ route('signup') }}">Sign Up</a> </li>
+                        @endif
                     </ul>
                 </li>
                 <li class="nav-item">
