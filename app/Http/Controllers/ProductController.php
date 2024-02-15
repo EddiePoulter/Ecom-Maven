@@ -7,7 +7,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(); // Paginate all available products
         return view('products', compact('products'));
     }
   
@@ -21,6 +21,16 @@ class ProductController extends Controller
         }
     
         return view('cart', compact('products', 'cart'));
+    }
+    public function showProduct($id)
+    {
+    $product = Product::findOrFail($id);
+    return view('product', compact('product'));
+    }
+
+    public function getRandomProducts($count)
+    {
+        return Product::inRandomOrder()->take($count)->get();
     }
     
     public function addProducttoCart($id)
