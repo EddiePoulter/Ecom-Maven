@@ -153,16 +153,25 @@
             <!-- summary -->
             <div id="chekout-summary" class="col-md-4">
                 <h3>Summary</h3>
-
+            
                 <div class="sub-total-sec">
+                    <!-- Calculate Subtotal dynamically -->
+                    @php $subtotal = 0 @endphp
+                    @foreach($products as $product)
+                        @php
+                            $subtotal += $cart[$product->id]['quantity'] * $product->price;
+                        @endphp
+                    @endforeach
                     <div class="row">
                         <div class="col-6">
-                            <p> Subtotal (2 Items)</p>
+                            <p> Subtotal ({{ count($products) }} Items)</p>
                         </div>
                         <div class="col-6">
-                            <p>£249</p>
+                            <!-- Display calculated subtotal -->
+                            <p>£{{ $subtotal }}</p>
                         </div>
                     </div>
+            
                     <div class="row">
                         <div class="col-6">
                             <p> Standard delivery</p>
@@ -171,38 +180,40 @@
                             <p>FREE</p>
                         </div>
                     </div>
-
                 </div>
-
+            
                 <div class="total-sec">
                     <div class="row">
                         <div class="col-6">
                             <p> Total <br> <span class="small"> Including VAT </span></p>
                         </div>
                         <div class="col-6">
-                            <p>£249</p>
+                            <!-- Display the same total as subtotal for simplicity -->
+                            <p>£{{ $subtotal }}</p>
                         </div>
                     </div>
                 </div>
-
+            
                 <div class="sub-total-sec">
+                    <!-- Products preview including price x quantity -->
                     @foreach($products as $product)
-                    <div class="row">
-                        <div class="col-6 item-img">
-                            <img class="checkout-img" src="{{ asset($product->image_path) }}" alt="{{ $product->name }}">
-                        </div>
-                        <div class="col-6 item-info">
-                            <p><a href="#">{{ $product->name }}</a></p>
-                            <div class="d-flex flex-column gap-2">
-                                <span>QTY - <span> {{ $cart[$product->id]['quantity'] }} </span></span>
-                                <span>Size - <span> <!-- Add size here --> </span></span>
-                                <span>SAR {{ $product->price }}</span>
+                        <div class="row">
+                            <div class="col-6 item-img">
+                                <img class="checkout-img" src="{{ asset($product->image_path) }}" alt="{{ $product->name }}">
+                            </div>
+                            <div class="col-6 item-info">
+                                <p><a href="#">{{ $product->name }}</a></p>
+                                <div class="d-flex flex-column gap-2">
+                                    <span>QTY - <span>{{ $cart[$product->id]['quantity'] }}</span></span>
+                                    <span>Size - <span><!-- Add size here --></span></span>
+                                    <span>£{{ $product->price }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
-
+            </div>
+            
                 <div class="items-preview-sec">
                     <!-- Placeholder for items preview -->
                 </div>
