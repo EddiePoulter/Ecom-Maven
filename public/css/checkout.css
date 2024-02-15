@@ -1,0 +1,7 @@
+.checkout-img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure proper display */
+    margin: auto; /* Center the image */
+    max-height: 150px; /* Set a maximum height for the images */
+}

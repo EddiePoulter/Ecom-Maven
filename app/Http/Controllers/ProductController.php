@@ -13,8 +13,16 @@ class ProductController extends Controller
   
     public function productCart()
     {
-        return view('cart');
+        $cart = session()->get('cart', []);
+        $products = collect([]); // Initialize an empty collection
+    
+        if (!empty($cart)) {
+            $products = Product::find(array_keys($cart));
+        }
+    
+        return view('cart', compact('products', 'cart'));
     }
+    
     public function addProducttoCart($id)
     {
         $product = Product::findOrFail($id);
@@ -54,4 +62,17 @@ class ProductController extends Controller
             session()->flash('success', 'Product successfully deleted.');
         }
     }
+
+    public function checkout()
+    {
+        $cart = session()->get('cart', []);
+        $products = collect([]); // Initialize an empty collection
+    
+        if (!empty($cart)) {
+            $products = Product::find(array_keys($cart));
+        }
+    
+        return view('checkout', compact('products', 'cart'));
+    }
+    
 }

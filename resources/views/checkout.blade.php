@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <!-- Cusotm CSS -->
-    <link rel="stylesheet" href="checkout.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
     @include('css')
     <title>Checkout</title>
 </head>
@@ -127,7 +125,6 @@
                         <div class="form-floating col-4">
                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
                                 <option selected disabled>YY *</option>
-                    
                                 <option value="2023">2023</option>
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
@@ -136,7 +133,6 @@
                                 <option value="2028">2028</option>
                                 <option value="2029">2029</option>
                                 <option value="2030">2030</option>
-
                             </select>
                             <label for="floatingSelect">Year *</label>
                         </div>
@@ -151,26 +147,31 @@
                             <button type="submit" class="btn btn-primary">Submit Order</button>
                         </div>
                     </div>
-
-
                 </form>
-
-
             </div>
 
             <!-- summary -->
             <div id="chekout-summary" class="col-md-4">
                 <h3>Summary</h3>
-
+            
                 <div class="sub-total-sec">
+                    <!-- Calculate Subtotal dynamically -->
+                    @php $subtotal = 0 @endphp
+                    @foreach($products as $product)
+                        @php
+                            $subtotal += $cart[$product->id]['quantity'] * $product->price;
+                        @endphp
+                    @endforeach
                     <div class="row">
                         <div class="col-6">
-                            <p> Subtotal (2 Items)</p>
+                            <p> Subtotal ({{ count($products) }} Items)</p>
                         </div>
                         <div class="col-6">
-                            <p>SAR 1,550.00</p>
+                            <!-- Display calculated subtotal -->
+                            <p>£{{ $subtotal }}</p>
                         </div>
                     </div>
+            
                     <div class="row">
                         <div class="col-6">
                             <p> Standard delivery</p>
@@ -180,72 +181,44 @@
                         </div>
                     </div>
                 </div>
-
+            
                 <div class="total-sec">
                     <div class="row">
                         <div class="col-6">
-                            <p> Total <br> <span class="small"> Including SAR 202.18 in taxes </span></p>
+                            <p> Total <br> <span class="small"> Including VAT </span></p>
                         </div>
                         <div class="col-6">
-                            <p>SAR 1,550.00</p>
+                            <!-- Display the same total as subtotal for simplicity -->
+                            <p>£{{ $subtotal }}</p>
                         </div>
                     </div>
                 </div>
-
+            
+                <div class="sub-total-sec">
+                    <!-- Products preview including price x quantity -->
+                    @foreach($products as $product)
+                        <div class="row">
+                            <div class="col-6 item-img">
+                                <img class="checkout-img" src="{{ asset($product->image_path) }}" alt="{{ $product->name }}">
+                            </div>
+                            <div class="col-6 item-info">
+                                <p><a href="#">{{ $product->name }}</a></p>
+                                <div class="d-flex flex-column gap-2">
+                                    <span>QTY - <span>{{ $cart[$product->id]['quantity'] }}</span></span>
+                                    <span>Size - <span><!-- Add size here --></span></span>
+                                    <span>£{{ $product->price }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            
                 <div class="items-preview-sec">
-                    <!-- item -->
-                    <div class="row">
-                        <div class="col-6 item-img">
-                            <img src="https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw21c2dffe/nk/32b/0/f/1/7/a/32b0f17a_38ba_40fa_9de7_31c5bb1661e3.png?sw=520&sh=520&sm=fit"
-                                alt="">
-                        </div>
-                        <div class="col-6 item-info">
-                            <p><a href="#"> Air Jordan 1 Low Men's Shoes</a></p>
-                            <div class="d-flex flex-column gap-2
-                            ">
-                                <span>QTY - <span> 1 </span></span>
-                                <span>Size - <span> EU 44.5 </span></span>
-                                <span>SAR 775.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="row">
-                        <div class="col-6 item-img">
-                            <img src="https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw21c2dffe/nk/32b/0/f/1/7/a/32b0f17a_38ba_40fa_9de7_31c5bb1661e3.png?sw=520&sh=520&sm=fit"
-                                alt="">
-                        </div>
-                        <div class="col-6 item-info">
-                            <p><a href="#"> Air Jordan 1 Low Men's Shoes</a></p>
-                            <div class="d-flex flex-column gap-2
-                            ">
-                                <span>QTY - <span> 1 </span></span>
-                                <span>Size - <span> EU 44.5 </span></span>
-                                <span>SAR 775.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="row">
-                        <div class="col-6 item-img">
-                            <img src="https://www.nike.sa/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw21c2dffe/nk/32b/0/f/1/7/a/32b0f17a_38ba_40fa_9de7_31c5bb1661e3.png?sw=520&sh=520&sm=fit"
-                                alt="">
-                        </div>
-                        <div class="col-6 item-info">
-                            <p><a href="#"> Air Jordan 1 Low Men's Shoes</a></p>
-                            <div class="d-flex flex-column gap-2
-                            ">
-                                <span>QTY - <span> 1 </span></span>
-                                <span>Size - <span> EU 44.5 </span></span>
-                                <span>SAR 775.00</span>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Placeholder for items preview -->
                 </div>
-
             </div>
             <div class="col-1"></div>
-
         </main>
     </section>
     @include('footer')
