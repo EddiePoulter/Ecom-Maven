@@ -49,7 +49,10 @@
             @endforeach
         </div>
     </div>
+    @include('footer')
 @endsection
+
+
 
 @section('scripts')
     <script>
