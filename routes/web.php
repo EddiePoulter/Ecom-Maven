@@ -55,18 +55,10 @@ Route::get("/checkout/", function () {
 
 Route::get('/dashboard', [ProductController::class, 'index']);
 Route::get('/shopping-cart', [ProductController::class, 'productCart'])->name('shopping.cart');
-
 Route::get('/product/{id}/add-to-cart', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart');
-
-
 Route::get('/product/{id}', [ProductController::class, 'showProduct'])->name('product.show');
-
 Route::get('/random-products', [ProductController::class, 'showRandomProducts'])->name('random.products');
 Route::post('/product/{id}/add-to-cart', [ProductController::class, 'addToCart'])->name('addProduct.to.cart');
-
-
-
-
 
 Route::patch('/update-shopping-cart', [ProductController::class, 'updateCart'])->name('update.sopping.cart');
 Route::delete('/delete-cart-product', [ProductController::class, 'deleteProduct'])->name('delete.cart.product');
