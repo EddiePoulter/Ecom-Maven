@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -25,7 +26,7 @@ Route::get("/about/", function () {
 
 Route::get("/account/", function () {
     return view("account");
-})->name('account');
+})->middleware(["auth", "verified"]);
 
 Route::get("/basket/", function () {
     return view("cart");
@@ -47,6 +48,26 @@ Route::get("/logout/", [UserController::class, "logout"]);
 
 Route::get("/signup/", [UserController::class, "signup_page"])->name('signup');
 Route::post("/register", [UserController::class, "create_user"]);
+
+Route::get('/email/verify', function () {
+    return view('verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get("/verify-email", function () {
+    return view("verify-email");
+});
 
 Route::get("/checkout/", function () {
     return view("checkout");

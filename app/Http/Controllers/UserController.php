@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +38,9 @@ class UserController extends Controller
             $user->name = $username;
             $user->phone_number = $phone_num;
             $user->save();
-            auth()->login($user);
-            return redirect("account");
+            event(new Registered($user));
+//            auth()->login($user);
+            return redirect("verify-email");
         }
     }
 
