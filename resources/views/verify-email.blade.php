@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify Email</title>
-    <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
-@include('css')
-<style>
-    body {
-        padding: 0
-    }
-</style>
+    @include('css')
+    <style>
+        .Container {
+            width: 100%;
+            text-align: center;
+            align-content: center;
+            gap: 10px;
+        }
+    </style>
 </head>
-@include('nav')
+<body>
+    @include('nav')
+    <div class="Container">
+        <h1>Verify your email</h1>
+        <div class="text">
+            <p>Please check your inbox & Click the link in order to verify. <i class='bx bx-mail-send'></i></p>            
+        </div>
+        <div class="image">
+            <img src="{{ asset('images/verify-email.png') }}">
+        </div>
+        <div class="text">
+            <footer>
+                Can't see the email? Be sure to check your <strong>Junk or Spam</strong> folder.
+            </footer>
+        </div>
+    </div>
 
-<p>You have been sent an email containing instructions to verify your account</p>
-
-<footer>
-    <body>
     @include('footer')
-    </body>
-</footer>
+</body>
 </html>
