@@ -12,7 +12,7 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('products.css') }}" rel="stylesheet">
     <title>Products</title>
-    @include('css')
+    <link href="{{ asset('basket.css') }}" rel="stylesheet">
     <style>
 
         main {
