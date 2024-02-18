@@ -36,8 +36,6 @@
         </div>
       </div>
       
-      
-
      
 <div class="container marketing">
 <br>
@@ -174,9 +172,10 @@
 
 </section>
      <!-- FOOTER -->
-<footer class="container" style="display: flex; justify-content: space-between; align-items: center;">
-  <p>&copy; 2023-2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+     <footer class="container" style="display: flex; justify-content: space-between; align-items: center; background-color: #333; color: #fff; padding: 20px;">
+  <p style="margin: 0;">&copy; 2023-2024 Company, Inc. &middot; <a href="#" style="color: #fff; text-decoration: none;">Privacy</a> &middot; <a href="#" style="color: #fff; text-decoration: none;">Terms</a></p>
 </footer>
+
 </main>
 
 </script>
