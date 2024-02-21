@@ -64,6 +64,38 @@ class UserController extends Controller
         return redirect("/");
     }
 
+    public function account() {
+        $user = Auth::user();
+        [$first_name, $last_name] = User::split_name($user->name);
+        $email = $user->email;
+        $phone_num = $user->phone_number;
+
+        return view("account", compact('first_name', 'last_name', 'email', 'phone_num'));
+    }
+
+    public function update_account(Request $request){
+        $username = $request->firstName . " " . $request->lastName;
+        $email = $request->email;
+        $conf_email = $request->confirmEmail;
+        $password = $request->password;
+        $conf_password = $request->confirmPassword;
+        $phone_num = $request->phone;
+        if ($email != $conf_email) {
+            return back()->with("success", "fe");
+        } else if ($password != $conf_password) {
+            return back()->with("success", "fp");
+        } else {
+            $user = Auth::user();
+            if ($user->password != "")
+                $user->password = Hash::make($password);
+            $user->email = $email;
+            $user->name = $username;
+            $user->phone_number = $phone_num;
+            $user->save();
+            return back()->with("success", "t");
+        }
+    }
+
     public function send_reset_email(Request $request) {
         $request->validate(['email' => 'required|email']);
 

@@ -29,6 +29,15 @@
 
 <body>
     @include('nav')
+    @if(\Session::has('success'))
+        @if(\Session::get('success') === 't')
+            <script>alert("Account update successful")</script>
+        @elseif(\Session::get('success') === 'fe')
+            <script>alert("Emails do not match")</script>
+        @elseif(\Session::get('success') === 'fp')
+            <script>alert("Passwords do not match")</script>
+        @endif
+    @endif
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-3">
@@ -118,18 +127,18 @@
                     <div class="container mt-4">
                         <h2>Account Management</h2>
                         <hr>
-                        <form id="userInfoForm">
+                        <form id="userInfoForm" action="{{ url('account') }}" method="post">
+                            @csrf
                             <!-- Edit button -->
                             <button type="button" class="btn btn-primary" id="editBtn">Edit</button>
-                            <button type="submit" class="btn btn-success d-none" id="saveBtn">Save</button>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="firstName">First Name:</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName" disabled>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" value="{{$first_name}}" disabled>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="lastName">Last Name:</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName" disabled>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" value="{{$last_name}}" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -157,23 +166,32 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email" name="email" disabled>
+                                    <input type="email" class="form-control" id="email" name="email" value="{{$email}}" disabled>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="confirmEmail">Confirm email:</label>
+                                    <input type="email" class="form-control" id="confirmEmail" name="confirmEmail" value="{{$email}}" disabled>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="password">Password:</label>
                                     <input type="password" class="form-control" id="password" name="password" disabled>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="confirmPassword">Confirm password:</label>
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" disabled>
                                 </div>
 
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="phone">Phone Number:</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" disabled>
+                                    <input type="tel" class="form-control" id="phone" name="phone" value="{{$phone_num}}" disabled>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="birthday">Birthday:</label>
                                     <input type="date" class="form-control" id="birthday" name="birthday" disabled>
                                 </div>
+                                <button type="submit" class="btn btn-success" id="saveBtn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -197,32 +215,30 @@
 
 
     </div>
-    </div>
-    </div>
     @include('footer')
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-       rollToSection(sectionId) {
-            var section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
+       function scrollToSection(sectionId) {
+           var section = document.getElementById(sectionId);
+           if (section) {
+               section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+           }
+       }
 
         // Event listeners for navbar links to scroll to the respective sections
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                var targetSectionId = this.getAttribute('href').substring(1); // Get the section id without the '#'
-                scrollToSection(targetSectionId); // Corrected function name
-            });
-        });
+       document.querySelectorAll('.nav-link').forEach(link => {
+           link.addEventListener('click', function (e) {
+               e.preventDefault();
+               var targetSectionId = this.getAttribute('href').substring(1); // Get the section id without the '#'
+               scrollToSection(targetSectionId); // Corrected function name
+           });
+       });
     </script>
 
     <script>
-   .ready(function () {
+   $(document).ready(function () {
             // Edit button click event
             $('#editBtn').on('click', function () {
                 $('#userInfoForm input').prop('disabled', false); // Enable all input fields

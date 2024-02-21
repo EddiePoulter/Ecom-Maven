@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -85,18 +86,9 @@ class ProductController extends Controller
         }
 
         $user = Auth::user();
-        $name = $user->name;
+        [$first_name, $last_name] = User::split_name($user->name);
         $email = $user->email;
         $phone_num = $user->phone_number;
-
-        if (str_contains($name, ' ')) {
-            $name_array = explode(' ', $name);
-            $first_name = $name_array[0];
-            $last_name = join(' ', array_slice($name_array, 1));
-        } else {
-            $first_name = $name;
-            $last_name = '';
-        }
 
         return view('checkout', compact('products', 'cart', 'first_name', 'last_name', 'email', 'phone_num'));
     }

@@ -44,4 +44,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function split_name(string $name)
+    {
+        if (str_contains($name, ' ')) {
+            $name_array = explode(' ', $name);
+            $first_name = $name_array[0];
+            $last_name = join(' ', array_slice($name_array, 1));
+        } else {
+            $first_name = $name;
+            $last_name = '';
+        }
+
+        return [$first_name, $last_name];
+    }
 }

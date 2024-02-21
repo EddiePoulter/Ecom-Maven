@@ -25,9 +25,8 @@ Route::get("/about/", function () {
     return view("about");
 })->name('about');
 
-Route::get("/account/", function () {
-    return view("account");
-})->middleware(["auth", "verified"])->name('account');
+Route::get("/account/",[UserController::class, "account"])->middleware(["auth", "verified"])->name('account');
+Route::post("/account", [UserController::class, "update_account"]);
 
 Route::get("/basket/", function () {
     return view("cart");
