@@ -34,14 +34,9 @@ class ProductController extends Controller
     {
         return Product::inRandomOrder()->take($count)->get();
     }
-<<<<<<< HEAD
+
     
     public function addProducttoCart($id){
-=======
-
-    public function addProducttoCart($id)
-    {
->>>>>>> 937f8e178f3971bc0d4ffb7ac93f69a5b1885fcc
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
         if(isset($cart[$id])) {
@@ -61,7 +56,7 @@ class ProductController extends Controller
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product has been added to cart!');
     }
-<<<<<<< HEAD
+
     public function removeProductFromCart($id){
         // Decrease Product Quantity
         $product = Product::findOrFail($id);
@@ -72,9 +67,7 @@ class ProductController extends Controller
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product has been removed from cart!');
     }
-=======
 
->>>>>>> 937f8e178f3971bc0d4ffb7ac93f69a5b1885fcc
     public function updateCart(Request $request)
     {
         if($request->id && $request->quantity){
