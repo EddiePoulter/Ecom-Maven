@@ -31,6 +31,9 @@ Route::post("/account", [UserController::class, "update_account"]);
 Route::get("/basket/", function () {
     return view("cart");
 })->name('cart');
+// Basket Functionalities
+Route::post('/basket/decrease-quantity/{id}', [ProductController::class, 'removeProductFromCart'])->name('removeProduct.from.cart');
+Route::post('/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart');
 
 Route::get("/contact/", function () {
     return view("contact");

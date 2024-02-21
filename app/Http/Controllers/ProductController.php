@@ -36,22 +36,37 @@ class ProductController extends Controller
         return Product::inRandomOrder()->take($count)->get();
     }
 
-    public function addProducttoCart($id)
-    {
+    
+    public function addProducttoCart($id){
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
         if(isset($cart[$id])) {
+            // Increase Product Quantity
             $cart[$id]['quantity']++;
         } else {
+            // Add Product To Cart
             $cart[$id] = [
+                "is" => $product->id,
                 "name" => $product->name,
                 "quantity" => 1,
                 "price" => $product->price,
-                "description" => $product->description
+                "description" => $product->description,
+                "image_path" => $product->image_path
             ];
         }
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product has been added to cart!');
+    }
+
+    public function removeProductFromCart($id){
+        // Decrease Product Quantity
+        $product = Product::findOrFail($id);
+        $cart = session()->get('cart', []);
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']--; 
+        } 
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product has been removed from cart!');
     }
 
     public function updateCart(Request $request)
