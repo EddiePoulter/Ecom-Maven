@@ -23,10 +23,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Forgot Your Password?</h4>
-                        <form>
+                        <form action="{{ url('forgot-password') }}" method="post">
+                            @csrf
                             <div class="form-group">
                                 <label for="email">Email address</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
                                 <small id="emailHelp" class="form-text text-muted">We'll send you a link to reset your password.</small>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
@@ -41,7 +42,7 @@
     <div class="container confirmation-section text-center">
         <h1>Thank You!</h1>
         <div class="text">
-            <p>We've sent a password reset link to your inbox. <i class='bx bx-mail-send'></i></p>            
+            <p>We've sent a password reset link to your inbox. <i class='bx bx-mail-send'></i></p>
         </div>
         <div class="image">
             <img src="https://via.placeholder.com/400" alt="Email Sent">

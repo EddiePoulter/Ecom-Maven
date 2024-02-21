@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Str;
@@ -75,7 +76,7 @@ Route::get("/verify-email", function () {
 });
 
 Route::get('/forgot-password', function () {
-    return view('forgot-password');
+    return view('forgotPassword');
 })->middleware('guest')->name('password.request');
 
 Route::post('/forgot-password', function (Request $request) {
@@ -91,7 +92,7 @@ Route::post('/forgot-password', function (Request $request) {
 })->middleware('guest')->name('password.email');
 
 Route::get('/reset-password/{token}', function (string $token) {
-    return view('reset-password', ['token' => $token]);
+    return view('resetPassword', ['token' => $token, 'email' => request()->query("email")]);
 })->middleware('guest')->name('password.reset');
 
 Route::post('/reset-password', function (Request $request) {
