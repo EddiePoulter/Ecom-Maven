@@ -16,44 +16,45 @@
 </style>
 </head>
 <body>
-    <!-- Form for sending email -->
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Forgot Your Password?</h4>
-                        <form action="{{ url('forgot-password') }}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label for="email">Email address</label>
-                                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                                <small id="emailHelp" class="form-text text-muted">We'll send you a link to reset your password.</small>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
-                        </form>
+    @if(!\Session::has('success'))
+        <!-- Form for sending email -->
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Forgot Your Password?</h4>
+                            <form action="{{ url('forgot-password') }}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <small id="emailHelp" class="form-text text-muted">We'll send you a link to reset your password.</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Confirmation section  -->
-    <div class="container confirmation-section text-center">
-        <h1>Thank You!</h1>
-        <div class="text">
-            <p>We've sent a password reset link to your inbox. <i class='bx bx-mail-send'></i></p>
+    @else
+        <!-- Confirmation section  -->
+        <div class="container confirmation-section text-center">
+            <h1>Thank You!</h1>
+            <div class="text">
+                <p>We've sent a password reset link to your inbox. <i class='bx bx-mail-send'></i></p>
+            </div>
+            <div class="image">
+                <img src="https://via.placeholder.com/400" alt="Email Sent">
+            </div>
+            <div class="text">
+                <footer>
+                    Can't see the email? Be sure to check your <strong>Junk or Spam</strong> folder.
+                </footer>
+            </div>
         </div>
-        <div class="image">
-            <img src="https://via.placeholder.com/400" alt="Email Sent">
-        </div>
-        <div class="text">
-            <footer>
-                Can't see the email? Be sure to check your <strong>Junk or Spam</strong> folder.
-            </footer>
-        </div>
-    </div>
-
+    @endif
 
 </body>
 </html>
