@@ -5,3 +5,29 @@
     margin: auto; /* Center the image */
     max-height: 150px; /* Set a maximum height for the images */
 }
+
+#chekout-summary {
+    padding: 20px; /* Add padding to create space between border and content */
+}
+
+.item-img {
+    margin-bottom: 20px; /* Add space between each product item vertically */
+    border-bottom: 1px solid #ccc; /* Add border at the bottom of each product item */
+    padding-bottom: 20px; /* Add padding at the bottom of each product item */
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Add space between each line of item information */
+}
+
+.items-preview-sec {
+    margin-top: 20px; /* Add space between the product display section and the next content */
+    border-top: 1px solid #ccc; /* Add a border on top of the items preview section */
+    padding-top: 20px; /* Add padding on top of the items preview section */
+}
+
+.items-preview-sec > .row:last-child {
+    border-bottom: none; /* Remove border-bottom for the last product item */
+}

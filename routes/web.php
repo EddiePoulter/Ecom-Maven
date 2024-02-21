@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -71,6 +72,18 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get("/verify-email", function () {
     return view("verify-email");
 });
+
+Route::get('/forgot-password', function () {
+    return view('forgotPassword');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', [UserController::class, "send_reset_email"])->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('resetPassword', ['token' => $token, 'email' => request()->query("email")]);
+})->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', [UserController::class, "reset_password"])->middleware('guest')->name('password.update');
 
 Route::get("/checkout/", function () {
     return view("checkout");

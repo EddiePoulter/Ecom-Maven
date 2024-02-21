@@ -16,7 +16,7 @@
                 <h2>{{ $product->name }}</h2>
                 <p class="text-muted">Category: {{ $product->category }}</p>
                 <p>{{ $product->description }}</p>
-                <h3 class="text-primary">${{ $product->price }}</h3>
+                <h3 class="text-primary">£{{ $product->price }}</h3>
                 <a href="{{ route('addProduct.to.cart', $product->id) }}" class="btn btn-outline-danger">Add to Cart</a>
             </div>
         </div>

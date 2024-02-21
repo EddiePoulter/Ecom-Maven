@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .cart-container{
     padding: 40px;
     margin: 40px 0;
@@ -64,6 +65,9 @@ a.text-muted i{
 }
 
 /* img {
+=======
+img {
+>>>>>>> 937f8e178f3971bc0d4ffb7ac93f69a5b1885fcc
     max-width: 100%;
 }
 
@@ -128,4 +132,4 @@ a.text-muted i{
 
 #chekout-form textarea {
     height: 160px;
-} */
+} 

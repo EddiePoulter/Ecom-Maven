@@ -13,12 +13,22 @@
     <link href="{{ asset('products.css') }}" rel="stylesheet">
     <link href="{{ asset('./css/basket.css') }}" rel="stylesheet">
     <title>Products</title>
+<<<<<<< HEAD
     @include('css')
+=======
+    <link href="{{ asset('basket.css') }}" rel="stylesheet">
+    <style>
+        main {
+            flex: 1;
+        }
+    </style>
+>>>>>>> 937f8e178f3971bc0d4ffb7ac93f69a5b1885fcc
 </head>
 
 <body>
     @include('nav')
     <div class="container">
+<<<<<<< HEAD
             @php 
                 $total = 0; 
                 $counter = 0;
@@ -138,20 +148,87 @@
             var ele = $(this);
 
             if (confirm("Do you really want to delete?")) {
+=======
+        <main>
+            <table id="cart" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th> <!-- New column for quantity -->
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php $total = 0 @endphp
+                    @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                            <tr rowId="{{ $id }}">
+                                <td data-th="Product">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="nomargin">{{ $details['name'] }}</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-th="Price">£{{ $details['price'] }}</td>
+                                <td data-th="Quantity">
+                                    <input type="number" class="form-control quantity" value="{{ $details['quantity'] }}">
+                                </td>
+                                <td data-th="Subtotal" class="text-center">£{{ $details['price'] * $details['quantity'] }}</td>
+                                <td class="actions">
+                                    <a class="btn btn-outline-danger btn-sm delete-product"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            @php $total += $details['price'] * $details['quantity'] @endphp
+                        @endforeach
+                    @endif
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <strong>Total: £{{ $total }}</strong>
+                            <a href="{{ url('/dashboard') }}" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                            <a href="{{ route('checkout') }}" class="btn btn-danger">Checkout</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </main>
+
+        <footer class="text-muted text-center">
+            <div class="container">
+                <p class="float-right">
+                    <a href="#">Back to top</a>
+                </p>
+            </div>
+            @include('footer')
+        </footer>
+
+        @section('scripts')
+        <script type="text/javascript">
+            $(".quantity").change(function (e) {
+                e.preventDefault();
+                var ele = $(this);
+                var quantity = ele.val();
+                var rowId = ele.closest("tr").attr("rowId");
+>>>>>>> 937f8e178f3971bc0d4ffb7ac93f69a5b1885fcc
                 $.ajax({
-                    url: '{{ route('delete.cart.product') }}',
-                    method: "DELETE",
+                    url: '{{ route('update.sopping.cart') }}', // <-- route name
+                    method: "patch",
                     data: {
                         _token: '{{ csrf_token() }}',
-                        id: ele.parents("tr").attr("rowId")
+                        id: rowId,
+                        quantity: quantity
                     },
                     success: function (response) {
                         window.location.reload();
                     }
                 });
-            }
-        });
+            });
 
+<<<<<<< HEAD
         // functions to decrease/increase the quantity
         function decreaseQuantity(product_id, product_quantity, e) {
             console.log(product_id);
@@ -227,6 +304,29 @@
     </script>
     @endsection
     @endsection
+=======
+            $(".delete-product").click(function (e) {
+                e.preventDefault();
+                var ele = $(this);
+                if (confirm("Do you really want to delete?")) {
+                    $.ajax({
+                        url: '{{ route('delete.cart.product') }}',
+                        method: "DELETE",
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            id: ele.parents("tr").attr("rowId")
+                        },
+                        success: function (response) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        </script>
+        @endsection
+    </div>
+</body>
+>>>>>>> 937f8e178f3971bc0d4ffb7ac93f69a5b1885fcc
 
     
 </body>
