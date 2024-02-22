@@ -29,13 +29,18 @@
 
 <body>
     @include('nav')
+    @if($errors->any())
+        <script>
+            let error_msg = "";
+            @foreach($errors->all() as $error)
+                error_msg += "{{$error}}\n";
+            @endforeach
+            alert(error_msg);
+        </script>
+    @endif
     @if(\Session::has('success'))
         @if(\Session::get('success') === 't')
             <script>alert("Account update successful")</script>
-        @elseif(\Session::get('success') === 'fe')
-            <script>alert("Emails do not match")</script>
-        @elseif(\Session::get('success') === 'fp')
-            <script>alert("Passwords do not match")</script>
         @endif
     @endif
     <div class="container mt-4">
@@ -170,7 +175,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="confirmEmail">Confirm email:</label>
-                                    <input type="email" class="form-control" id="confirmEmail" name="confirmEmail" value="{{$email}}" disabled>
+                                    <input type="email" class="form-control" id="email_confirmation" name="email_confirmation" value="{{$email}}" disabled>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="password">Password:</label>
@@ -178,7 +183,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="confirmPassword">Confirm password:</label>
-                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" disabled>
+                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" disabled>
                                 </div>
 
                             </div>

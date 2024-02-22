@@ -21,29 +21,26 @@ class UserController extends Controller
         return view("signup");
     }
     public function create_user(Request $request) {
-        $username = $request->first_name . " " . $request->last_name;
-        $email = $request->email;
-        $conf_email = $request->confirm_email;
-        $password = $request->password;
-        $conf_password = $request->confirm_password;
-        $phone_num = $request->phone;
-        if ($email != $conf_email || $password != $conf_password) {
-            return redirect("signup")->with("status", "Something went wrong...\nPlease check details and try again");
-        } else {
-            $user = new User();
-            $user->password = Hash::make($password);
-            $user->email = $email;
-            $user->name = $username;
-            $user->phone_number = $phone_num;
-            $user->address_line_1 = "";
-            $user->address_line_2 = "";
-            $user->city = "";
-            $user->county = "";
-            $user->postcode = "";
-            $user->save();
-            event(new Registered($user));
-            return redirect("verify-email");
-        }
+        $request->validate([
+            'email' => 'required|email|confirmed',
+            'password' => 'required|min:8|confirmed',
+            'phone' => 'required|digits:10',
+            'first_name' => 'required',
+        ]);
+
+        $user = new User();
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->name = $request->first_name . " " . $request->last_name;
+        $user->phone_number = $request->phone;
+        $user->address_line_1 = "";
+        $user->address_line_2 = "";
+        $user->city = "";
+        $user->county = "";
+        $user->postcode = "";
+        $user->save();
+        event(new Registered($user));
+        return redirect("verify-email");
     }
 
     public function login(Request $request) {
@@ -97,37 +94,26 @@ class UserController extends Controller
     }
 
     public function update_account(Request $request){
-        $username = $request->firstName . " " . $request->lastName;
-        $address_1 = $request->address1;
-        $address_2 = $request->address2;
-        $city = $request->city;
-        $county = $request->county;
-        $postcode = $request->postcode;
-        $email = $request->email;
-        $conf_email = $request->confirmEmail;
-        $password = $request->password;
-        $conf_password = $request->confirmPassword;
-        $phone_num = $request->phone;
-        $birthday = $request->birthday;
-        if ($email != $conf_email) {
-            return back()->with("success", "fe");
-        } else if ($password != $conf_password) {
-            return back()->with("success", "fp");
-        } else {
-            $user = Auth::user();
-            if ($password != "") $user->password = Hash::make($password);
-            $user->email = $email;
-            $user->name = $username;
-            $user->address_line_1 = $address_1;
-            $user->address_line_2 = $address_2;
-            $user->city = $city;
-            $user->county = $county;
-            $user->postcode = $postcode;
-            $user->phone_number = $phone_num;
-            $user->birthday = $birthday;
-            $user->save();
-            return redirect()->back()->with("success", "t");
-        }
+        $request->validate([
+            'email' => 'email|confirmed',
+            'password' => 'nullable|min:8|confirmed',
+            'phone' => 'digits:10',
+            'birthday' => 'nullable|before:' . date('m/d/Y')
+        ]);
+
+        $user = Auth::user();
+        if ($request->password != "") $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->name = $request->firstName . " " . $request->lastName;
+        $user->address_line_1 = $request->address1;
+        $user->address_line_2 = $request->address2;
+        $user->city = $request->city;
+        $user->county = $request->county;
+        $user->postcode = $request->postcode;
+        $user->phone_number = $request->phone;
+        $user->birthday = $request->birthday;
+        $user->save();
+        return redirect()->back()->with("success", "t");
     }
 
     public function send_reset_email(Request $request) {

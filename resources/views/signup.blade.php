@@ -15,15 +15,24 @@
 @include('nav')
 <div class="register-container">
 <div class="formation">
+  @if($errors->any())
+      <script>
+          let error_msg = "";
+          @foreach($errors->all() as $error)
+              error_msg += "{{$error}}\n";
+          @endforeach
+          alert(error_msg);
+      </script>
+  @endif
   <h2>Register a Maven Account</h2><br>
   <form method="post" action="{{ url('register') }}">
     <input type="text" name="first_name" id="first_name" placeholder="Enter your first name" required>
-    <input type="text" name="last_name" id="last_name" placeholder="Enter your last name" required>    
+    <input type="text" name="last_name" id="last_name" placeholder="Enter your last name">
     <input type="email" name="email" id="email" placeholder="Enter your email address" required />
-    <input type="email" name="confirm_email" id="confirm_email" placeholder="Confirm your email address" required />
+    <input type="email" name="email_confirmation" id="email_confirmation" placeholder="Confirm your email address" required />
     <span id="email_match"></span>
     <input type="password" name="password" id="password" placeholder="Enter your password" required pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="Password must be at least 8 characters long and contain at least 1 letter and 1 number">
-    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password" required>    
+    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm your password" required>
     <span id="password_match"></span>
     <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" required />
     <span id="phone_match"></span>
@@ -73,7 +82,7 @@
   function validateEmail() {
   var email = document.getElementById('email').value;
   var confirmEmail = document.getElementById('confirm_email').value;
-  
+
   // Regular expression for validating email format
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
