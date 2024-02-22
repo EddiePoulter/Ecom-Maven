@@ -36,7 +36,7 @@ class ProductController extends Controller
         return Product::inRandomOrder()->take($count)->get();
     }
 
-    
+
     public function addProducttoCart($id){
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
@@ -63,8 +63,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
         if(isset($cart[$id])) {
-            $cart[$id]['quantity']--; 
-        } 
+            $cart[$id]['quantity']--;
+        }
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product has been removed from cart!');
     }
@@ -104,8 +104,25 @@ class ProductController extends Controller
         [$first_name, $last_name] = User::split_name($user->name);
         $email = $user->email;
         $phone_num = $user->phone_number;
+        $address_1 = $user->address_line_1;
+        $address_2 = $user->address_line_2;
+        $city = $user->city;
+        $county = $user->county;
+        $postcode = $user->postcode;
 
-        return view('checkout', compact('products', 'cart', 'first_name', 'last_name', 'email', 'phone_num'));
+        return view('checkout', compact(
+            'products',
+            'cart',
+            'first_name',
+            'last_name',
+            'email',
+            'phone_num',
+            'address_1',
+            'address_2',
+            'city',
+            'county',
+            'postcode',
+        ));
     }
 
 }

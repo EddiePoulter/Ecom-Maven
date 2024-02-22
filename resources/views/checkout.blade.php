@@ -55,29 +55,28 @@
 
                     <!-- address line 1 -->
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="address1" name="address1"
-                            placeholder="Am Funkturm 47" required>
+                        <input type="text" class="form-control" id="address1" name="address1" value="{{$address_1}}" required>
                         <label for="address1">Address Line 1 *</label>
                     </div>
 
                     <!-- address line 2 -->
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="address2" name="address2" placeholder="">
+                        <input type="text" class="form-control" id="address2" name="address2" value="{{$address_2}}">
                         <label for="address2">Address Line 2</label>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <label for="city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="city" name="city">
+                            <input type="text" class="form-control" id="city" name="city" value="{{$city}}">
                         </div>
                         <div class="col-md-4">
                             <label for="inputState" class="form-label">Region</label>
-                            <input type="text" class="form-control" id="state" name="state">
+                            <input type="text" class="form-control" id="state" name="state" value="{{$county}}">
                         </div>
                         <div class="col-md-2">
                             <label for="zip" class="form-label">Postcode</label>
-                            <input type="text" class="form-control" id="zip" name="zip">
+                            <input type="text" class="form-control" id="zip" name="zip" value="{{$postcode}}">
                         </div>
                     </div>
 

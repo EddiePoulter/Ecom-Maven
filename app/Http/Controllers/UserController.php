@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use function Laravel\Prompts\alert;
@@ -34,6 +35,11 @@ class UserController extends Controller
             $user->email = $email;
             $user->name = $username;
             $user->phone_number = $phone_num;
+            $user->address_line_1 = "";
+            $user->address_line_2 = "";
+            $user->city = "";
+            $user->county = "";
+            $user->postcode = "";
             $user->save();
             event(new Registered($user));
             return redirect("verify-email");
@@ -67,32 +73,60 @@ class UserController extends Controller
     public function account() {
         $user = Auth::user();
         [$first_name, $last_name] = User::split_name($user->name);
+        $address_1 = $user->address_line_1;
+        $address_2 = $user->address_line_2;
+        $city = $user->city;
+        $county = $user->county;
+        $postcode = $user->postcode;
         $email = $user->email;
         $phone_num = $user->phone_number;
+        $birthday = $user->birthday;
 
-        return view("account", compact('first_name', 'last_name', 'email', 'phone_num'));
+        return view("account", compact(
+            'first_name',
+            'last_name',
+            'address_1',
+            'address_2',
+            'city',
+            'county',
+            'postcode',
+            'email',
+            'phone_num',
+            'birthday',
+        ));
     }
 
     public function update_account(Request $request){
         $username = $request->firstName . " " . $request->lastName;
+        $address_1 = $request->address1;
+        $address_2 = $request->address2;
+        $city = $request->city;
+        $county = $request->county;
+        $postcode = $request->postcode;
         $email = $request->email;
         $conf_email = $request->confirmEmail;
         $password = $request->password;
         $conf_password = $request->confirmPassword;
         $phone_num = $request->phone;
+        $birthday = $request->birthday;
         if ($email != $conf_email) {
             return back()->with("success", "fe");
         } else if ($password != $conf_password) {
             return back()->with("success", "fp");
         } else {
             $user = Auth::user();
-            if ($user->password != "")
-                $user->password = Hash::make($password);
+            if ($password != "") $user->password = Hash::make($password);
             $user->email = $email;
             $user->name = $username;
+            $user->address_line_1 = $address_1;
+            $user->address_line_2 = $address_2;
+            $user->city = $city;
+            $user->county = $county;
+            $user->postcode = $postcode;
             $user->phone_number = $phone_num;
+            $user->birthday = $birthday;
             $user->save();
-            return back()->with("success", "t");
+            return redirect()->back()->with("success", "t");
         }
     }
 

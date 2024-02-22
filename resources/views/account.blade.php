@@ -57,16 +57,16 @@
                                 <a class="nav-link" href="#orders">Order History</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#account">Account Management</a>
+                                <a class="nav-link scroll" href="#account">Account Management</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#review"><s>Rate and Review</s></a>
+                                <a class="nav-link scroll" href="#review"><s>Rate and Review</s></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#improve">Help us Improve</a>
+                                <a class="nav-link scroll" href="#improve">Help us Improve</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="logout">Sign Out</a>
+                                <a class="nav-link scroll" href="logout">Sign Out</a>
                             </li>
                         </ul>
                     </div>
@@ -143,26 +143,26 @@
                             </div>
                             <div class="form-group">
                                 <label for="address1">Address Line 1:</label>
-                                <input type="text" class="form-control" id="address1" name="address1" disabled>
+                                <input type="text" class="form-control" id="address1" name="address1" value="{{$address_1}}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="address2">Address Line 2:</label>
-                                <input type="text" class="form-control" id="address2" name="address2" disabled>
+                                <input type="text" class="form-control" id="address2" name="address2" value="{{$address_2}}" disabled>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="city">City:</label>
-                                    <input type="text" class="form-control" id="city" name="city" disabled>
+                                    <input type="text" class="form-control" id="city" name="city" value="{{$city}}" disabled>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="county">County:</label>
-                                    <input type="text" class="form-control" id="county" name="county" disabled>
+                                    <input type="text" class="form-control" id="county" name="county" value="{{$county}}" disabled>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="postcode">Postcode:</label>
-                                    <input type="text" class="form-control" id="postcode" name="postcode" disabled>
+                                    <input type="text" class="form-control" id="postcode" name="postcode" value="{{$postcode}}" disabled>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">Email:</label>
@@ -189,9 +189,9 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="birthday">Birthday:</label>
-                                    <input type="date" class="form-control" id="birthday" name="birthday" disabled>
+                                    <input type="date" class="form-control" id="birthday" name="birthday" value="{{$birthday}}" disabled>
                                 </div>
-                                <button type="submit" class="btn btn-success" id="saveBtn">Save</button>
+                                <button type="submit" class="btn btn-success d-none" id="saveBtn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -228,7 +228,7 @@
        }
 
         // Event listeners for navbar links to scroll to the respective sections
-       document.querySelectorAll('.nav-link').forEach(link => {
+       document.querySelectorAll('.scroll').forEach(link => {
            link.addEventListener('click', function (e) {
                e.preventDefault();
                var targetSectionId = this.getAttribute('href').substring(1); // Get the section id without the '#'
@@ -248,9 +248,9 @@
 
             // Save button click event (you can handle form submission here)
             $('#saveBtn').on('click', function () {
-                $('#userInfoForm input').prop('disabled', true); // Disable all input fields
-                $('#editBtn').removeClass('d-none'); // Show Edit button
-                $('#saveBtn').addClass('d-none'); // Hide Save button
+                // $('#userInfoForm input').prop('disabled', true); // Disable all input fields
+                // $('#editBtn').removeClass('d-none'); // Show Edit button
+                // $('#saveBtn').addClass('d-none'); // Hide Save button
 
                 // P        ission using AJAX or other method if required
                 // E                // $        ).submit(); // Submit the form
