@@ -95,21 +95,28 @@ class ProductController extends Controller
     {
         $cart = session()->get('cart', []);
         $products = collect([]); // Initialize an empty collection
-
+    
         if (!empty($cart)) {
             $products = Product::find(array_keys($cart));
         }
-
-        $user = Auth::user();
-        [$first_name, $last_name] = User::split_name($user->name);
-        $email = $user->email;
-        $phone_num = $user->phone_number;
-        $address_1 = $user->address_line_1;
-        $address_2 = $user->address_line_2;
-        $city = $user->city;
-        $county = $user->county;
-        $postcode = $user->postcode;
-
+    
+        // Initialised user variables with default values in case user is not authenticated
+        $first_name = $last_name = $email = $phone_num = $address_1 = $address_2 = $city = $county = $postcode = '';
+    
+        // Checks if user is authenticated
+        if (Auth::check()) {
+            $user = Auth::user();
+            $name = $user->name ?? '';
+            [$first_name, $last_name] = User::split_name($name);
+            $email = $user->email ?? '';
+            $phone_num = $user->phone_number ?? '';
+            $address_1 = $user->address_line_1 ?? '';
+            $address_2 = $user->address_line_2 ?? '';
+            $city = $user->city ?? '';
+            $county = $user->county ?? '';
+            $postcode = $user->postcode ?? '';
+        }
+    
         return view('checkout', compact(
             'products',
             'cart',
@@ -124,5 +131,4 @@ class ProductController extends Controller
             'postcode',
         ));
     }
-
 }
