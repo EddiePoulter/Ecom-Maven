@@ -72,6 +72,11 @@ Route::get("/verify-email", function () {
     return view("verify-email");
 });
 
+Route::get('/contactform', function () {
+    return view('contactform');
+});
+
+
 Route::get('/forgot-password', function () {
     return view('forgotPassword');
 })->middleware('guest')->name('password.request');
