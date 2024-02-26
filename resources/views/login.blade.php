@@ -7,6 +7,7 @@
     <title>Login to Maven</title>
     <link rel="icon" href="/resources/images/public/Icon.png">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="icon" href="{{ asset('/images/Icon.png') }}">
     @include('css')
 </head>
 

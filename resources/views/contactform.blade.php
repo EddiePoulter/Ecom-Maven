@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maven - Contact Form</title>
     @include('css')
-    <link rel="icon" href="/resources/images/public/Icon.png">
+    <link rel="icon" href="{{ asset('/images/Icon.png') }}">
 
     <style>
 body {

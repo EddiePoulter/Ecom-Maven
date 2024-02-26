@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
+    <link rel="icon" href="{{ asset('/images/Icon.png') }}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('path/to/font-awesome/css/font-awesome.min.css') }}">
@@ -27,6 +29,7 @@
             <div class="cart-container shadow p-3 mb-5 bg-white rounded d-flex flex-column justify-content-between ">
                 <div class="cart-title-wrapper">
                     <h1 class="mb-0 ">Shopping Cart</h1>
+                    
                     <h6 class="mb-0 fw-bold" id="cart-counter">{{$counter}} items</h6>
                 </div>
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up to Maven</title>
     <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
+    <link rel="icon" href="{{ asset('/images/Icon.png') }}">
     @include('css')
     <style>
       body {

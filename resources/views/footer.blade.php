@@ -14,5 +14,4 @@
         <p>&copy; 2023-2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </div>
 </footer>
-
 </footer>

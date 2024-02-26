@@ -37,6 +37,7 @@
         }
     }
 </style>
+<link rel="icon" href="{{ asset('/images/Icon.png') }}">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container">
