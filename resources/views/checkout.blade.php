@@ -138,8 +138,7 @@
                         </div>
 
                         <div class="form-floating col-3">
-                            <input type="text" class="form-control" id="CVV" name="CVV" placeholder="CVV" min="3"
-                                max="3" pattern="[0-9]" required>
+                            <input type="text" class="form-control" id="CVV" name="CVV" placeholder="CVV" maxlength="3" pattern="[0-9]{3}" required>
                             <label for="CVV">CVV *</label>
                         </div>
 
