@@ -3,6 +3,8 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -73,7 +75,30 @@ Route::get("/verify-email", function () {
 });
 
 Route::get('/contactform', function () {
-    return view('contactform');
+    if (Auth::check()) {
+        $user = Auth::user();
+        $name = $user->name;
+        $email = $user->email;
+    } else {
+        $name = "";
+        $email = "";
+    }
+    return view('contactform', compact('name', 'email'));
+});
+
+Route::post('/contact', function (Request $request) {
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'message' => 'required|max:10000',
+    ]);
+    DB::table('feedback')->insert([
+        'name' => $request->name,
+        'email' => $request->email,
+        'content' => $request->message,
+    ]);
+
+    return back()->with(["success" => 't']);
 });
 
 

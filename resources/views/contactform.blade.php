@@ -75,7 +75,7 @@ label {
     font-weight: bold;
 }
 
-button1 {
+#button1 {
     display: block;
     width: 100%;
     padding: 10px;
@@ -103,25 +103,30 @@ input::placeholder, textarea::placeholder {
 
 <body>
     @include('nav')
+    @if(\Session::has('success'))
+        @if(\Session::get('success') === 't')
+            <script>alert("Thank you for the feedback")</script>
+        @endif
+    @endif
     <main>
         <div class="content-wrapper">
             <h2 class="pb-2 border-bottom">Maven - Contact Us Form</h2><br>
             <div class="container-1">
                 <h1>Contact Us</h1>
-                <form action="/contact" method="post">
+                <form action="{{ url('/contact') }}" method="post">
                     <p class="confirmation"><b>Do you have questions about our products? Please share your contact details and we'll respond as quickly as we can.</b></p>
                     @csrf
                     <div class="form-group">
-                        <input type="text" id="name" name="name" required placeholder= "Your Name">
+                        <input type="text" id="name" name="name" required placeholder="Your Name" value="{{$name}}">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" required placeholder="Your Email">
+                        <input type="email" id="email" name="email" required placeholder="Your Email" value="{{$email}}">
                     </div>
                     <div class="form-group">
                         <textarea id="message" name="message" rows="5" required placeholder="Your Message"></textarea>
                     </div>
                     <div class="form-group">
-                        <button1 type="submit">Submit</button1>
+                        <button id="button1" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
