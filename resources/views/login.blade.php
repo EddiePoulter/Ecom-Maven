@@ -10,27 +10,24 @@
     <link rel="icon" href="{{ asset('/images/Icon.png') }}">
     @include('css')
 </head>
-
-@include('nav')
-
+<body>
+    @include('nav')
     <div class="login-container">
-        <div class="formation">
-        <h1>Login to Maven</h1>
-        <form action="{{ url('signin') }}" method="post">
-            @csrf
-            <input type="email" name="email" placeholder="Enter your email address" required>
-            <input type="password" name="password" placeholder="Enter your password" required>
-            <input type="submit" value="Login" />
-            <input type="button" value="Register" onclick="window.location.href='{{ route('signup') }}'" />
-            <?php if (!empty($error_message)) { ?>
-                <p class="error-message"><?php echo $error_message; ?></p>
-            <?php } ?>
-            <input type="hidden" name="submitted" value="TRUE" />
-            <p><a href="/forgot-password">Forgot Your Password?</a></p>
-        </form>
-        </div>
+            <div class="formation">
+            <h1>Login to Maven</h1>
+            <form action="{{ url('signin') }}" method="post">
+                @csrf
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <input type="password" name="password" placeholder="Enter your password" required>
+                <input type="submit" value="Login" />
+                <input type="button" value="Register" onclick="window.location.href='{{ route('signup') }}'" />
+                <?php if (!empty($error_message)) { ?>
+                    <p class="error-message a"><?php echo $error_message; ?></p>
+                <?php } ?>
+                <input type="hidden" name="submitted" value="TRUE" />
+                <p class="a"><a href="/forgot-password">Forgot Your Password?</a></p>
+            </form>
+            </div>
     </div>
-
-<footer>
-    @include('footer')
-</footer>
+    @include('footer') 
+</body>
