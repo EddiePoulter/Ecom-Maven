@@ -7,7 +7,7 @@
     <title>Maven Home Page</title>
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @include('css')
-    <link rel="icon" href="/resources/images/public/Icon.png">
+    <link rel="icon" href="{{ asset('/images/Icon.png') }}">
 </head>
     <!-- Bootstrap core CSS -->
     <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">

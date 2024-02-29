@@ -1,14 +1,12 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Models\User;
-use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +27,15 @@ Route::get("/about/", function () {
     return view("about");
 })->name('about');
 
-Route::get("/account/", function () {
-    return view("account");
-})->middleware(["auth", "verified"])->name('account');
+Route::get("/account/",[UserController::class, "account"])->middleware(["auth", "verified"])->name('account');
+Route::post("/account", [UserController::class, "update_account"]);
 
 Route::get("/basket/", function () {
     return view("cart");
 })->name('cart');
+// Basket Functionalities
+Route::post('/basket/decrease-quantity/{id}', [ProductController::class, 'removeProductFromCart'])->name('removeProduct.from.cart');
+Route::post('/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart');
 
 Route::get("/contact/", function () {
     return view("contact");
@@ -74,50 +74,45 @@ Route::get("/verify-email", function () {
     return view("verify-email");
 });
 
-Route::get('/forgot-password', function () {
-    return view('forgot-password');
-})->middleware('guest')->name('password.request');
+Route::get('/contactform', function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        $name = $user->name;
+        $email = $user->email;
+    } else {
+        $name = "";
+        $email = "";
+    }
+    return view('contactform', compact('name', 'email'));
+});
 
-Route::post('/forgot-password', function (Request $request) {
-    $request->validate(['email' => 'required|email']);
-
-    $status = Password::sendResetLink(
-        $request->only('email')
-    );
-
-    return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-})->middleware('guest')->name('password.email');
-
-Route::get('/reset-password/{token}', function (string $token) {
-    return view('reset-password', ['token' => $token]);
-})->middleware('guest')->name('password.reset');
-
-Route::post('/reset-password', function (Request $request) {
+Route::post('/contact', function (Request $request) {
     $request->validate([
-        'token' => 'required',
+        'name' => 'required',
         'email' => 'required|email',
-        'password' => 'required|min:8|confirmed',
+        'message' => 'required|max:10000',
+    ]);
+    DB::table('feedback')->insert([
+        'name' => $request->name,
+        'email' => $request->email,
+        'content' => $request->message,
     ]);
 
-    $status = Password::reset(
-        $request->only('email', 'password', 'password_confirmation', 'token'),
-        function (User $user, string $password) {
-            $user->forceFill([
-                'password' => Hash::make($password)
-            ])->setRememberToken(Str::random(60));
+    return back()->with(["success" => 't']);
+});
 
-            $user->save();
 
-            event(new PasswordReset($user));
-        }
-    );
+Route::get('/forgot-password', function () {
+    return view('forgotPassword');
+})->middleware('guest')->name('password.request');
 
-    return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', __($status))
-                : back()->withErrors(['email' => [__($status)]]);
-})->middleware('guest')->name('password.update');
+Route::post('/forgot-password', [UserController::class, "send_reset_email"])->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('resetPassword', ['token' => $token, 'email' => request()->query("email")]);
+})->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', [UserController::class, "reset_password"])->middleware('guest')->name('password.update');
 
 Route::get("/checkout/", function () {
     return view("checkout");

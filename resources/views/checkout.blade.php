@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" href="{{ asset('/images/Icon.png') }}">
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -32,52 +33,51 @@
                     </div>
                     <!-- first name -->
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="fname" name="fname" placeholder="John" required>
+                        <input type="text" class="form-control" id="fname" name="fname" value="{{ $first_name }}" required>
                         <label for="fname">First Name *</label>
                     </div>
                     <!-- last name -->
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="lanem" name="lname" placeholder="Doe" required>
+                        <input type="text" class="form-control" id="lanem" name="lname" value="{{ $last_name }}" required>
                         <label for="lanem">Last Name *</label>
                     </div>
                     <!-- phone -->
                     <div class="form-floating mb-3">
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="012 345 6789"
+                        <input type="tel" class="form-control" id="phone" name="phone" value="{{ $phone_num }}"
                             min="10" max="10" required>
                         <label for="phone">Phone *</label>
                     </div>
                     <!-- email -->
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+                        <input type="email" class="form-control" id="email" name="email" value="{{ $email }}"
                             required>
                         <label for="email">Email Address *</label>
                     </div>
 
                     <!-- address line 1 -->
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="address1" name="address1"
-                            placeholder="Am Funkturm 47" required>
+                        <input type="text" class="form-control" id="address1" name="address1" value="{{$address_1}}" required>
                         <label for="address1">Address Line 1 *</label>
                     </div>
 
                     <!-- address line 2 -->
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="address2" name="address2" placeholder="">
+                        <input type="text" class="form-control" id="address2" name="address2" value="{{$address_2}}">
                         <label for="address2">Address Line 2</label>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <label for="city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="city" name="city">
+                            <input type="text" class="form-control" id="city" name="city" value="{{$city}}">
                         </div>
                         <div class="col-md-4">
                             <label for="inputState" class="form-label">Region</label>
-                            <input type="text" class="form-control" id="state" name="state">
+                            <input type="text" class="form-control" id="state" name="state" value="{{$county}}">
                         </div>
                         <div class="col-md-2">
                             <label for="zip" class="form-label">Postcode</label>
-                            <input type="text" class="form-control" id="zip" name="zip">
+                            <input type="text" class="form-control" id="zip" name="zip" value="{{$postcode}}">
                         </div>
                     </div>
 
@@ -153,7 +153,7 @@
             <!-- summary -->
             <div id="chekout-summary" class="col-md-4">
                 <h3>Summary</h3>
-            
+
                 <div class="sub-total-sec">
                     <!-- Calculate Subtotal dynamically -->
                     @php $subtotal = 0 @endphp
@@ -171,7 +171,7 @@
                             <p>£{{ $subtotal }}</p>
                         </div>
                     </div>
-            
+
                     <div class="row">
                         <div class="col-6">
                             <p> Standard delivery</p>
@@ -181,7 +181,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="total-sec">
                     <div class="row">
                         <div class="col-6">
@@ -193,7 +193,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="sub-total-sec">
                     <!-- Products preview including price x quantity -->
                     @foreach($products as $product)
@@ -213,7 +213,7 @@
                     @endforeach
                 </div>
             </div>
-            
+
                 <div class="items-preview-sec">
                     <!-- Placeholder for items preview -->
                 </div>
