@@ -18,7 +18,16 @@
                 <p class="text-muted">Category: {{ $product->category }}</p>
                 <p>{{ $product->description }}</p>
                 <h3 class="text-primary">£{{ $product->price }}</h3>
-                <a href="{{ route('addProduct.to.cart', $product->id) }}" class="btn btn-outline-danger">Add to Cart</a>
+                @if($stock == 0)
+                    <p>Out of stock!</p>
+                @else
+                    @if($stock > 10)
+                        <p>Plenty of stock left</p>
+                    @else
+                        <p>Limited Stock left</p>
+                    @endif
+                    <a href="{{ route('addProduct.to.cart', $product->id) }}" class="btn btn-outline-danger">Add to Cart</a>
+                @endif
             </div>
         </div>
     </div>
@@ -28,7 +37,7 @@
             <h3 class="mb-4 d-inline-block">Random Items</h3>
             <button id="randomizeButton" class="btn btn-primary border border-dark">
                 <i class='bx bx-refresh'></i> Randomize
-            </button>                    
+            </button>
         </div>
         <div class="row">
             @php $randomProducts = app('App\Http\Controllers\ProductController')->getRandomProducts(3); @endphp
