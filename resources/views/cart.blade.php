@@ -86,7 +86,7 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <h6 class="mb-0">
-                        <a href="{{ url('/dashboard') }}" class="text-body">
+                        <a href="{{ url('/products') }}" class="text-body">
                             <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop
                         </a>
                     </h6>  
