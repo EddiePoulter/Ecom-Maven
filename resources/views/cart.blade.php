@@ -42,6 +42,7 @@
                                         <td data-th="image" class="product-image centered-cell py-4">
                                             <img src="{{ asset($details['image_path']) }}" alt="{{ $details['name'] }}">
                                         </td>
+                                        
                                         <td class="centered-cell" data-th="Product">
                                             <div class="row">
                                                 <div class="col-sm-12">

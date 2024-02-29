@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" href="{{ asset('/images/Icon.png') }}">
+<link rel="stylesheet" href="{{ asset('css/product.css') }}">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -17,6 +18,14 @@
                 <h2>{{ $product->name }}</h2>
                 <p class="text-muted">Category: {{ $product->category }}</p>
                 <p>{{ $product->description }}</p>
+                <h4>Size:</h4>
+                <div class="sizing-grid">
+                    <a href="#" class="sizing">S</a>
+                    <a href="#" class="sizing">M</a>
+                    <a href="#" class="sizing">L</a>
+                    <a href="#" class="sizing">XL</a>
+                </div>
+                
                 <h3 class="text-primary">£{{ $product->price }}</h3>
                 @if($stock == 0)
                     <p>Out of stock!</p>
