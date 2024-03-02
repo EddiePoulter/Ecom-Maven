@@ -92,7 +92,7 @@
                     </h6>  
                     
                     <h6 class="mb-0">
-                        <a href="{{ route('checkout') }}" class="text-body">
+                        <a href="{{ route('checkout.product') }}" class="text-body">
                             Checkout<i class="fas fa-long-arrow-alt-right ms-2"></i>
                         </a>
                     </h6>  

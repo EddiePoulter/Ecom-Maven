@@ -18,7 +18,7 @@
                 <p class="text-muted">Category: {{ $product->category }}</p>
                 <p>{{ $product->description }}</p>
                 <h3 class="text-primary">£{{ $product->price }}</h3>
-                <a href="{{ route('addProduct.to.cart', $product->id) }}" class="btn btn-outline-danger">Add to Cart</a>
+                <a href="{{ route('getProduct.to.cart', $product->id) }}" class="btn btn-outline-danger">Add to Cart</a>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                         <p class="card-text"><strong>Price: </strong> £{{ $randomProduct->price }}</p>
                         <div class="btn-group" role="group" aria-label="Product Actions">
                             <a href="{{ route('product.show', ['id' => $randomProduct->id]) }}" class="btn btn-primary">View Details</a>
-                            <a href="{{ route('addProduct.to.cart', $randomProduct->id) }}" class="btn btn-outline-danger">Add to Cart</a>
+                            <a href="{{ route('postProduct.to.cart', $randomProduct->id) }}" class="btn btn-outline-danger">Add to Cart</a>
                         </div>
                     </div>
                 </div>
