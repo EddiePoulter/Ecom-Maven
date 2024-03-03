@@ -27,8 +27,9 @@ class ProductController extends Controller
     }
     public function showProduct($id)
     {
-    $product = Product::findOrFail($id);
-    return view('product', compact('product'));
+        $product = Product::findOrFail($id);
+        $stock = $product->stock;
+        return view('product', compact('product', 'stock'));
     }
 
     public function getRandomProducts($count)
@@ -95,14 +96,14 @@ class ProductController extends Controller
     {
         $cart = session()->get('cart', []);
         $products = collect([]); // Initialize an empty collection
-    
+
         if (!empty($cart)) {
             $products = Product::find(array_keys($cart));
         }
-    
+
         // Initialised user variables with default values in case user is not authenticated
         $first_name = $last_name = $email = $phone_num = $address_1 = $address_2 = $city = $county = $postcode = '';
-    
+
         // Checks if user is authenticated
         if (Auth::check()) {
             $user = Auth::user();
@@ -116,7 +117,7 @@ class ProductController extends Controller
             $county = $user->county ?? '';
             $postcode = $user->postcode ?? '';
         }
-    
+
         return view('checkout', compact(
             'products',
             'cart',

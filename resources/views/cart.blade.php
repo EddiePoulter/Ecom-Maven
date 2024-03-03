@@ -42,6 +42,7 @@
                                         <td data-th="image" class="product-image centered-cell py-4">
                                             <img src="{{ asset($details['image_path']) }}" alt="{{ $details['name'] }}">
                                         </td>
+                                        
                                         <td class="centered-cell" data-th="Product">
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -86,7 +87,7 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <h6 class="mb-0">
-                        <a href="{{ url('/dashboard') }}" class="text-body">
+                        <a href="{{ url('/products') }}" class="text-body">
                             <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop
                         </a>
                     </h6>
