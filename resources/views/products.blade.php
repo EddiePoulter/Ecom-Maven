@@ -57,6 +57,30 @@
     </div>
 </div>
 
+<!-- Filter Options -->
+<div class="container mt-4 mb-4">
+    <form action="{{ route('products.filter') }}" method="GET">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="price">Price Range:</label>
+                <input type="number" class="form-control" id="min_price" name="min_price" placeholder="Min Price">
+                <input type="number" class="form-control mt-2" id="max_price" name="max_price" placeholder="Max Price">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category">
+                    <option value="">All</option>
+                    <option value="clothes">Clothes</option>
+                    <option value="equipment">Equipment</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <button type="submit" class="btn btn-primary mt-4">Apply Filters</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 
 
