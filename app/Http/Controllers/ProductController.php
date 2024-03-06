@@ -132,4 +132,17 @@ class ProductController extends Controller
             'postcode',
         ));
     }
+    // Define the search method to handle the search functionality.
+    public function search(Request $request){
+        $searchQuery = $request->input('search_query');
+        
+        // Perform search query using the $searchQuery variable
+        
+        $products = Product::where('name', 'like', '%' . $searchQuery . '%')
+            ->orWhere('description', 'like', '%' . $searchQuery . '%')
+            ->get();
+
+        return view('search_results', compact('products', 'searchQuery'));
+        // Create a new blade file to display search results.
+    }
 }
