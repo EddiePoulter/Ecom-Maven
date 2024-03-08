@@ -142,3 +142,6 @@ Route::post('/product/{id}/add-to-cart', [ProductController::class, 'addToCart']
 Route::get('/product/{id}/add-to-cart', [ProductController::class, 'addProducttoCart'])->name('getProduct.to.cart');
 // Define a route to handle the search functionality.
 Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+Route::get('/products', [ProductController::class, 'showProducts'])->name('products');
+Route::get('/products/filter', [ProductController::class, 'showProducts'])->name('products.filter');

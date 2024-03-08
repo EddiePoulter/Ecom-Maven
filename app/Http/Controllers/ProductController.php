@@ -145,4 +145,26 @@ class ProductController extends Controller
         return view('search_results', compact('products', 'searchQuery'));
         // Create a new blade file to display search results.
     }
+    // Assuming you have a method in your controller for displaying products
+public function showProducts(Request $request)
+{
+    // Fetch all products initially
+    $products = Product::query();
+
+    // Apply filters if provided
+    if ($request->has('min_price') && $request->has('max_price')) {
+        $products->whereBetween('price', [$request->min_price, $request->max_price]);
+    }
+
+    if ($request->has('category')) {
+        $products->where('category', $request->category);
+    }
+
+    // Fetch filtered products
+    $products = $products->paginate(12); // Adjust pagination as per your requirement
+
+    return view('products', ['products' => $products]);
 }
+
+}
+
