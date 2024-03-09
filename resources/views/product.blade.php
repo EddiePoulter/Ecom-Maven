@@ -5,12 +5,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" href="{{ asset('/images/Icon.png') }}">
 <link rel="stylesheet" href="{{ asset('css/product.css') }}">
+<link rel="stylesheet" href="{{ asset('css/review.css') }}">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-@section('content')
 
-<link rel="stylesheet" href="{{ asset('css/review.css') }}">
+@section('content')
 
 <div class="container mt-4">
     <div class="row">
@@ -52,8 +52,12 @@
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <div class="col">
                                     <div class="rated">
-                                        @for($i=1; $i<=$product->star_rating; $i++)
-                                            <label class="star-rating-complete" title="text"><i class="fa fa-star"></i></label>
+                                        @for($i=1; $i<=5; $i++)
+                                            @if($i <= $product->star_rating)
+                                                <label class="star-rating-complete" title="text"><i class="fa fa-star"></i></label>
+                                            @else
+                                                <label class="star-rating-empty" title="text"><i class="fa fa-star"></i></label>
+                                            @endif
                                         @endfor
                                     </div>
                                 </div>
@@ -73,20 +77,14 @@
                             <form class="py-2 px-4" action="{{ route('review.store') }}" style="box-shadow: 0 0 10px 0 #ddd;" method="POST" autocomplete="off">
                                 @csrf
                                 <p class="font-weight-bold">Review</p>
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <div class="form-group row">
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <div class="col">
                                         <div class="rate">
-                                            <input type="radio" id="star5" class="rate" name="rating" value="5"/>
-                                            <label for="star5" title="text"><i class="fa fa-star"></i> 5 stars</label>
-                                            <input type="radio" checked id="star4" class="rate" name="rating" value="4"/>
-                                            <label for="star4" title="text"><i class="fa fa-star"></i> 4 stars</label>
-                                            <input type="radio" id="star3" class="rate" name="rating" value="3"/>
-                                            <label for="star3" title="text"><i class="fa fa-star"></i> 3 stars</label>
-                                            <input type="radio" id="star2" class="rate" name="rating" value="2">
-                                            <label for="star2" title="text"><i class="fa fa-star"></i> 2 stars</label>
-                                            <input type="radio" id="star1" class="rate" name="rating" value="1"/>
-                                            <label for="star1" title="text"><i class="fa fa-star"></i> 1 star</label>
+                                            @for($i=5; $i>=1; $i--)
+                                                <input type="radio" id="star{{ $i }}" class="rate" name="rating" value="{{ $i }}"/>
+                                                <label for="star{{ $i }}" title="text"><i class="fa fa-star"></i> {{ $i }} stars</label>
+                                            @endfor
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +94,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-3 text-right">
-                                    <button class="btn btn-sm py-2 px-3 btn-info">Add Review</button>
+                                    <button type="submit" class="btn btn-sm py-2 px-3 btn-info">Add Review</button>
                                 </div>
                             </form>
                         </div>
