@@ -12,13 +12,6 @@
 
 @section('content')
 
-@if(session('flash_msg_success'))
-    <div class="alert alert-success">
-        {{ session('flash_msg_success') }}
-    </div>
-@endif
-
-<!-- Product Details Section -->
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-6">
@@ -35,7 +28,9 @@
                 <a href="#" class="sizing">L</a>
                 <a href="#" class="sizing">XL</a>
             </div>
+            
             <h3 class="text-primary">£{{ $product->price }}</h3>
+            
             @if($stock == 0)
                 <p>Out of stock!</p>
             @else
@@ -45,61 +40,72 @@
                     <p>Limited Stock left</p>
                 @endif
             @endif
+
             <a href="{{ route('getProduct.to.cart', $product->id) }}" class="btn btn-outline-danger">Add to Cart</a>
-        </div>
-    </div>
-</div>
-
-<div class="container mt-4">
-    <!-- Review Submission Form -->
-    <div class="row">
-        <div class="col mt-4">
-            <p class="font-weight-bold">Submit a Review</p>
-            <form method="POST" action="{{ route('reviews.store') }}">
-                @csrf
-                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                <textarea name="review"></textarea>
-                <input type="number" name="rating">
-                <button type="submit">Submit Review</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Display Reviews -->
-    <div class="row">
-        <div class="col mt-4">
-            <p class="font-weight-bold">Reviews</p>
-            @if($product->reviews->count() > 0)
-                @foreach($product->reviews as $review)
-                    <div class="form-group row">
-                        <div class="col">
-                            <div class="rated">
-                                @for($i=1; $i<=5; $i++)
-                                    @if($i <= $review->rating)
-                                        <label class="star-rating-complete" title="text"><i class="fa fa-star"></i></label>
-                                    @else
-                                        <label class="star-rating-empty" title="text"><i class="fa fa-star"></i></label>
-                                    @endif
-                                @endfor
+      
+            @if(!empty($product->star_rating))
+                <div class="container">
+                    <div class="row">
+                        <div class="col mt-4">
+                            <p class="font-weight-bold">Review</p>
+                            <div class="form-group row">
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <div class="col">
+                                    <div class="rated">
+                                        @for($i=1; $i<=5; $i++)
+                                            @if($i <= $product->star_rating)
+                                                <label class="star-rating-complete" title="text"><i class="fa fa-star"></i></label>
+                                            @else
+                                                <label class="star-rating-empty" title="text"><i class="fa fa-star"></i></label>
+                                            @endif
+                                        @endfor
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-4">
+                                <div class="col">
+                                    <p>{{ $product->comments }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row mt-4">
-                        <div class="col">
-                            <p>{{ $review->review }}</p>
+                </div>
+            @else
+                <div class="container">
+                    <div class="row">
+                        <div class="col mt-4">
+                            <form class="py-2 px-4" action="{{ route('reviews.store') }}" style="box-shadow: 0 0 10px 0 #ddd;" method="POST" autocomplete="off">
+                                @csrf
+                                <p class="font-weight-bold">Review</p>
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <div class="rate">
+                                            @for($i=5; $i>=1; $i--)
+                                                <input type="radio" id="star{{ $i }}" class="rate" name="rating" value="{{ $i }}"/>
+                                                <label for="star{{ $i }}" title="text"><i class="fa fa-star"></i> {{ $i }} stars</label>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-4">
+                                    <div class="col">
+                                        <textarea class="form-control" name="review" rows="6" placeholder="Comment" maxlength="200"></textarea>
+                                    </div>
+                                </div>
+                                <div class="mt-3 text-right">
+                                    <button type="submit" class="btn btn-sm py-2 px-3 btn-info">Add Review</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                @endforeach
-            @else
-                <p>No reviews yet.</p>
+                </div>
             @endif
+
         </div>
     </div>
 </div>
 
-
-<!-- Remaining content -->
 <div class="container mt-4">
     <div class="position-relative">
         <h3 class="mb-4 d-inline-block">Random Items</h3>
@@ -137,4 +143,3 @@
     });
 </script>
 @endsection
-
