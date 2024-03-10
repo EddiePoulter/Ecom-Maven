@@ -41,3 +41,68 @@
 .rating-container textarea:focus, .rating-container input:focus {
     color: #000;
 }
+
+/* Review Submission Form */
+form {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Display Reviews */
+.form-group.row {
+    margin-bottom: 10px;
+}
+
+.rated {
+    color: orange;
+}
+
+.star-rating-complete {
+    color: orange;
+}
+
+.star-rating-empty {
+    color: #ccc;
+}
+
+/* Random Items */
+.position-relative {
+    margin-bottom: 20px;
+}
+
+#randomizeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
