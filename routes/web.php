@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
-use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,5 +142,4 @@ Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
 Route::post('/product/{id}/add-to-cart', [ProductController::class, 'addToCart'])->name('postProduct.to.cart');
 Route::get('/product/{id}/add-to-cart', [ProductController::class, 'addProducttoCart'])->name('getProduct.to.cart');
 
-//Route::post('review-store', 'BookingController@reviewstore')->name('review.store');
-Route::post('review-store', [BookingController::class, 'reviewstore'])->name('review.store');
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');

@@ -15,4 +15,9 @@ class Product extends Model
         'price',
         'image_path', // Add the 'image_path' attribute
     ];
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
