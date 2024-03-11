@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,6 +141,8 @@ Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
 
 Route::post('/product/{id}/add-to-cart', [ProductController::class, 'addToCart'])->name('postProduct.to.cart');
 Route::get('/product/{id}/add-to-cart', [ProductController::class, 'addProducttoCart'])->name('getProduct.to.cart');
+
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 // Define a route to handle the search functionality.
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 

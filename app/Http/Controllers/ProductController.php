@@ -25,9 +25,10 @@ class ProductController extends Controller
 
         return view('cart', compact('products', 'cart'));
     }
+
     public function showProduct($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with('reviews')->findOrFail($id);
         $stock = $product->stock;
         return view('product', compact('product', 'stock'));
     }
@@ -36,7 +37,6 @@ class ProductController extends Controller
     {
         return Product::inRandomOrder()->take($count)->get();
     }
-
 
     public function addProducttoCart($id){
         $product = Product::findOrFail($id);
@@ -129,7 +129,7 @@ class ProductController extends Controller
             'address_2',
             'city',
             'county',
-            'postcode',
+            'postcode'
         ));
     }
     // Define the search method to handle the search functionality.
