@@ -9,17 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="icon" href="{{ asset('/images/Icon.png') }}">
-    <!---Bootstrap CSS--->
+
     <title>Products</title>
     @include('css')
 </head>
 <body>
   @include('nav')
 
-<!-- Bootstrap core CSS -->
+
 <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
+
 <link href="products.css" rel="stylesheet">
 
 <header>
@@ -54,7 +54,6 @@
                             <option value="small">Small</option>
                             <option value="medium">Medium</option>
                             <option value="large">Large</option>
-                            <!-- Add more size options as needed -->
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Apply Filters</button>
@@ -84,7 +83,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            {{ $products->links() }} <!-- Display pagination links -->
+                            {{ $products->links() }} 
                         </div>
                     </div>
                 </div>
