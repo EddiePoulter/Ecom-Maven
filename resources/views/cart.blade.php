@@ -42,6 +42,7 @@
                                         <td data-th="image" class="product-image centered-cell py-4">
                                             <img src="{{ asset($details['image_path']) }}" alt="{{ $details['name'] }}">
                                         </td>
+                                        
                                         <td class="centered-cell" data-th="Product">
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -86,16 +87,20 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <h6 class="mb-0">
-                        <a href="{{ url('/dashboard') }}" class="text-body">
+                        <a href="{{ url('/products') }}" class="text-body">
                             <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop
                         </a>
-                    </h6>  
+                    </h6>
                     
                     <h6 class="mb-0">
-                        <a href="{{ route('checkout') }}" class="text-body">
-                            Checkout<i class="fas fa-long-arrow-alt-right ms-2"></i>
-                        </a>
-                    </h6>  
+                        <form id="checkoutForm" action="{{ route('session') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="redirect_to_session" value="true">
+                            <a href="#" onclick="submitForm()" class="text-body">
+                                Checkout<i class="fas fa-long-arrow-alt-right ms-2"></i>
+                            </a>
+                        </form>
+                    </h6>
                 </div>
             </div>
         </main>
@@ -110,6 +115,9 @@
 
     @section('scripts')
     <script type="text/javascript">
+        function submitForm() {
+            document.getElementById("checkoutForm").submit();
+        }
 
         // UPdate the Counter
         var counter = {{ $counter }};
@@ -224,9 +232,6 @@
                 }
             });
         }
-
-
-
     </script>
     @endsection
     @endsection

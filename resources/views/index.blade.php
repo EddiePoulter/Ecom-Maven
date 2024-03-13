@@ -20,12 +20,112 @@
   </head>
   <body>
     @include('nav')
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: url('{{ asset('images/men-snowboard.jpg') }}'); background-size: cover;
+background-position: center;
+height: 60vh;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;">
+  <div class="container text-dark py-5" style="padding-left: 50%;">
+      <h1 class="display-4">Welcome to <span style="color: #121212;">Maven</span></h1>
+      <p class="lead">Discover the thrill of skiing with us!</p>
+  </div>
+</section>
 
-    <header>
+<br>
 
 
-    <main role="main">
 
+<!-- Featured Destinations Section -->
+<div class="container">
+  <p class="text-center display-4 font-weight-bold mb-4">Featured Products</p>
+  <div class="row">
+      <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+              <img src="{{ asset('images/product-images/skiingcoat.png') }}" class="card-img-top" alt="Blue Ski Jacket">
+              <div class="card-body">
+                  <h5 class="card-title">Blue Ski Jacket</h5>
+                  <p class="card-text">A stylish and functional blue ski jacket for your winter adventures.</p>
+                  <a href="{{ asset('products') }}" class="btn btn-primary">View</a>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+              <img src="{{ asset('images/product-images/skigloves.jpg') }}" class="card-img-top" alt="Unisex Gloves">
+              <div class="card-body">
+                  <h5 class="card-title">Unisex Gloves</h5>
+                  <p class="card-text">Comfortable and warm ski gloves designed for both men and women.</p>
+                  <a href="{{ asset('products') }}" class="btn btn-primary">View</a>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+              <img src="{{ asset('images/product-images/skiingequipmentset.png') }}" class="card-img-top" alt="Unisex Ski Helmet">
+              <div class="card-body">
+                  <h5 class="card-title">Unisex Ski Helmet</h5>
+                  <p class="card-text">A protective and comfortable helmet for skiing, suitable for all genders.</p>
+                  <a href="{{ asset('products') }}" class="btn btn-primary">View</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="flex">
+  <!-- About Us Section -->
+  <div class="col-md-5 abt">
+    <div class="p-4 bg-light rounded border">
+        <h2>About Us</h2>
+        <p class="lead">Welcome to <strong>Maven</strong>, where skiing passion meets precision! Founded by avid skiers, we're dedicated to providing top-quality gear and accessories for every level of skier.</p>
+        <div class="text-center mt-3">
+            <img class="img-fluid rounded border" src="{{ asset('images/manskiing.jpg') }}" alt="About Us Image" style="max-width: 80%; max-height: 80vh;">
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ route('about') }}" class="nav-link px-2 text-muted">
+                <button type="button" class="btn btn-outline-primary">Learn More</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+  <!-- Purpose Section -->
+  <div class="col-md-5 purp">
+    <div class="p-4 bg-light rounded border">
+        <h2 class="text-right">Purpose</h2>
+        <p class="lead text-right">Ski clothes are <strong>specially designed</strong> for the demands of skiing - offering the perfect balance of <strong>breathability</strong>, <strong>waterproofness</strong>, <strong>insulation</strong>, and <strong>durability</strong> to match your intensity on the slopes. While a parka is ideal for sub-zero temperatures, it lacks the <strong>mobility</strong> required for skiing's dynamic movements.</p>
+        <div class="text-center mt-3">
+        <img class="img-fluid rounded border" src="{{ asset('images/skiingclothes.jpg') }}" alt="Purpose Image" style="max-width: 80%; max-height: 80vh;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{{-- <!-- Newsletter Section -->
+<section class="newsletter-section py-5">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 mx-auto">
+              <h2 class="text-center mb-4">Subscribe to Our Newsletter</h2>
+              <form>
+                  <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Enter your email">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</section> --}}
+
+{{-- 
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="first-slide" style="width: 100%; height: 50%;" src="{{ asset('images/men-snowboard.jpg') }}" alt="First slide">
@@ -34,10 +134,10 @@
             <p>We are Maven, a home for skiers.</p>
           </div>
         </div>
-      </div>
+      </div> --}}
       
      
-<div class="container marketing">
+{{-- <div class="container marketing">
 <br>
 <br>
 <div class="row">
@@ -61,10 +161,10 @@
         <button type="button" class="btn btn-primary"  onclick="window.location.href='{{ asset('products') }}'">View</button>
       </div>
 </div>
-</div>
+</div> --}}
 
 
-        <!-- START THE FEATURETTES -->
+        {{-- <!-- START THE FEATURETTES -->
 
         <hr class="featurette-divider">
 
@@ -103,9 +203,7 @@
           </div>
         </div>
         <hr class="featurette-divider">
-
-
-      </div>
+      </div> --}}
 
       <!-- News and Updates Section -->
 <section class="container mt-5">

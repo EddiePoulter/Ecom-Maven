@@ -1,0 +1,32 @@
+.sizing-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr)); /* 6 columns with equal width */
+    grid-template-rows: repeat(2, minmax(0, 1fr)); /* 2 rows with equal height */
+    max-width: 1000px; /* Set a maximum width for the grid */
+    gap: 15px;
+}
+
+/* Adjust grid layout for smaller screens */
+@media (max-width: 768px) {
+    .sizing-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns for smaller screens */
+    }
+}
+
+
+a.sizing {
+    list-style-type: none;
+    border: solid 2px grey;
+    text-decoration: none;
+    margin: 0;
+    padding: 3;
+    text-align: center;
+    color: black;
+    transition: all 0.3s;
+}
+a.sizing:hover {
+    background-color: darkgrey;
+    color: white;
+    transition: all 0.3s;
+
+}

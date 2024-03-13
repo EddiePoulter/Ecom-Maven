@@ -26,7 +26,8 @@
             <div class="col-1"></div>
             <!-- form -->
             <div id="chekout-form" class="col-md-6">
-                <form action="" method="POST">
+                <form action="{{ route('session') }}" method="POST">
+                    @csrf <!-- Add CSRF token -->
                     <h3>Delivery</h3>
                     <div class="mini-heading">
                         <p>Add Address</p>
@@ -138,8 +139,7 @@
                         </div>
 
                         <div class="form-floating col-3">
-                            <input type="text" class="form-control" id="CVV" name="CVV" placeholder="CVV" min="3"
-                                max="3" pattern="[0-9]" required>
+                            <input type="text" class="form-control" id="CVV" name="CVV" placeholder="CVV" maxlength="3" pattern="[0-9]{3}" required>
                             <label for="CVV">CVV *</label>
                         </div>
 

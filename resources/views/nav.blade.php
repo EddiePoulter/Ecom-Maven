@@ -47,11 +47,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-            <form class="d-flex">
+           <!-- To implement the functionality edit the form Action & Method -->
+           <form class="d-flex" action="{{ route('search') }}" method="GET">
                 <input class="form-control me-2 searchNav" type="search" placeholder="Search a product, brand,..."
-                    aria-label="Search" style="width: 300px;"> <!-- Adjust width here -->
+                    aria-label="Search" style="width: 300px;" name="search_query"> <!-- Adjust width here + name="search_query" -->
                 <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
+            </form>     
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('products') }}">Products</a>

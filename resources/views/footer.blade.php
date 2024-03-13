@@ -1,17 +1,9 @@
-<footer class="bg-dark text-light py-4">
-    <div class="container">
-        <div class="row justify-content-center">
-            <a href="{{ route('about') }}" class="col-md-3 col-sm-6 text-decoration-none text-center">
-                <div class="text">About Us</div>
-            </a>
-            <a href="{{ route('contact') }}" class="col-md-3 col-sm-6 text-decoration-none text-center">
-                <div class="text">Contact</div>
-            </a>
-        </div>
-    </div>
-    </div>
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-        <p>&copy; 2023-2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </div>
-</footer>
+<footer>
+    <ul class="nav justify-content-center border-bottom">
+        <li class="nav-item"><a href="{{ route('index') }}" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="{{ route('products') }}" class="nav-link px-2 text-muted">Products</a></li>
+        <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link px-2 text-muted">Contact</a></li>
+        <li class="nav-item"><a href="{{ route('about') }}" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2024 Company, Inc</p>
 </footer>
