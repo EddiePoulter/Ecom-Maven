@@ -42,6 +42,8 @@ class ProductsTableSeeder extends Seeder
             'description' => 'High-quality ski goggles designed for both men and women.',
             'image_path' => 'images/product-images/skigoggles2.jpg',
             'stock' => 10,
+            'quantity' => 10
+
         ]);
 
         Product::updateOrCreate([
