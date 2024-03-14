@@ -64,7 +64,7 @@ class StripeController extends Controller
             return redirect()->away($checkoutSession->url);
         } else {
             // Handle case where 'cart' session variable is not set or empty
-            return redirect()->route('checkout')->with('error', 'Your cart is empty.');
+            return redirect('checkout')->with('error', 'Your cart is empty.');
         }
     }
 
