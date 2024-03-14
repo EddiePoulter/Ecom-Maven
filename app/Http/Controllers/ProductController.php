@@ -25,9 +25,10 @@ class ProductController extends Controller
 
         return view('cart', compact('products', 'cart'));
     }
+
     public function showProduct($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with('reviews')->findOrFail($id);
         $stock = $product->stock;
         return view('product', compact('product', 'stock'));
     }
@@ -36,7 +37,6 @@ class ProductController extends Controller
     {
         return Product::inRandomOrder()->take($count)->get();
     }
-
 
     public function addProducttoCart($id){
         $product = Product::findOrFail($id);
@@ -129,7 +129,45 @@ class ProductController extends Controller
             'address_2',
             'city',
             'county',
-            'postcode',
+            'postcode'
         ));
     }
+    // Define the search method to handle the search functionality.
+    public function search(Request $request){
+        $searchQuery = $request->input('search_query');
+        
+        // Perform search query using the $searchQuery variable
+        
+        $products = Product::where('name', 'like', '%' . $searchQuery . '%')
+            ->orWhere('description', 'like', '%' . $searchQuery . '%')
+            ->get();
+
+        return view('search_results', compact('products', 'searchQuery'));
+        // Create a new blade file to display search results.
+    }
+    // Assuming you have a method in your controller for displaying products
+    public function showProducts(Request $request)
+    {
+        // Fetch all products initially
+        $products = Product::query();
+    
+        // Apply filters if provided
+        if ($request->has('min_price') && $request->has('max_price')) {
+            $products->whereBetween('price', [$request->min_price, $request->max_price]);
+        }
+    
+        if ($request->has('category')) {
+            $products->where('category', $request->category);
+        }
+    
+        // Fetch filtered products
+        $products = $products->paginate(12); // Adjust pagination as per your requirement
+    
+        return view('products', ['products' => $products]);
+    }
+    
+
+
+
 }
+
