@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ReviewController;
+
 
 /*
 |--------------------------------------------------------------------------
