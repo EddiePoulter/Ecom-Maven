@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string("name")->nullable();
             $table->longtext("description")->nullable();
             $table->integer("price");
-            $table->string('quantity')->nullable;
-            $table->string('discount_price')->nullable;
+            $table->string('category')->nullable();
+            $table->string('quantity')->nullable();
+            $table->string('discount_price')->nullable();
             $table->string("image_path")->nullable(); // New column for storing image path
             $table->timestamps();
         });
