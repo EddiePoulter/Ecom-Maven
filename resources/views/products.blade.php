@@ -8,19 +8,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="{{ asset('/images/Icon.png') }}">
+    <link rel="stylesheet" href="{{ asset('css/products.css') }}">
     <!---Bootstrap CSS--->
     <title>Products</title>
     @include('css')
 </head>
 <body>
   @include('nav')
-
-<!-- Bootstrap core CSS -->
-<link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="products.css" rel="stylesheet">
 
 <header>
 <section class="jumbotron text-center">
@@ -33,7 +29,7 @@
     <div class="row">
         <div class="col-md-3 bg-light">
             <div class="products-filter py-5">
-                <form action="{{ route('products.filter') }}" method="GET">
+                <form class="filterForm" action="{{ route('products.filter') }}" method="GET">
                     <div class="form-group">
                         <label for="price">Price Range:</label>
                         <input type="number" class="form-control" id="min_price" name="min_price" placeholder="Min Price">
@@ -54,21 +50,21 @@
                             <option value="small">Small</option>
                             <option value="medium">Medium</option>
                             <option value="large">Large</option>
-                            <!-- Add more size options as needed -->
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Apply Filters</button>
                 </form>
-
-                <form action="{{ route('products.filter') }}" method="GET">
+                <form class="uniqueForm" action="{{ route('products.filter') }}" method="GET">
                     @forelse($tags as $tag)
-                        <input type="checkbox" name="tags[]" value="{{ $tag->id }}">{{ $tag->name }}<br>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" name="tags[]" value="{{ $tag->id }}" class="checkbox">
+                            <label>{{ $tag->name }}</label>
+                        </div>
                     @empty
                         No tags available.
                     @endforelse
                     <button type="submit">Filter</button>
                 </form>
-
             </div>
         </div>
         <div class="col-md-9">

@@ -12,7 +12,7 @@ class TagsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'];
+        $tags = ['All-Mountain', 'Freeride', 'Park & Pipe', 'Big Mountain', 'Avalanche Safety'];
 
         foreach ($tags as $tag) {
             Tag::create(['name' => $tag]);

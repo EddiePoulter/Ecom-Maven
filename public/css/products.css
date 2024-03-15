@@ -67,5 +67,30 @@
     }
   }
   
-  .overflow-hidden { overflow: hidden; }
-  
+  .overflow-hidden { overflow: hidden; }  
+
+  .filterForm, .uniqueForm {
+    width: 100%;
+    padding: 20px;
+    border: 0.5px solid #ccc; /* Reduced border width */
+    border-radius: 10px;
+}
+.filterForm input[type="number"], .filterForm select, .uniqueForm input[type="checkbox"] {
+    margin: 10px 0;
+}
+
+.uniqueForm .checkbox-wrapper {
+  margin-bottom: 5px; /* Adjust the margin as needed */
+}
+
+.filterForm button, .uniqueForm button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.filterForm button:hover, .uniqueForm button:hover {
+    background-color: darkblue;
+}
