@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use App\Models\Tag;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -12,76 +13,86 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::updateOrCreate([
-            'name' => 'Ski(178cm) Equipment Set',
-            'price' => 299,
-            'description' => 'An all-in-one skiing Unisex package, featuring skis measuring 178 centimeters for versatile use.',
-            'image_path' => 'images/product-images/skiingequipmentset.png',
-            'stock' => 10,
-        ]);
+        // Fetch all tags
+        $tags = Tag::all();
 
-        Product::updateOrCreate([
-            'name' => 'Unisex Blue Ski Jacket',
-            'price' => 49,
-            'description' => 'A stylish and functional blue ski jacket for your winter adventures.',
-            'image_path' => 'images/product-images/skiingcoat.png',
-            'stock' => 10,
-        ]);
+        // If there are no tags, create some
+        if ($tags->isEmpty()) {
+            $tags = collect(['tag1', 'tag2', 'tag3', 'tag4', 'tag5'])->map(function ($tagName) {
+                return Tag::create(['name' => $tagName]);
+            });
+        }
 
-        Product::updateOrCreate([
-            'name' => 'Ski(178cm)',
-            'price' => 94,
-            'description' => 'Versatile 178cm skis suitable for both men and women.',
-            'image_path' => 'images/product-images/pairofski.jpg',
-            'stock' => 10,
-        ]);
+        // Create products and associate random tags
+        $productsData = [
+            [
+                'name' => 'Ski(178cm) Equipment Set',
+                'price' => 299,
+                'description' => 'An all-in-one skiing Unisex package, featuring skis measuring 178 centimeters for versatile use.',
+                'image_path' => 'images/product-images/skiingequipmentset.png',
+                'stock' => 10,
+            ],
+            [
+                'name' => 'Unisex Blue Ski Jacket',
+                'price' => 49,
+                'description' => 'A stylish and functional blue ski jacket for your winter adventures.',
+                'image_path' => 'images/product-images/skiingcoat.png',
+                'stock' => 10,
+            ],
+            [
+                'name' => 'Ski(178cm)',
+                'price' => 94,
+                'description' => 'Versatile 178cm skis suitable for both men and women.',
+                'image_path' => 'images/product-images/pairofski.jpg',
+                'stock' => 10,
+            ],
+            [
+                'name' => 'Unisex Ski Goggles',
+                'price' => 59,
+                'description' => 'High-quality ski goggles designed for both men and women.',
+                'image_path' => 'images/product-images/skigoggles2.jpg',
+                'stock' => 10,
+            ],
+            [
+                'name' => 'Unisex Ski Helmet',
+                'price' => 79,
+                'description' => 'A protective and comfortable helmet for skiing, suitable for all genders.',
+                'image_path' => 'images/product-images/skihelmet.jpg',
+                'stock' => 10,
+            ],
+            [
+                'name' => 'Snowboard(155cm)',
+                'price' => 309,
+                'description' => 'A versatile 155cm snowboard suitable for all skill levels.',
+                'image_path' => 'images/product-images/snowboard.jpg',
+                'stock' => 10,
+            ],
+            [
+                'name' => 'Ski(178cm) and Pole Set',
+                'price' => 169,
+                'description' => 'A comprehensive set including 178cm skis and poles, designed for both men and women.',
+                'image_path' => 'images/product-images/pairofskiandpoleset.jpg',
+                'stock' => 10,
+            ],
+            [
+                'name' => 'Ski Poles',
+                'price' => 69,
+                'description' => 'Durable and adjustable ski poles suitable for all genders.',
+                'image_path' => 'images/product-images/skipoles.jpg',
+                'stock' => 10,
+            ],
+            [
+                'name' => 'Unisex Ski Gloves',
+                'price' => 14,
+                'description' => 'Comfortable and warm ski gloves designed for both men and women.',
+                'image_path' => 'images/product-images/skigloves.jpg',
+                'stock' => 10,
+            ],
+        ];
 
-        Product::updateOrCreate([
-            'name' => 'Unisex Ski Goggles',
-            'price' => 59,
-            'description' => 'High-quality ski goggles designed for both men and women.',
-            'image_path' => 'images/product-images/skigoggles2.jpg',
-            'stock' => 10,
-        ]);
-
-        Product::updateOrCreate([
-            'name' => 'Unisex Ski Helmet',
-            'price' => 79,
-            'description' => 'A protective and comfortable helmet for skiing, suitable for all genders.',
-            'image_path' => 'images/product-images/skihelmet.jpg',
-            'stock' => 10,
-        ]);
-
-        Product::updateOrCreate([
-            'name' => 'Snowboard(155cm)',
-            'price' => 309,
-            'description' => 'A versatile 155cm snowboard suitable for all skill levels.',
-            'image_path' => 'images/product-images/snowboard.jpg',
-            'stock' => 10,
-        ]);
-
-        Product::updateOrCreate([
-            'name' => 'Ski(178cm) and Pole Set',
-            'price' => 169,
-            'description' => 'A comprehensive set including 178cm skis and poles, designed for both men and women.',
-            'image_path' => 'images/product-images/pairofskiandpoleset.jpg',
-            'stock' => 10,
-        ]);
-
-        Product::updateOrCreate([
-            'name' => 'Ski Poles',
-            'price' => 69,
-            'description' => 'Durable and adjustable ski poles suitable for all genders.',
-            'image_path' => 'images/product-images/skipoles.jpg',
-            'stock' => 10,
-        ]);
-
-        Product::updateOrCreate([
-            'name' => 'Unisex Ski Gloves',
-            'price' => 14,
-            'description' => 'Comfortable and warm ski gloves designed for both men and women.',
-            'image_path' => 'images/product-images/skigloves.jpg',
-            'stock' => 10,
-        ]);
+        foreach ($productsData as $productData) {
+            $product = Product::updateOrCreate($productData);
+            $product->tags()->attach($tags->random(rand(1, 5))->pluck('id'));
+        }
     }
 }
