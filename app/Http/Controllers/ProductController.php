@@ -5,13 +5,15 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tag;
 
 class ProductController extends Controller
 {
     public function index()
     {
         $products = Product::paginate(); // Paginate all available products
-        return view('products', compact('products'));
+        $tags = Tag::all(); // Fetch all tags from the database
+        return view('products', compact('products', 'tags'));
     }
 
     public function productCart()
@@ -160,14 +162,23 @@ class ProductController extends Controller
             $products->where('category', $request->category);
         }
     
+        // Check if tags are selected
+        $selectedTags = $request->input('tags');
+        if ($selectedTags) {
+            $products->whereHas('tags', function ($query) use ($selectedTags) {
+                // Assuming the pivot table name is "product_tag"
+                $query->whereIn('tag_id', $selectedTags);
+            });
+        }
+    
         // Fetch filtered products
         $products = $products->paginate(12); // Adjust pagination as per your requirement
     
-        return view('products', ['products' => $products]);
-    }
+        // Fetch all tags to display in the filter form
+        $tags = Tag::all();
     
-
-
-
+        // Pass both products and tags to the view
+        return view('products', compact('products', 'tags'));
+    }
 }
 
