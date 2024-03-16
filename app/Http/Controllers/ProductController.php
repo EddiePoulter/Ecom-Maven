@@ -61,16 +61,16 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product has been added to cart!');
     }
 
-    public function removeProductFromCart($id){
-        // Decrease Product Quantity
-        $product = Product::findOrFail($id);
-        $cart = session()->get('cart', []);
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']--;
-        }
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product has been removed from cart!');
+  public function removeProductFromCart($id){
+    // Decrease Product Quantity
+    $product = Product::findOrFail($id);
+    $cart = session()->get('cart', []);
+    if(isset($cart[$id])) {
+        $cart[$id]['quantity']--;
     }
+    session()->put('cart', $cart);
+    return redirect()->back()->with('success', 'Product has been removed from cart!');
+}
 
     public function updateCart(Request $request)
     {
@@ -172,7 +172,7 @@ class ProductController extends Controller
         }
     
         // Fetch filtered products
-        $products = $products->paginate(12); // Adjust pagination as per your requirement
+        $products = $products->paginate(15); // Adjust pagination as per your requirement
     
         // Fetch all tags to display in the filter form
         $tags = Tag::all();
