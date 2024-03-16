@@ -19,13 +19,13 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             // Removed the hashed password string
             'password' => Hash::make('password'), // Use the imported Hash facade
             'remember_token' => Str::random(10),
-            'phone_number' => fake()->phoneNumber(),
+            'phone_number' => $this->faker->phoneNumber(),
         ];
     }
 

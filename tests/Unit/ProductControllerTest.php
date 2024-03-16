@@ -46,7 +46,8 @@ class ProductControllerTest extends TestCase
         $response = $this->get(route('shopping.cart'));
 
         $response->assertStatus(200);
-        $response->assertViewHas('products', collect([$product]));
+        // Convert $product to a collection
+        $response->assertViewHas('products', Product::whereIn('id', collect($cart)->pluck('id'))->get());
         $response->assertViewHas('cart', $cart);
     }
 
@@ -158,46 +159,59 @@ class ProductControllerTest extends TestCase
     }
 
     public function testCheckout()
-    {
-        $user = User::factory()->create();
-        Auth::login($user);
+{
+    $user = User::factory()->create();
+    Auth::login($user);
 
-        $product = Product::factory()->create();
-        $cart = [
-            $product->id => [
-                'id' => $product->id,
-                'name' => $product->name,
-                'quantity' => 1,
-                'price' => $product->price,
-                'description' => $product->description,
-                'image_path' => $product->image_path,
-            ],
-        ];
-        session(['cart' => $cart]);
+    $product = Product::factory()->create();
+    $cart = [
+        $product->id => [
+            'id' => $product->id,
+            'name' => $product->name,
+            'quantity' => 1,
+            'price' => $product->price,
+            'description' => $product->description,
+            'image_path' => $product->image_path,
+        ],
+    ];
+    session(['cart' => $cart]);
 
-        $response = $this->get(route('checkout.product'));
+    $response = $this->get(route('checkout.product'));
 
-        $response->assertStatus(200);
-        $response->assertViewHas('products', collect([$product]));
-        $response->assertViewHas('cart', $cart);
-        $response->assertViewHas('first_name', $user->name);
-        $response->assertViewHas('last_name', '');
-        $response->assertViewHas('email', $user->email);
-        $response->assertViewHas('phone_num', $user->phone_number);
-        // Add assertions for other view data as needed
-    }
+    $response->assertStatus(200);
+    // Convert $product to a collection
+    $response->assertViewHas('products', Product::whereIn('id', collect($cart)->pluck('id'))->get());
+    $response->assertViewHas('cart', $cart);
+    $nameParts = explode(' ', $user->name);
+    $response->assertViewHas('first_name', $nameParts[0]);
+    $response->assertViewHas('last_name', $nameParts[1] ?? '');
+    $response->assertViewHas('email', $user->email);
+    $response->assertViewHas('phone_num', $user->phone_number);
+    // Add assertions for other view data as needed
+}
 
     public function testSearch()
-    {
-        $product1 = Product::factory()->create(['name' => 'Test Product 1', 'description' => 'This is a test product']);
-        $product2 = Product::factory()->create(['name' => 'Another Test Product', 'description' => 'This is another test product']);
+{
+    $product1 = Product::factory()->create([
+        'name' => 'Test Product 1',
+        'description' => 'This is a test product',
+        'price' => 6596,
+        'image_path' => 'https://via.placeholder.com/640x480.png/00aa44?text=blanditiis'
+    ]);
 
-        $response = $this->get(route('search', ['search_query' => 'test']));
+    $product2 = Product::factory()->create([
+        'name' => 'Another Test Product',
+        'description' => 'This is another test product',
+        'price' => 7371,
+        'image_path' => 'https://via.placeholder.com/640x480.png/0077aa?text=unde'
+    ]);
 
-        $response->assertStatus(200);
-        $response->assertViewHas('products', collect([$product1, $product2]));
-        $response->assertViewHas('searchQuery', 'test');
-    }
+    $response = $this->get(route('search', ['search_query' => 'test']));
+
+    $response->assertStatus(200);
+    $response->assertViewHas('products', Product::where('name', 'like', '%test%')->get());
+    $response->assertViewHas('searchQuery', 'test');
+}
 
     public function testShowProducts()
     {
@@ -207,16 +221,24 @@ class ProductControllerTest extends TestCase
         $tag2 = Tag::factory()->create(['name' => 'Tag 2']);
         $product1->tags()->attach($tag1);
         $product2->tags()->attach($tag2);
-
+    
         $response = $this->get(route('products.filter', [
             'min_price' => 15,
             'max_price' => 25,
             'category' => 'Category 2',
             'tags' => [$tag2->id],
         ]));
-
+    
         $response->assertStatus(200);
-        $response->assertViewHas('products', collect([$product2]));
-        $response->assertViewHas('tags', Tag::all());
+        
+        // Retrieve the products and tags from the response
+        $products = $response->original->getData()['products'];
+        $tags = $response->original->getData()['tags'];
+    
+        // Assert that the products and tags are as expected
+        $this->assertCount(1, $products);
+        $this->assertEquals($product2->id, $products->first()->id);
+    
+        $this->assertEquals(Tag::all()->pluck('id'), $tags->pluck('id'));
     }
 }
