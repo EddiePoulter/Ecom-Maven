@@ -70,7 +70,28 @@ class StripeController extends Controller
 
     public function success()
     {
-        return "Thanks for your order. You have just completed your payment. The seller will reach out to you as soon as possible.";
+        // Get the cart from the session
+        $cart = session()->get('cart', []);
+    
+        // Get the product details for each item in the cart
+        $orderDetails = [];
+        foreach ($cart as $productId => $details) {
+            $product = Product::find($productId);
+            if ($product) {
+                $orderDetails[] = [
+                    'product' => $product->name,
+                    'quantity' => $details['quantity'],
+                    'price' => $product->price,
+                    'image' => $product->image_path, // Add the product image
+                ];
+            }
+        }
+    
+        // Clear the cart from the session
+        session()->forget('cart');
+    
+        // Return the view and pass the order details to it
+        return view('confirmation', ['orderDetails' => $orderDetails]);
     }
 
     public function cancel()
