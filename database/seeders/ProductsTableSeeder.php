@@ -104,19 +104,27 @@ class ProductsTableSeeder extends Seeder
             ],
         ];
 
+        $tags = Tag::all(); // Fetch all tags
+
+
         foreach ($productsData as $productData) {
-            $tag = $productData['tag'];
+            $tagName = $productData['tag']->name; // Get the tag name
             unset($productData['tag']); // Remove the tag from the product data
-    
+        
+            // Create or update the product
             $product = Product::updateOrCreate($productData);
-    
-            // Associate the product with its intended tag
-            $product->tags()->sync([$tag->id]);
-                $product = Product::updateOrCreate($productData);
-                $product->tags()->attach($tags->random(rand(1, 5))->pluck('id'));
+        
+            // Find the tag by its name
+            $tag = Tag::where('name', $tagName)->first();
+        
+            // Associate the product with the tag
+            if ($tag) {
+                $product->tags()->sync([$tag->id]);
+            } else {
+                // Handle the case where the tag is not found
+                // You might want to log an error or perform some other action
             }
         }
-
-
-
+        
+}
 }
