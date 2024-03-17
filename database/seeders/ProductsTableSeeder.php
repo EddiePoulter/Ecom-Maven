@@ -13,17 +13,22 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        // Fetch all tags
+        // Define the tags
+        $skiTag = Tag::firstOrCreate(['name' => 'Ski']);
+        $snowboardsTag = Tag::firstOrCreate(['name' => 'Snowboards']);
+        $clothesTag = Tag::firstOrCreate(['name' => 'Clothes']);
+    
         $tags = Tag::all();
 
-        // If there are no tags, create some
+
         if ($tags->isEmpty()) {
-            $tags = collect(['tag1', 'tag2', 'tag3', 'tag4', 'tag5'])->map(function ($tagName) {
-                return Tag::create(['name' => $tagName]);
+            $tags = collect(['All-Mountain', 'Freeride', 'Park & Pipe', 'Big Mountain', 'Avalanche Safety'])->map(function ($tagName) {
+                return Tag::firstOrCreate(['name' => $tagName]);
             });
         }
+    
 
-        // Create products and associate random tags
+        // Define the products
         $productsData = [
             [
                 'name' => 'Ski(178cm) Equipment Set',
@@ -31,6 +36,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'An all-in-one skiing Unisex package, featuring skis measuring 178 centimeters for versatile use.',
                 'image_path' => 'images/product-images/skiingequipmentset.png',
                 'stock' => 10,
+                'tag' => $skiTag,
             ],
             [
                 'name' => 'Unisex Blue Ski Jacket',
@@ -38,6 +44,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'A stylish and functional blue ski jacket for your winter adventures.',
                 'image_path' => 'images/product-images/skiingcoat.png',
                 'stock' => 10,
+                'tag' => $clothesTag,
             ],
             [
                 'name' => 'Ski(178cm)',
@@ -45,6 +52,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Versatile 178cm skis suitable for both men and women.',
                 'image_path' => 'images/product-images/pairofski.jpg',
                 'stock' => 10,
+                'tag' => $skiTag,
             ],
             [
                 'name' => 'Unisex Ski Goggles',
@@ -52,6 +60,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'High-quality ski goggles designed for both men and women.',
                 'image_path' => 'images/product-images/skigoggles2.jpg',
                 'stock' => 10,
+                'tag' => $clothesTag,
             ],
             [
                 'name' => 'Unisex Ski Helmet',
@@ -59,6 +68,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'A protective and comfortable helmet for skiing, suitable for all genders.',
                 'image_path' => 'images/product-images/skihelmet.jpg',
                 'stock' => 10,
+                'tag' => $clothesTag,
             ],
             [
                 'name' => 'Snowboard(155cm)',
@@ -66,6 +76,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'A versatile 155cm snowboard suitable for all skill levels.',
                 'image_path' => 'images/product-images/snowboard.jpg',
                 'stock' => 10,
+                'tag' => $snowboardsTag,
             ],
             [
                 'name' => 'Ski(178cm) and Pole Set',
@@ -73,6 +84,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'A comprehensive set including 178cm skis and poles, designed for both men and women.',
                 'image_path' => 'images/product-images/pairofskiandpoleset.jpg',
                 'stock' => 10,
+                'tag' => $skiTag,
             ],
             [
                 'name' => 'Ski Poles',
@@ -80,6 +92,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Durable and adjustable ski poles suitable for all genders.',
                 'image_path' => 'images/product-images/skipoles.jpg',
                 'stock' => 10,
+                'tag' => $skiTag,
             ],
             [
                 'name' => 'Unisex Ski Gloves',
@@ -87,12 +100,23 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Comfortable and warm ski gloves designed for both men and women.',
                 'image_path' => 'images/product-images/skigloves.jpg',
                 'stock' => 10,
+                'tag' => $clothesTag,
             ],
         ];
 
         foreach ($productsData as $productData) {
+            $tag = $productData['tag'];
+            unset($productData['tag']); // Remove the tag from the product data
+    
             $product = Product::updateOrCreate($productData);
-            $product->tags()->attach($tags->random(rand(1, 5))->pluck('id'));
+    
+            // Associate the product with its intended tag
+            $product->tags()->sync([$tag->id]);
+                $product = Product::updateOrCreate($productData);
+                $product->tags()->attach($tags->random(rand(1, 5))->pluck('id'));
+            }
         }
-    }
+
+
+
 }

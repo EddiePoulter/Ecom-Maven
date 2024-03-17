@@ -12,9 +12,42 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(); // Paginate all available products
-        $tags = Tag::all(); // Fetch all tags from the database
+        $tags = Tag::whereIn('name', ['All-Mountain', 'Freeride', 'Park & Pipe', 'Big Mountain', 'Avalanche Safety'])->get();
         return view('products', compact('products', 'tags'));
     }
+
+
+public function showSkiProducts()
+{
+    // Fetch all products related to the Ski tag
+    $skiTag = Tag::where('name', 'Ski')->first();
+    $products = $skiTag->products()->paginate(15); // Use the name $products
+    $tags = Tag::all()->unique(); // Fetch all unique tags
+    
+    return view('products', compact('products', 'tags')); // Pass the products and tags to the view
+}
+
+public function showClothesProducts()
+{
+    // Fetch all products related to the Clothes tag
+    $clothesTag = Tag::where('name', 'Clothes')->first();
+    $products = $clothesTag->products()->paginate(15); // Use the name $products
+    $tags = Tag::all()->unique(); // Fetch all unique tags
+    
+    return view('products', compact('products', 'tags')); // Pass the products and tags to the view
+}
+
+public function showSnowboardsProducts()
+{
+    // Fetch all products related to the Snowboards tag
+    $snowboardsTag = Tag::where('name', 'Snowboards')->first();
+    $products = $snowboardsTag->products()->paginate(15); // Use the name $products
+    $tags = Tag::all()->unique(); // Fetch all unique tags
+
+    return view('products', compact('products', 'tags')); // Pass the products and tags to the view
+
+} 
+
 
     public function productCart()
     {
@@ -179,6 +212,7 @@ class ProductController extends Controller
     
         // Pass both products and tags to the view
         return view('products', compact('products', 'tags'));
+        
     }
 }
 

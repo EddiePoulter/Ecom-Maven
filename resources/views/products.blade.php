@@ -90,7 +90,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            {{ $products->links() }} <!-- Display pagination links -->
+                                {{ $products->links() }}
                         </div>
                     </div>
                 </div>
@@ -98,6 +98,8 @@
         </div>
     </div>
 </div>
+
+
 
 <footer class="text-muted text-center">
   <div class="container">

@@ -40,6 +40,12 @@ Route::post('/basket/decrease-quantity/{id}', [ProductController::class, 'remove
 //Route::post('/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart');
 Route::match(['get', 'post'], '/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart'); // updated route now allows both GET and POST requests 
 
+Route::get('/shop-by-category/ski', [ProductController::class, 'showSkiProducts'])->name('shop.by.category.ski');
+Route::get('/shop-by-category/clothes', [ProductController::class, 'showClothesProducts'])->name('shop.by.category.clothes');
+Route::get('/shop-by-category/snowboards', [ProductController::class, 'showSnowboardsProducts'])->name('shop.by.category.snowboards');
+Route::get('/products/filterByTags', 'ProductController@filterByTags')->name('products.filterByTags');
+
+
 Route::get("/contact/", function () {
     return view("contact");
 })->name('contact');
