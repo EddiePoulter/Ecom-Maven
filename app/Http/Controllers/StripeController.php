@@ -12,9 +12,9 @@ class StripeController extends Controller
     {
         //$user         = auth()->user();
         $productItems = [];
-
+    
         \Stripe\Stripe::setApiKey('sk_test_51OlDB0BCmdpRBd7a55nAHE3fbKKBlPkANzeTJ6NyDWVc9Cx6W6iuVkAVisHkScSpqWbz4dhdRqLKqwGn0TOyk36l00wrK6Pjgx');
-
+    
         if (session()->has('cart')) {
             foreach (session('cart') as $id => $details) {
                 // Check if all necessary keys exist
@@ -22,10 +22,10 @@ class StripeController extends Controller
                     $product_name = $details['name'];
                     $total = $details['price'];
                     $quantity = $details['quantity'];
-
+    
                     $two0 = "00";
                     $unit_amount = $total . $two0;
-
+    
                     $productItems[] = [
                         'price_data' => [
                             'product_data' => [
@@ -43,14 +43,15 @@ class StripeController extends Controller
                     continue;
                 }
             }
-
+    
             if (empty($productItems)) {
                 // If $productItems is empty, handle the case accordingly
-                return redirect()->route('checkout.product')->with('error', 'There are no items in your cart.');
+                // Redirect back to the cart page with an error message
+                return redirect()->route('cart')->with('error', 'Your cart is empty.');
             }
-
+    
             $checkoutSession = \Stripe\Checkout\Session::create([
-                'line_items'            => [$productItems],
+                'line_items'            => $productItems,
                 'mode'                  => 'payment',
                 'allow_promotion_codes' => true,
                 'metadata'              => [
@@ -60,13 +61,14 @@ class StripeController extends Controller
                 'success_url' => route('success'),
                 'cancel_url'  => route('cancel'),
             ]);
-
+    
             return redirect()->away($checkoutSession->url);
         } else {
             // Handle case where 'cart' session variable is not set or empty
-            return redirect('checkout')->with('error', 'Your cart is empty.');
+            // Redirect back to the cart page with an error message
+            return redirect()->route('cart')->with('error', 'Your cart is empty.');
         }
-    }
+    }    
 
     public function success()
     {

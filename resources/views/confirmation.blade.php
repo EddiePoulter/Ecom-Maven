@@ -74,8 +74,10 @@
             border-bottom: none;
         }
     </style>
+    @include('css')
 </head>
 <body>
+    @include('nav')
     <div class="confirmation">
         <h1>Thank you for your order!</h1>
 
@@ -98,5 +100,6 @@
 
         <a href="{{ route('products') }}" class="button">Continue Shopping</a>
     </div>
+    @include('footer')
 </body>
 </html>

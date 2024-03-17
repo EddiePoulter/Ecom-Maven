@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <link rel="icon" href="{{ asset('/images/Icon.png') }}" type="image/x-icon">
     <meta charset="UTF-8">
@@ -21,15 +20,15 @@
 <body>
     @include('nav')
     <div class="container">
-            @php 
-                $total = 0; 
-                $counter = 0;
-            @endphp
+        @php 
+        $total = 0; 
+        $counter = 0;
+        @endphp
         <main>
             <div class="cart-container shadow p-3 mb-5 bg-white rounded d-flex flex-column justify-content-between ">
                 <div class="cart-title-wrapper">
                     <h1 class="mb-0 ">Shopping Cart</h1>
-                    
+
                     <h6 class="mb-0 fw-bold" id="cart-counter">{{$counter}} items</h6>
                 </div>
 
@@ -37,49 +36,48 @@
                     <table id="cart" class="table">
                         <tbody>
                             @if(session('cart'))
-                                @foreach(session('cart') as $id => $details)
-                                    <tr rowId="{{ $id }}" class="product-row" >
-                                        <td data-th="image" class="product-image centered-cell py-4">
-                                            <img src="{{ asset($details['image_path']) }}" alt="{{ $details['name'] }}">
-                                        </td>
-                                        
-                                        <td class="centered-cell" data-th="Product">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <h4 class="nomargin mb-0">{{ $details['name'] }}</h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="centered-cell">
-                                            <button class="btn btn-link px-2"
-                                                onclick="decreaseQuantity( {{ $id }} , {{ $details['quantity'] }}, event )">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                            
-                                            <span class="form-control">{{ $details['quantity'] }}</span>
+                            @foreach(session('cart') as $id => $details)
+                            <tr rowId="{{ $id }}" class="product-row">
+                                <td data-th="image" class="product-image centered-cell py-4">
+                                    <img src="{{ asset($details['image_path']) }}" alt="{{ $details['name'] }}">
+                                </td>
 
-                                            <button class="btn btn-link px-2"
-                                                onclick="increaseQuantity({{ $id }})">
-                                                    <i class="fas fa-plus"></i>
-                                            </button>
-                                        </td>
-                                        <td class="centered-cell fw-bold" data-th="Price">£ {{ $details['price'] }}</td>
-                                        <td class="centered-cell actions col-md-1 col-lg-1 col-xl-1 text-end">
-                                            <a class="text-muted delete-product"><i class="fas fa-times"></i></a>
-                                        </td>
-                                    </tr>
-                                    @php 
-                                        $total += $details['price'] * $details['quantity']; 
-                                        $counter += $details['quantity'];                                
-                                    @endphp
-                                @endforeach
-                                @endif
-                            </tbody>
+                                <td class="centered-cell" data-th="Product">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4 class="nomargin mb-0">{{ $details['name'] }}</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="centered-cell">
+                                    <button class="btn btn-link px-2"
+                                        onclick="decreaseQuantity( {{ $id }} , {{ $details['quantity'] }}, event )">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+
+                                    <span class="form-control">{{ $details['quantity'] }}</span>
+
+                                    <button class="btn btn-link px-2"
+                                        onclick="increaseQuantity({{ $id }})">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </td>
+                                <td class="centered-cell fw-bold" data-th="Price">£ {{ $details['price'] }}</td>
+                                <td class="centered-cell actions col-md-1 col-lg-1 col-xl-1 text-end">
+                                    <a class="text-muted delete-product"><i class="fas fa-times"></i></a>
+                                </td>
+                            </tr>
+                            @php 
+                            $total += $details['price'] * $details['quantity']; 
+                            $counter += $details['quantity'];                                
+                            @endphp
+                            @endforeach
+                            @endif
+                        </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="5" class="text-right">
                                     <strong>Total: £{{ $total }}</strong>
-
                                 </td>
                             </tr>
                         </tfoot>
@@ -91,7 +89,7 @@
                             <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop
                         </a>
                     </h6>
-                    
+
                     <h6 class="mb-0">
                         <form id="checkoutForm" action="{{ route('session') }}" method="POST">
                             @csrf
@@ -108,7 +106,7 @@
 
     <footer class="text-muted text-center">
         <div class="position-fixed bottom-0 end-0 me-2 shadow p-3 mb-5 bg-white rounded">
-                <a href="#"><i class="fas fa-arrow-up"></i></a>
+            <a href="#"><i class="fas fa-arrow-up"></i></a>
         </div>
         @include('footer')
     </footer>
@@ -119,13 +117,18 @@
             document.getElementById("checkoutForm").submit();
         }
 
-        // UPdate the Counter
+        // Update the Counter
         var counter = {{ $counter }};
-        if(counter == 1){
+        if (counter == 1) {
             document.getElementById('cart-counter').textContent = counter + ' item';
         } else {
             document.getElementById('cart-counter').textContent = counter + ' items';
         }
+
+        // Check for empty cart and display error message as popup
+        @if(session('error'))
+        alert("{{ session('error') }}");
+        @endif
 
         $(".edit-cart-info").change(function (e) {
             e.preventDefault();
@@ -167,7 +170,7 @@
         function decreaseQuantity(product_id, product_quantity, e) {
             console.log(product_id);
             console.log(product_quantity);
-            if(product_quantity >= 2){
+            if (product_quantity >= 2) {
 
                 $.ajax({
                     url: '/basket/decrease-quantity/' + product_id,
@@ -175,13 +178,13 @@
                     data: {
                         _token: '{{ csrf_token() }}'
                     },
-                    success: function(response) {
+                    success: function (response) {
                         // Handle success response if needed
                         console.log('Quantity decreased successfully');
                         // Reload the page or update the cart display
                         location.reload(); // For example, reload the page
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         // Handle error response if needed
                         console.error('Error decreasing quantity:', error);
                     }
@@ -210,7 +213,7 @@
                     });
                 }
             }
-            
+
         }
 
         function increaseQuantity(product_id) {
@@ -220,13 +223,13 @@
                 data: {
                     _token: '{{ csrf_token() }}'
                 },
-                success: function(response) {
+                success: function (response) {
                     // Handle success response if needed
                     console.log('Quantity increased successfully');
                     // Reload the page or update the cart display
                     location.reload(); // For example, reload the page
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     // Handle error response if needed
                     console.error('Error increasing quantity:', error);
                 }
@@ -236,6 +239,5 @@
     @endsection
     @endsection
 
-    
 </body>
 </html>
