@@ -181,38 +181,39 @@ public function showSnowboardsProducts()
         // Create a new blade file to display search results.
     }
     // Assuming you have a method in your controller for displaying products
+   
+    
     public function showProducts(Request $request)
-    {
-        // Fetch all products initially
-        $products = Product::query();
-    
-        // Apply filters if provided
-        if ($request->has('min_price') && $request->has('max_price')) {
-            $products->whereBetween('price', [$request->min_price, $request->max_price]);
-        }
-    
-        if ($request->has('category')) {
-            $products->where('category', $request->category);
-        }
-    
-        // Check if tags are selected
-        $selectedTags = $request->input('tags');
-        if ($selectedTags) {
-            $products->whereHas('tags', function ($query) use ($selectedTags) {
-                // Assuming the pivot table name is "product_tag"
-                $query->whereIn('tag_id', $selectedTags);
-            });
-        }
-    
-        // Fetch filtered products
-        $products = $products->paginate(15); // Adjust pagination as per your requirement
-    
-        // Fetch all tags to display in the filter form
-        $tags = Tag::all();
-    
-        // Pass both products and tags to the view
-        return view('products', compact('products', 'tags'));
-        
+{
+    $products = Product::query();
+
+    if ($request->has('min_price') && $request->has('max_price')) {
+        $products->whereBetween('price', [$request->min_price, $request->max_price]);
     }
+
+    if ($request->has('category')) {
+        $products->where('category', $request->category);
+    }
+
+    // Check if tags are selected
+    $selectedTags = $request->input('tags');
+    if ($selectedTags) {
+        $products->whereHas('tags', function ($query) use ($selectedTags) {
+            $query->whereIn('tag_id', $selectedTags);
+        });
+    }
+
+    // Fetch filtered products
+    $products = $products->paginate(15); // Adjust pagination as per your requirement
+
+    // Fetch all tags to display in the filter form
+    $tags = Tag::all();
+
+    // Pass both products and tags to the view
+    return view('products', compact('products', 'tags'));
+}
+
+    
+
 }
 

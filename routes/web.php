@@ -154,3 +154,4 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('/products', [ProductController::class, 'showProducts'])->name('products');
 Route::get('/products/filter', [ProductController::class, 'showProducts'])->name('products.filter');
+

@@ -99,8 +99,6 @@
     </div>
 </div>
 
-
-
 <footer class="text-muted text-center">
   <div class="container">
     <p class="float-right">
@@ -110,6 +108,7 @@
   @include('footer')
 </footer>
 
-@endsection
 </body>
 </html>
+
+@endsection
