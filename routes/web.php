@@ -56,12 +56,14 @@ Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get("/login/", function () {
     return view("login");
 })->name('login');
-Route::post("/signin", [UserController::class, "login"]);
+//Route::post("/signin", [UserController::class, "login"]);
+Route::post("/signin", [UserController::class, "login"])->name('signin');
 
 Route::get("/logout/", [UserController::class, "logout"])->name('logout');
 
 Route::get("/signup/", [UserController::class, "signup_page"])->name('signup');
-Route::post("/register", [UserController::class, "create_user"]);
+//Route::post("/register", [UserController::class, "create_user"]);
+Route::post("/register", [UserController::class, "create_user"])->name('register');
 
 Route::get('/email/verify', function () {
     return view('verify-email');
