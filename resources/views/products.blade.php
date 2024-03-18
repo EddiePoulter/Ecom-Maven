@@ -14,6 +14,13 @@
     <!---Bootstrap CSS--->
     <title>Products</title>
     @include('css')
+    <style>
+svg.w-5.h-5 {
+    width: 30px; /* Adjust this value to change the width of the arrow */
+    height: 30px; /* Adjust this value to change the height of the arrow */
+}
+
+    </style>
 </head>
 <body>
   @include('nav')
