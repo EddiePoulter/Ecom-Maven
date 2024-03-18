@@ -24,13 +24,15 @@ class ProductsTableSeeder extends Seeder
         $tags = Tag::all();
 
 
-        if ($tags->isEmpty()) {
-            $tags = collect(['All-Mountain', 'Freeride', 'Park & Pipe', 'Big Mountain', 'Avalanche Safety'])->map(function ($tagName) {
-                return Tag::firstOrCreate(['name' => $tagName]);
-            });
-        }
-    
+        $filterTags = collect(['All-Mountain', 'Freeride', 'Park & Pipe', 'Big Mountain', 'Avalanche Safety'])->map(function ($tagName) {
+            return Tag::firstOrCreate(['name' => $tagName]);
+        });
 
+       // Create a counter for each filter tag and convert it to an array
+        $filterTagCounters = $filterTags->mapWithKeys(function ($tag) {
+        return [$tag->id => 0];
+        })->toArray();
+    
         // Define the products
         $productsData = [
             [
@@ -274,21 +276,30 @@ class ProductsTableSeeder extends Seeder
         foreach ($productsData as $productData) {
             $tagName = $productData['tag']->name; // Get the tag name
             unset($productData['tag']); // Remove the tag from the product data
-        
+
+            // Define the conditions to find the product
+            $conditions = ['name' => $productData['name']];
+
             // Create or update the product
-            $product = Product::updateOrCreate($productData);
-        
+            $product = Product::updateOrCreate($conditions, $productData);
+
             // Find the tag by its name
             $tag = Tag::where('name', $tagName)->first();
-        
+
             // Associate the product with the tag
             if ($tag) {
-                $product->tags()->sync([$tag->id]);
+                $product->tags()->syncWithoutDetaching([$tag->id]);
             } else {
                 // Handle the case where the tag is not found
                 // You might want to log an error or perform some other action
             }
+
+            // Attach a random filter tag to the product
+            $randomTag = $filterTags->random();
+            if ($filterTagCounters[$randomTag->id] < 6) { // Change 6 to the maximum number of products per tag
+                $product->tags()->syncWithoutDetaching([$randomTag->id]);
+                $filterTagCounters[$randomTag->id]++;
+            }
         }
-        
-}
-}
+    }
+} 

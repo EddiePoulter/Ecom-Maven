@@ -63,10 +63,12 @@ svg.w-5.h-5 {
                 </form>
                 <form class="uniqueForm" action="{{ route('products.filter') }}" method="GET">
                     @forelse($tags as $tag)
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" name="tags[]" value="{{ $tag->id }}" class="checkbox">
-                            <label>{{ $tag->name }}</label>
-                        </div>
+                        @if(in_array($tag->name, ['All-Mountain', 'Freeride', 'Park & Pipe', 'Big Mountain', 'Avalanche Safety']))
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" name="tags[]" value="{{ $tag->id }}" class="checkbox">
+                                <label>{{ $tag->name }}</label>
+                            </div>
+                        @endif
                     @empty
                         No tags available.
                     @endforelse
