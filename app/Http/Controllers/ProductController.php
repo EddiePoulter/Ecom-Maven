@@ -48,6 +48,25 @@ public function showSnowboardsProducts()
 
 } 
 
+public function showEquipmentProducts()
+{
+    // Fetch all products related to the Equipment tag
+    $equipmentTag = Tag::where('name', 'Equipment')->first();
+    $products = $equipmentTag->products()->paginate(15);
+    $tags = Tag::all()->unique();
+
+    return view('products', compact('products', 'tags'));
+}
+
+public function showAccessoriesProducts()
+{
+    // Fetch all products related to the Accessories tag
+    $accessoriesTag = Tag::where('name', 'Accessories')->first();
+    $products = $accessoriesTag->products()->paginate(15);
+    $tags = Tag::all()->unique();
+
+    return view('products', compact('products', 'tags'));
+}
 
     public function productCart()
     {

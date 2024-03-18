@@ -65,6 +65,8 @@
                         <li><a class="dropdown-item" href="{{ route('shop.by.category.ski') }}">Skis</a></li>
                         <li><a class="dropdown-item" href="{{ route('shop.by.category.clothes') }}">Clothes</a></li>
                         <li><a class="dropdown-item" href="{{ route('shop.by.category.snowboards') }}">Snowboards</a></li>
+                        <li><a class="dropdown-item" href="{{ route('shop.by.category.equipment') }}">Equipment</a></li>
+                        <li><a class="dropdown-item" href="{{ route('shop.by.category.accessories') }}">Accessories</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

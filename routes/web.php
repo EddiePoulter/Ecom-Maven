@@ -43,6 +43,9 @@ Route::match(['get', 'post'], '/basket/increase-quantity/{id}', [ProductControll
 Route::get('/shop-by-category/ski', [ProductController::class, 'showSkiProducts'])->name('shop.by.category.ski');
 Route::get('/shop-by-category/clothes', [ProductController::class, 'showClothesProducts'])->name('shop.by.category.clothes');
 Route::get('/shop-by-category/snowboards', [ProductController::class, 'showSnowboardsProducts'])->name('shop.by.category.snowboards');
+Route::get('/shop-by-category/equipment', [ProductController::class, 'showEquipmentProducts'])->name('shop.by.category.equipment');
+Route::get('/shop-by-category/accessories', [ProductController::class, 'showAccessoriesProducts'])->name('shop.by.category.accessories');
+
 Route::get('/products/filterByTags', 'ProductController@filterByTags')->name('products.filterByTags');
 
 
