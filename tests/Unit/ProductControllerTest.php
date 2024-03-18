@@ -159,37 +159,37 @@ class ProductControllerTest extends TestCase
     }
 
     public function testCheckout()
-{
-    $user = User::factory()->create();
-    Auth::login($user);
-
-    $product = Product::factory()->create();
-    $cart = [
-        $product->id => [
-            'id' => $product->id,
-            'name' => $product->name,
-            'quantity' => 1,
-            'price' => $product->price,
-            'description' => $product->description,
-            'image_path' => $product->image_path,
-        ],
-    ];
-    session(['cart' => $cart]);
-
-    $response = $this->get(route('checkout.product'));
-
-    $response->assertStatus(200);
-    // Convert $product to a collection
-    $response->assertViewHas('products', Product::whereIn('id', collect($cart)->pluck('id'))->get());
-    $response->assertViewHas('cart', $cart);
-    $nameParts = explode(' ', $user->name);
-    $response->assertViewHas('first_name', $nameParts[0]);
-    $response->assertViewHas('last_name', $nameParts[1] ?? '');
-    $response->assertViewHas('email', $user->email);
-    $response->assertViewHas('phone_num', $user->phone_number);
-    // Add assertions for other view data as needed
-}
-
+    {
+        $user = User::factory()->create();
+        Auth::login($user);
+    
+        $product = Product::factory()->create();
+        $cart = [
+            $product->id => [
+                'id' => $product->id,
+                'name' => $product->name,
+                'quantity' => 1,
+                'price' => $product->price,
+                'description' => $product->description,
+                'image_path' => $product->image_path,
+            ],
+        ];
+        session(['cart' => $cart]);
+    
+        $response = $this->get(route('checkout.product'));
+    
+        $response->assertStatus(200);
+        // Convert $product to a collection
+        $response->assertViewHas('products', Product::whereIn('id', collect($cart)->pluck('id'))->get());
+        $response->assertViewHas('cart', $cart);
+        $nameParts = explode(' ', $user->name, 2);
+        $response->assertViewHas('first_name', $nameParts[0]);
+        $response->assertViewHas('last_name', $nameParts[1] ?? '');
+        $response->assertViewHas('email', $user->email);
+        $response->assertViewHas('phone_num', $user->phone_number);
+        // Add assertions for other view data as needed
+    }
+    
     public function testSearch()
 {
     $product1 = Product::factory()->create([
