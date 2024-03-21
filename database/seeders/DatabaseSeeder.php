@@ -12,12 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(ProductsTableSeeder::class);
+        $this->call([
+            TagsTableSeeder::class,  // This should run first
+            ProductsTableSeeder::class,  // This should run second
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
-        // ]);
+         ]);
     }
 }

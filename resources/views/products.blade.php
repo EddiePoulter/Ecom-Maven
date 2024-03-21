@@ -8,19 +8,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="{{ asset('/images/Icon.png') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/products.css') }}">
+    <!---Bootstrap CSS--->
     <title>Products</title>
     @include('css')
+    <style>
+svg.w-5.h-5 {
+    width: 30px; /* Adjust this value to change the width of the arrow */
+    height: 30px; /* Adjust this value to change the height of the arrow */
+}
+
+    </style>
 </head>
 <body>
   @include('nav')
-
-
-<link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-<link href="products.css" rel="stylesheet">
 
 <header>
 <section class="jumbotron text-center">
@@ -33,7 +36,7 @@
     <div class="row">
         <div class="col-md-3 bg-light">
             <div class="products-filter py-5">
-                <form action="{{ route('products.filter') }}" method="GET">
+                <form class="filterForm" action="{{ route('products.filter') }}" method="GET">
                     <div class="form-group">
                         <label for="price">Price Range:</label>
                         <input type="number" class="form-control" id="min_price" name="min_price" placeholder="Min Price">
@@ -57,6 +60,19 @@
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Apply Filters</button>
+                </form>
+                <form class="uniqueForm" action="{{ route('products.filter') }}" method="GET">
+                    @forelse($tags as $tag)
+                        @if(in_array($tag->name, ['All-Mountain', 'Freeride', 'Park & Pipe', 'Big Mountain', 'Avalanche Safety']))
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" name="tags[]" value="{{ $tag->id }}" class="checkbox">
+                                <label>{{ $tag->name }}</label>
+                            </div>
+                        @endif
+                    @empty
+                        No tags available.
+                    @endforelse
+                    <button type="submit">Filter</button>
                 </form>
             </div>
         </div>
@@ -83,7 +99,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            {{ $products->links() }} 
+                                {{ $products->links() }}
                         </div>
                     </div>
                 </div>
@@ -101,6 +117,7 @@
   @include('footer')
 </footer>
 
-@endsection
 </body>
 </html>
+
+@endsection

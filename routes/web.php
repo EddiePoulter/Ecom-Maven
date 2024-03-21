@@ -40,7 +40,16 @@ Route::get("/basket/", function () {
 // Basket Functionalities
 Route::post('/basket/decrease-quantity/{id}', [ProductController::class, 'removeProductFromCart'])->name('removeProduct.from.cart');
 //Route::post('/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart');
-Route::match(['get', 'post'], '/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart'); // updated route now allows both GET and POST requests 
+Route::match(['get', 'post'], '/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart'); // updated route now allows both GET and POST requests
+
+Route::get('/shop-by-category/ski', [ProductController::class, 'showSkiProducts'])->name('shop.by.category.ski');
+Route::get('/shop-by-category/clothes', [ProductController::class, 'showClothesProducts'])->name('shop.by.category.clothes');
+Route::get('/shop-by-category/snowboards', [ProductController::class, 'showSnowboardsProducts'])->name('shop.by.category.snowboards');
+Route::get('/shop-by-category/equipment', [ProductController::class, 'showEquipmentProducts'])->name('shop.by.category.equipment');
+Route::get('/shop-by-category/accessories', [ProductController::class, 'showAccessoriesProducts'])->name('shop.by.category.accessories');
+
+Route::get('/products/filterByTags', 'ProductController@filterByTags')->name('products.filterByTags');
+
 
 Route::get("/contact/", function () {
     return view("contact");
@@ -52,12 +61,14 @@ Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get("/login/", function () {
     return view("login");
 })->name('login');
-Route::post("/signin", [UserController::class, "login"]);
+//Route::post("/signin", [UserController::class, "login"]);
+Route::post("/signin", [UserController::class, "login"])->name('signin');
 
 Route::get("/logout/", [UserController::class, "logout"])->name('logout');
 
 Route::get("/signup/", [UserController::class, "signup_page"])->name('signup');
-Route::post("/register", [UserController::class, "create_user"]);
+//Route::post("/register", [UserController::class, "create_user"]);
+Route::post("/register", [UserController::class, "create_user"])->name('register');
 
 Route::get('/email/verify', function () {
     return view('verify-email');
@@ -150,7 +161,6 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('/products', [ProductController::class, 'showProducts'])->name('products');
 Route::get('/products/filter', [ProductController::class, 'showProducts'])->name('products.filter');
-
 
 route::get('/redirect',[HomeController::class,'redirect']);
 

@@ -47,15 +47,27 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-           <!-- To implement the functionality edit the form Action & Method -->
-           <form class="d-flex" action="{{ route('search') }}" method="GET">
+            <form class="d-flex" action="{{ route('search') }}" method="GET">
                 <input class="form-control me-2 searchNav" type="search" placeholder="Search a product, brand,..."
-                    aria-label="Search" style="width: 300px;" name="search_query"> <!-- Adjust width here + name="search_query" -->
+                    aria-label="Search" style="width: 300px;" name="search_query">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>     
+            </form>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('products') }}">Products</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop by Category
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('shop.by.category.ski') }}">Skis</a></li>
+                        <li><a class="dropdown-item" href="{{ route('shop.by.category.clothes') }}">Clothes</a></li>
+                        <li><a class="dropdown-item" href="{{ route('shop.by.category.snowboards') }}">Snowboards</a></li>
+                        <li><a class="dropdown-item" href="{{ route('shop.by.category.equipment') }}">Equipment</a></li>
+                        <li><a class="dropdown-item" href="{{ route('shop.by.category.accessories') }}">Accessories</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
