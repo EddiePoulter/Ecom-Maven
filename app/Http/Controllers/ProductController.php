@@ -5,14 +5,68 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tag;
 
 class ProductController extends Controller
 {
     public function index()
     {
         $products = Product::paginate(); // Paginate all available products
-        return view('products', compact('products'));
+        $tags = Tag::whereIn('name', ['All-Mountain', 'Freeride', 'Park & Pipe', 'Big Mountain', 'Avalanche Safety'])->get();
+        return view('products', compact('products', 'tags'));
     }
+
+
+public function showSkiProducts()
+{
+    // Fetch all products related to the Ski tag
+    $skiTag = Tag::where('name', 'Ski')->first();
+    $products = $skiTag->products()->paginate(15); // Use the name $products
+    $tags = Tag::all()->unique(); // Fetch all unique tags
+    
+    return view('products', compact('products', 'tags')); // Pass the products and tags to the view
+}
+
+public function showClothesProducts()
+{
+    // Fetch all products related to the Clothes tag
+    $clothesTag = Tag::where('name', 'Clothes')->first();
+    $products = $clothesTag->products()->paginate(15); // Use the name $products
+    $tags = Tag::all()->unique(); // Fetch all unique tags
+    
+    return view('products', compact('products', 'tags')); // Pass the products and tags to the view
+}
+
+public function showSnowboardsProducts()
+{
+    // Fetch all products related to the Snowboards tag
+    $snowboardsTag = Tag::where('name', 'Snowboards')->first();
+    $products = $snowboardsTag->products()->paginate(15); // Use the name $products
+    $tags = Tag::all()->unique(); // Fetch all unique tags
+
+    return view('products', compact('products', 'tags')); // Pass the products and tags to the view
+
+} 
+
+public function showEquipmentProducts()
+{
+    // Fetch all products related to the Equipment tag
+    $equipmentTag = Tag::where('name', 'Equipment')->first();
+    $products = $equipmentTag->products()->paginate(15);
+    $tags = Tag::all()->unique();
+
+    return view('products', compact('products', 'tags'));
+}
+
+public function showAccessoriesProducts()
+{
+    // Fetch all products related to the Accessories tag
+    $accessoriesTag = Tag::where('name', 'Accessories')->first();
+    $products = $accessoriesTag->products()->paginate(15);
+    $tags = Tag::all()->unique();
+
+    return view('products', compact('products', 'tags'));
+}
 
     public function productCart()
     {
@@ -59,16 +113,16 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product has been added to cart!');
     }
 
-    public function removeProductFromCart($id){
-        // Decrease Product Quantity
-        $product = Product::findOrFail($id);
-        $cart = session()->get('cart', []);
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']--;
-        }
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product has been removed from cart!');
+  public function removeProductFromCart($id){
+    // Decrease Product Quantity
+    $product = Product::findOrFail($id);
+    $cart = session()->get('cart', []);
+    if(isset($cart[$id])) {
+        $cart[$id]['quantity']--;
     }
+    session()->put('cart', $cart);
+    return redirect()->back()->with('success', 'Product has been removed from cart!');
+}
 
     public function updateCart(Request $request)
     {
@@ -146,28 +200,39 @@ class ProductController extends Controller
         // Create a new blade file to display search results.
     }
     // Assuming you have a method in your controller for displaying products
+   
+    
     public function showProducts(Request $request)
-    {
-        // Fetch all products initially
-        $products = Product::query();
-    
-        // Apply filters if provided
-        if ($request->has('min_price') && $request->has('max_price')) {
-            $products->whereBetween('price', [$request->min_price, $request->max_price]);
-        }
-    
-        if ($request->has('category')) {
-            $products->where('category', $request->category);
-        }
-    
-        // Fetch filtered products
-        $products = $products->paginate(12); // Adjust pagination as per your requirement
-    
-        return view('products', ['products' => $products]);
+{
+    $products = Product::query();
+
+    if ($request->has('min_price') && $request->has('max_price')) {
+        $products->whereBetween('price', [$request->min_price, $request->max_price]);
     }
+
+    if ($request->has('category')) {
+        $products->where('category', $request->category);
+    }
+
+    // Check if tags are selected
+    $selectedTags = $request->input('tags');
+    if ($selectedTags) {
+        $products->whereHas('tags', function ($query) use ($selectedTags) {
+            $query->whereIn('tag_id', $selectedTags);
+        });
+    }
+
+    // Fetch filtered products
+    $products = $products->paginate(15); // Adjust pagination as per your requirement
+
+    // Fetch all tags to display in the filter form
+    $tags = Tag::all();
+
+    // Pass both products and tags to the view
+    return view('products', compact('products', 'tags'));
+}
+
     
-
-
 
 }
 

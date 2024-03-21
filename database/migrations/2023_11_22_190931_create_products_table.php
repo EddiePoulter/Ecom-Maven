@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('quantity')->nullable();
             $table->string('discount_price')->nullable();
             $table->string("image_path")->nullable(); // New column for storing image path
+            $table->string("category")->nullable(); // New column for category
             $table->timestamps();
         });
     }
