@@ -15,14 +15,14 @@ Welcome to the Maven Ecommerce Project repository! This project aims to develop 
 
 - **Backend Framework:** Laravel
 - **Version Control:** Git
-- **Task Tracking Tool:** Trello <!-- (Board Link: [Trello Board](https://trello.com/invite/b/FMaPXgFd/ATTI66eb2bc0521d974355c579e818f28fd42454FB6C/e-commerce-maven-team-14)) -->
+- **Task Tracking Tool:** Trello <!-- (Board Link: Trello Board) -->
 
 ## Project Management
 
 - **Software Engineering Process:** Agile methodology.
 - **Task and Project Tracking:** Trello for comprehensive task management and progress tracking.
 
- ## Getting Started
+## Getting Started
 
 ### Installation
 
@@ -47,25 +47,72 @@ Welcome to the Maven Ecommerce Project repository! This project aims to develop 
 5. Create Database then migrate and seed
    ```sh
    php artisan migrate --seed
+   ```
 
 6. Linking Storage folder to public
    ```sh
    php artisan storage:link
    ```
-   
-8. Serve the application
+
+7. Serve the application
    ```sh
    php artisan serve
    ```
 
-Feel free to explore our Trello Board for detailed task breakdowns and ongoing progress. 
+## Running Tests
+
+Laravel is built with testing in mind. In fact, support for testing with PHPUnit is included out of the box, and a `phpunit.xml` file is already set up for your application.
+
+### Running all tests
+
+You may run all of the tests for your application using the `test` Artisan command.
+
+```sh
+php artisan test
+```
+
+### Running specific tests
+
+If you would like to only run tests in a particular file, you may provide the path to the test file to the `test` Artisan command.
+
+```sh
+php artisan test tests/Feature/ExampleTest.php
+```
+
+You may also only run the tests within a particular test group:
+
+```sh
+php artisan test --group=unit
+```
+
+This command will run only the tests that are part of the `unit` group.
+
+### Running Unit Tests
+
+Unit tests are typically run in isolation from your application and its dependencies. When running unit tests, Laravel won’t load your database or other services. Here’s how you can run them:
+
+```sh
+php artisan test --filter Unit
+```
+
+### Running Integration Tests
+
+Integration tests provide a way to test your application’s “integration” with its environment and third-party services. Here’s how you can run them:
+
+```sh
+php artisan test --filter Integration
+```
+
+Remember to replace `Unit` and `Integration` with the actual names of your test classes.
+
+For more information, please refer to the Laravel testing documentation.
 
 ## Contributing
 
-We welcome contributions! If you would like to contribute to the project, please follow our [Contribution Guidelines](CONTRIBUTING.md).
+We welcome contributions! If you would like to contribute to the project, please follow our Contribution Guidelines.
 
 ## License
 
-This project is licensed under the [License Name] - see the [LICENSE.md](LICENSE.md) file for details. -->
+This project is licensed under the [License Name] - see the LICENSE.md file for details. -->
 
 Happy coding!
