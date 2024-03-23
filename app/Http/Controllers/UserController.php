@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -151,5 +152,19 @@ class UserController extends Controller
         return $status === Password::PASSWORD_RESET
             ? back()->with(['status' => __($status), 'success' => 't'])
             : back()->withErrors(['email' => [__($status)]]);
+    }
+    public function myOrders() {
+        if (auth()->check()) {
+            // Get orders associated with the logged-in user, eager load order items and their associated products
+            $orders = Order::where('created_by', auth()->id())
+                        ->with('orderItems.product')
+                        ->get();
+            
+            // Pass the orders to the view
+            return view('myorders', ['orders' => $orders]);
+        } else {
+            // If the user is not authenticated, redirect them to the login page
+            return redirect()->route('login');
+        }
     }
 }

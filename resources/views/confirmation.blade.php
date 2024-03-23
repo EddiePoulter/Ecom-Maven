@@ -84,14 +84,14 @@
         <!-- Display the order details -->
         <h2>Order Details</h2>
         <!-- Loop through order details -->
-        @foreach ($orderDetails as $item)
+        @foreach ($order->orderItems as $item)
             <div class="item-img">
                 <div class="item-info">
-                    <p>Product: {{ $item['product'] }}</p>
-                    <p>Quantity: {{ $item['quantity'] }}</p>
-                    <p>Price: {{ $item['price'] }}</p>
+                    <p>Product: {{ $item->product->name }}</p>
+                    <p>Quantity: {{ $item->quantity }}</p>
+                    <p>Price: {{ $item->unit_price }}</p>
                 </div>
-                <img src="{{ asset($item['image']) }}" alt="{{ $item['product'] }}" class="checkout-img">
+                <img src="{{ asset($item->product->image_path) }}" alt="{{ $item->product->name }}" class="checkout-img">
             </div>
         @endforeach
         <!-- End loop -->

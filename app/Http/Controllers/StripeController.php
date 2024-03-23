@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use App\Models\Order;
+use App\Models\OrderItem;
 class StripeController extends Controller
 {
 
@@ -74,26 +75,43 @@ class StripeController extends Controller
     {
         // Get the cart from the session
         $cart = session()->get('cart', []);
+        
+        // Create a new order
+        $order = new Order();
+        $order->total_price = 0; // Initialize total price
+        $order->status = 'Pending';
+        // Associate the order with the logged-in user (if applicable)
+        if (auth()->check()) {
+            $order->created_by = auth()->id();
+            $order->updated_by = auth()->id();
+        }
+        $order->save();
     
-        // Get the product details for each item in the cart
-        $orderDetails = [];
+        // Process each item in the cart
         foreach ($cart as $productId => $details) {
             $product = Product::find($productId);
             if ($product) {
-                $orderDetails[] = [
-                    'product' => $product->name,
-                    'quantity' => $details['quantity'],
-                    'price' => $product->price,
-                    'image' => $product->image_path, // Add the product image
-                ];
+                // Create an order item for each product
+                $orderItem = new OrderItem();
+                $orderItem->order_id = $order->id;
+                $orderItem->product_id = $product->id;
+                $orderItem->quantity = $details['quantity'];
+                $orderItem->unit_price = $product->price;
+                $orderItem->save();
+    
+                // Update the total price of the order
+                $order->total_price += ($product->price * $details['quantity']);
             }
         }
+    
+        // Save the updated total price of the order
+        $order->save();
     
         // Clear the cart from the session
         session()->forget('cart');
     
         // Return the view and pass the order details to it
-        return view('confirmation', ['orderDetails' => $orderDetails]);
+        return view('confirmation', ['order' => $order]);
     }
 
     public function cancel()
