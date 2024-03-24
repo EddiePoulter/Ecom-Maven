@@ -82,12 +82,12 @@
                         <div class="div_design">
                             <label>Product Quantitiy:</label>
                             <input type="number" min="0" name="quantity" placeholder="Write a quantity" required=""
-                                value="{{$product->quantity}}">
+                                value="{{$product->stock}}">
                         </div>
 
                         <div class="div_design">
                             <label>Product Category:</label>
-                            <select name="category" required="">
+                            <select name="category" >
                                 <option value="{{$product->category}}" selected="">{{$product->category}}</option>
                                 @foreach($category as $category)
 

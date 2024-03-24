@@ -72,13 +72,13 @@
                         <th>Product Image</th>
                         <th>Edit</th>
                         <th>Delete</th>
-                       
+
                     </tr>
                     @foreach($product as $product)
                     <tr>
-                        <td>{{$product->title}}</td>
+                        <td>{{$product->name}}</td>
                         <td>{{$product->description}}</td>
-                        <td>{{$product->quantity}}</td>
+                        <td>{{$product->stock}}</td>
                         <td>{{$product->category}}</td>
                         <td>{{$product->price}}</td>
                         <td>{{$product->discount_price}}</td>
@@ -94,7 +94,7 @@
                         <td><a  onclick="return confirm('Are you sure you want to delete this?')" class="btn btn-danger" href="{{url('delete_product',$product->id)}}">Delete</a>
                     </td>
 
-                   
+
 
 
                     </tr>

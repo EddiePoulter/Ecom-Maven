@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,8 @@ class AdminController extends Controller
     {
         $data = Category::all();
 
-        return view('admin.category', compact('data'));
+        $name = Auth::user()->name;
+        return view('admin.category', compact('data', 'name'));
     }
 
     public function add_category(Request $request)
@@ -39,7 +41,8 @@ class AdminController extends Controller
     public function view_product()
     {
         $category=category::all();
-        return view('admin.product',compact('category'));
+        $name = Auth::user()->name;
+        return view('admin.product',compact('category', 'name'));
     }
 
     public function add_product(Request $request)
@@ -47,13 +50,13 @@ class AdminController extends Controller
 
         $product=new product;
 
-        $product->title=$request->title;
+        $product->name=$request->title;
 
         $product->description=$request->description;
 
         $product->price=$request->price;
 
-        $product->quantity=$request->quantity;
+        $product->stock=$request->quantity;
 
         $product->discount_price=$request->dis_price;
 
@@ -65,27 +68,28 @@ class AdminController extends Controller
 
         $request->image->move('product',$imagename);
 
-        $product->image=$imagename;
+        $product->image_path=$imagename;
 
 
         $product->save();
 
         return redirect()->back()->with('message','Product Added Succesfully');
 
-     
+
 
     }
 
     public function show_product()
     {
         $product=product::all();
-        return view('admin.show_product',compact('product'));
+        $name = Auth::user()->name;
+        return view('admin.show_product',compact('product', 'name'));
     }
 
     public function delete_product($id){
 
         $product=product::find($id);
-        $product->delete(); 
+        $product->delete();
         return redirect()->back()->with('message','Product deleted succesfully');
 
     }
@@ -95,8 +99,9 @@ class AdminController extends Controller
         $product=product::find(request()->id);
 
         $category=category::all();
+        $name = Auth::user()->name;
 
-        return view('admin.update_product',compact('product','category'));
+        return view('admin.update_product',compact('product','category', 'name'));
 
     }
 
@@ -104,14 +109,14 @@ class AdminController extends Controller
 
         $product=product::find($id);
 
-        
 
-        $product->title=$request->title;
+
+        $product->name=$request->title;
         $product->description=$request->description;
         $product->price=$request->price;
         $product->discount_price=$request->dis_price;
         $product->category=$request->category;
-        $product->quantity=$request->quantity;
+        $product->stock=$request->quantity;
         $image=$request->image;
 
         if($image){
@@ -119,20 +124,20 @@ class AdminController extends Controller
             $imagename=time().'.'.$image->getClientOriginalExtension();
 
             $request->image->move('product',$imagename);
-    
+
             $product->image=$imagename;
 
-            
+
         }
 
-      
+
 
 
         $product->save();
         return redirect()->back()->with('message','Product Updated Successfully');
 
 
-    } 
+    }
 
 
 

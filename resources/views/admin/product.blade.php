@@ -40,7 +40,7 @@
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
                     {{session()->get('message')}}
                 </div>
-                @endif 
+                @endif
 
 
                 <div class="div_center">
@@ -65,7 +65,7 @@
                         <div class="div_design">
                             <label>Discounted Price:</label>
                             <input type="Number" name="dis_price" placeholder="Write discounted price if applicable"
-                                required="">
+                                >
                         </div>
 
                         <div class="div_design">
@@ -75,14 +75,14 @@
 
                         <div class="div_design">
                             <label>Product Category:</label>
-                            <select name="category" required="">
+                            <select name="category">
                                 <option value="" selected="">Add a category here</option>
 
                                 @foreach($category as $category)
 
                                 <option value="{{$category->category_name}}">{{$category->category_name}}</option>
 
-                                @endforeach    
+                                @endforeach
 
                             </select>
                         </div>
