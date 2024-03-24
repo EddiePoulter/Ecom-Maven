@@ -73,22 +73,6 @@ You may run all of the tests for your application using the `test` Artisan comma
 php artisan test
 ```
 
-### Running specific tests
-
-If you would like to only run tests in a particular file, you may provide the path to the test file to the `test` Artisan command.
-
-```sh
-php artisan test tests/Feature/ExampleTest.php
-```
-
-You may also only run the tests within a particular test group:
-
-```sh
-php artisan test --group=unit
-```
-
-This command will run only the tests that are part of the `unit` group.
-
 ### Running Unit Tests
 
 Unit tests are typically run in isolation from your application and its dependencies. When running unit tests, Laravel won’t load your database or other services. Here’s how you can run them:
