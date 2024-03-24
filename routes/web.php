@@ -165,10 +165,8 @@ Route::get('/products/filter', [ProductController::class, 'showProducts'])->name
 // Define a route that return purchased products
 Route::get('/myorders', [UserController::class, 'myOrders'])->name('myorders');
 
-route::get('/redirect',[HomeController::class,'redirect']);
-route::get('/admin', function () {
-    return redirect()->intended("/redirect");
-});
+route::get('/redirect',[HomeController::class,'redirect'])->name("redirect");
+route::get('/admin', [HomeController::class, 'redirect']);
 
 route::get('/view_category',[AdminController::class,'view_category']);
 

@@ -53,6 +53,13 @@
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
             <ul class="navbar-nav">
+                @if(Auth::check())
+                    @if(Auth::user()->usertype == "1")
+                        <li class="nav-item">
+                            <a href="{{ route('redirect') }}" class="nav-link">Admin</a>
+                        </li>
+                    @endif
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('products') }}">Products</a>
                 </li>
