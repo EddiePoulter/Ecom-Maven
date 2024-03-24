@@ -53,7 +53,11 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('account');
+            if (Auth::user()->usertype == "1") {
+                return redirect()->intended('redirect');
+            } else {
+                return redirect()->intended('account');
+            }
         }
         return back()->withErrors([
             'email' => 'The provided credentials are incorrect',
@@ -159,7 +163,7 @@ class UserController extends Controller
             $orders = Order::where('created_by', auth()->id())
                         ->with('orderItems.product')
                         ->get();
-            
+
             // Pass the orders to the view
             return view('myorders', ['orders' => $orders]);
         } else {

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 use App\Models\Category;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use function Laravel\Prompts\alert;
 
 class AdminController extends Controller
 {
@@ -139,7 +142,35 @@ class AdminController extends Controller
 
     }
 
+    function view_orders() {
+        $name = Auth::user()->name;
+        $orders = Order::all();
+        return view('admin.orders', compact('name', 'orders'));
+    }
 
+    function reject_order(int $id) {
+        $order = Order::where('id', $id)->get()[0];
+        $order->status = "Rejected";
+        $order->save();
+        return redirect()->back();
+    }
 
+    function accept_order(int $id) {
+        $order = Order::where('id', $id)->get()[0];
+        $order->status = "Accepted";
+        $order->save();
+        $order_items = OrderItem::where('order_id', $id)->get();
+        $msgs = [];
+        foreach ($order_items as $item) {
+            $quantity = $item->quantity;
+            $product = Product::where('id', $item->product_id)->get()[0];
+            $product->stock -= $quantity;
+            if ($product->stock < 5) {
+                $msgs = ["less than 5 " . $product->name . " left"];
+            }
+            $product->save();
+        }
 
+        return redirect()->back()->with(['msgs' => $msgs]);
+    }
 }

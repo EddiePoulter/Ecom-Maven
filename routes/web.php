@@ -167,7 +167,7 @@ Route::get('/myorders', [UserController::class, 'myOrders'])->name('myorders');
 
 route::get('/redirect',[HomeController::class,'redirect']);
 route::get('/admin', function () {
-    return redirect()->to("/redirect");
+    return redirect()->intended("/redirect");
 });
 
 route::get('/view_category',[AdminController::class,'view_category']);
@@ -187,3 +187,7 @@ route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
 route::get('/update_product/{id}',[AdminController::class,'update_product']);
 
 route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
+
+route::get('orders', [AdminController::class, 'view_orders']);
+route::get('reject_order/{id}', [AdminController::class, 'reject_order']);
+route::get('accept_order/{id}', [AdminController::class, 'accept_order']);

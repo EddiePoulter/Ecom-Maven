@@ -80,7 +80,6 @@
                             <li><a href="{{ route('account') }}" class="dropdown-item">Manage Account</a></li>
                             <li><a href="{{ route('logout') }}" class="dropdown-item">Log Out</a></li>
                         @else
-                            <li><a href="{{ route('myorders') }}" class="dropdown-item">My Orders</a></li>
                             <li><a class="dropdown-item" href="{{ route('login') }}">Log In</a></li>
                             <li><a class="dropdown-item" href="{{ route('signup') }}">Sign Up</a> </li>
                         @endif
