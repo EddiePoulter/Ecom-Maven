@@ -42,23 +42,6 @@ svg.w-5.h-5 {
                         <input type="number" class="form-control" id="min_price" name="min_price" placeholder="Min Price">
                         <input type="number" class="form-control mt-2" id="max_price" name="max_price" placeholder="Max Price">
                     </div>
-                    <div class="form-group">
-                        <label for="category">Category:</label>
-                        <select class="form-control" id="category" name="category">
-                            <option value="">All</option>
-                            <option value="clothes">Clothes</option>
-                            <option value="equipment">Equipment</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="size">Size:</label>
-                        <select class="form-control" id="size" name="size">
-                            <option value="">All</option>
-                            <option value="small">Small</option>
-                            <option value="medium">Medium</option>
-                            <option value="large">Large</option>
-                        </select>
-                    </div>
                     <button type="submit" class="btn btn-primary">Apply Filters</button>
                 </form>
                 <form class="uniqueForm" action="{{ route('products.filter') }}" method="GET">
