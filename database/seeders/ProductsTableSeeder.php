@@ -19,8 +19,8 @@ class ProductsTableSeeder extends Seeder
         $clothesTag = Tag::firstOrCreate(['name' => 'Clothes']);
         $equipmentTag = Tag::firstOrCreate(['name' => 'Equipment']);
         $accessoriesTag = Tag::firstOrCreate(['name' => 'Accessories']);
-        
-    
+
+
         $tags = Tag::all();
 
 
@@ -32,7 +32,7 @@ class ProductsTableSeeder extends Seeder
         $filterTagCounters = $filterTags->mapWithKeys(function ($tag) {
         return [$tag->id => 0];
         })->toArray();
-    
+
         // Define the products
         $productsData = [
             [
@@ -146,7 +146,7 @@ class ProductsTableSeeder extends Seeder
                 'image_path' => 'images/product-images/skibinders.jpg',
                 'stock' => 10,
                 'tag' => $equipmentTag,
-            ],            
+            ],
             [
                 'name' => 'Ski(178cm)',
                 'price' => 94,
@@ -243,7 +243,7 @@ class ProductsTableSeeder extends Seeder
                 'stock' => 10,
                 'tag' => $clothesTag,
             ],
-            
+
             [
                 'name' => 'Ski Storage Rack',
                 'price' => 99,
@@ -271,7 +271,6 @@ class ProductsTableSeeder extends Seeder
         ];
 
         $tags = Tag::all(); // Fetch all tags
-
 
         foreach ($productsData as $productData) {
             $tagName = $productData['tag']->name; // Get the tag name
@@ -302,4 +301,4 @@ class ProductsTableSeeder extends Seeder
             }
         }
     }
-} 
+}

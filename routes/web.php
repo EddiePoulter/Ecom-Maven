@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ReviewController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +40,7 @@ Route::get("/basket/", function () {
 // Basket Functionalities
 Route::post('/basket/decrease-quantity/{id}', [ProductController::class, 'removeProductFromCart'])->name('removeProduct.from.cart');
 //Route::post('/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart');
-Route::match(['get', 'post'], '/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart'); // updated route now allows both GET and POST requests 
+Route::match(['get', 'post'], '/basket/increase-quantity/{id}', [ProductController::class, 'addProducttoCart'])->name('addProduct.to.cart'); // updated route now allows both GET and POST requests
 
 Route::get('/shop-by-category/ski', [ProductController::class, 'showSkiProducts'])->name('shop.by.category.ski');
 Route::get('/shop-by-category/clothes', [ProductController::class, 'showClothesProducts'])->name('shop.by.category.clothes');
@@ -162,3 +164,26 @@ Route::get('/products/filter', [ProductController::class, 'showProducts'])->name
 
 // Define a route that return purchased products
 Route::get('/myorders', [UserController::class, 'myOrders'])->name('myorders');
+
+route::get('/redirect',[HomeController::class,'redirect']);
+route::get('/admin', function () {
+    return redirect()->to("/redirect");
+});
+
+route::get('/view_category',[AdminController::class,'view_category']);
+
+route::post('/add_category',[AdminController::class,'add_category']);
+
+route::get('/delete_category/{id}',[AdminController::class,'delete_category']);
+
+route::get('/view_product',[AdminController::class,'view_product']);
+
+route::POST('/add_product',[AdminController::class,'add_product']);
+
+route::get('/show_product',[AdminController::class,'show_product']);
+
+route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
+
+route::get('/update_product/{id}',[AdminController::class,'update_product']);
+
+route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
