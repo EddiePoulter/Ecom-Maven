@@ -9,7 +9,7 @@
     <link rel="icon" href="{{ asset('/images/Icon.png') }}">
     <style>
 
-.feature {
+        .feature {
             border: 1px solid #ccc;
             padding: 20px;
             margin: 10px;
@@ -120,8 +120,15 @@ body .fs-2 {
 }
 
 footer {
-    flex-shrink: 0;
+    background-color: #fff;
+    padding: 0px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed; 
+    width: 100%; 
+    bottom: 0; 
 }
+
 </style>
 </head>
 
