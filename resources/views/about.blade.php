@@ -54,27 +54,76 @@
 </div>
 
 <div class="container marketing">
-    <br>
     <div class="row featurette">
         <div class="col-md-6">
-            <img src="/images/aboutski.jpg" alt="Skiing Image" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto"> <br><br>
+            <img src="/images/aboutski.jpg" alt="Skiing Image" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto">
         </div>
         <div class="col-md-6">
-            <h2 class="featurette-heading fw-normal lh-1"><br><br><br>Meet the Creators</h2>
-            <p class="lead">We are a passionate team of individuals who have worked tirelessly to bring you this amazing website. Get to know the faces behind the scenes:</p><br>
-            <p style="text-align: center;">
-                Milad Amini<br>
-                Aland Azad<br>
-                Othman Alotaibi<br>
-                Omer Bakr<br>
-                Ephraim Adefuye<br>
-                Eddie Poulter<br>
-                Talhah Altafi<br>
-            </p>
+            <h2 class="featurette-heading text-center fw-normal mt-5">Meet the Creators</h2>
+            <p class="lead text-center">We are a passionate team of individuals who have worked tirelessly to bring you this amazing website. Get to know the faces behind the scenes:</p>
+            <div class="row justify-content-center mt-4">
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Milad Amini</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Aland Azad</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Othman Alotaibi</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Omer Bakr</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Ephraim Adefuye</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Eddie Poulter</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Talhah Altafi</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
     <br>
+
+    <div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+        </a>
+    </header>
+</div>
 
     @include('footer')
 
