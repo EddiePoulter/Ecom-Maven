@@ -19,15 +19,15 @@ class HomeController extends Controller
         if($usertype== "1"){
             $total_product=product::all()-> count();
 
-            
+
 
             $total_user=user::all()-> count();
             return view('admin.home',compact('total_product','total_user'));
-        
+
     }
 
     else{
-        return view('home.userpage');
+        return redirect()->to('account');
     }
 }
 

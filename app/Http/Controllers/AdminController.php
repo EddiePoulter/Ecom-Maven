@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -72,7 +73,7 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message','Product Added Succesfully');
 
-     
+
 
     }
 
@@ -85,7 +86,7 @@ class AdminController extends Controller
     public function delete_product($id){
 
         $product=product::find($id);
-        $product->delete(); 
+        $product->delete();
         return redirect()->back()->with('message','Product deleted succesfully');
 
     }
@@ -104,7 +105,7 @@ class AdminController extends Controller
 
         $product=product::find($id);
 
-        
+
 
         $product->title=$request->title;
         $product->description=$request->description;
@@ -119,20 +120,20 @@ class AdminController extends Controller
             $imagename=time().'.'.$image->getClientOriginalExtension();
 
             $request->image->move('product',$imagename);
-    
+
             $product->image=$imagename;
 
-            
+
         }
 
-      
+
 
 
         $product->save();
         return redirect()->back()->with('message','Product Updated Successfully');
 
 
-    } 
+    }
 
 
 
