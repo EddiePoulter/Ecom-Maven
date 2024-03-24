@@ -49,7 +49,7 @@
             <div class="col-md-3">
                 <!-- Greeting -->
                 <div class="greeting">
-                    <p class="display-6">Hello John,</p>
+                    <p class="display-6">Hello {{$first_name}},</p>
                 </div>
                 <!-- Vertical Navbar -->
                 <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -60,13 +60,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#orders">Order History</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link scroll" href="#account">Account Management</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link scroll" href="#review"><s>Rate and Review</s></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link scroll" href="#improve">Help us Improve</a>
@@ -80,53 +74,6 @@
             </div>
             <!-- Sections on the right side -->
             <div class="col-md-9">
-                <div class="container mt-4 settings-section" id="orders">
-                    <h2>Order History</h2>
-                    <hr>
-                    <p><strong>Order number:</strong> 123456789</p>
-                    <p><strong>Date ordered:</strong> November 25, 2023</p>
-                    <p><strong>Total number of items:</strong> 5</p>
-
-                    <div class="row mt-4">
-                        <div class="col-md-12">
-                            <div class="overflow-auto">
-                                <div class="d-flex flex-nowrap p-3">
-                                    <div class="item-container text-center mx-2 bg-light p-3">
-                                        <img src="item_image_url_1.jpg" alt="Item 1" class="img-fluid">
-                                        <p><strong>Item 1 Name</strong></p>
-                                        <p><strong>£10.10</strong></p>
-                                    </div>
-                                    <div class="item-container text-center mx-2 bg-light p-3">
-                                        <img src="item_image_url_2.jpg" alt="Item 2" class="img-fluid">
-                                        <p><strong>Item 2 Name</strong></p>
-                                        <p><strong>£10.10</strong></p>
-                                    </div>
-                                    <!-- Repeat this structure for each item -->
-
-                                    <div class="item-container text-center mx-2 bg-light p-3">
-                                        <img src="item_image_url_2.jpg" alt="Item 2" class="img-fluid">
-                                        <p><strong>Item 3 Name</strong></p>
-                                        <p><strong>£10.10</strong></p>
-                                    </div>
-
-                                    <div class="item-container text-center mx-2 bg-light p-3">
-                                        <img src="item_image_url_2.jpg" alt="Item 2" class="img-fluid">
-                                        <p><strong>Item 4 Name</strong></p>
-                                        <p><strong>£10.10</strong></p>
-                                    </div>
-
-                                    <div class="item-container text-center mx-2 bg-light p-3">
-                                        <img src="item_image_url_2.jpg" alt="Item 2" class="img-fluid">
-                                        <p><strong>Item 5 Name</strong></p>
-                                        <p><strong>£10.10</strong></p>
-                                    </div>
-                                    <!-- Adjust image URLs, item names, and prices accordingly -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-right"><strong>Total cost of the order: £50.50</strong></p>
-                </div>
 
                 <div id="account" class="section-content settings-section">
 
