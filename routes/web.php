@@ -163,6 +163,7 @@ Route::get('/products', [ProductController::class, 'showProducts'])->name('produ
 Route::get('/products/filter', [ProductController::class, 'showProducts'])->name('products.filter');
 
 route::get('/redirect',[HomeController::class,'redirect']);
+route::get('/admin',[HomeController::class,'redirect']);
 
 route::get('/view_category',[AdminController::class,'view_category']);
 
