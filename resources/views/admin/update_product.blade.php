@@ -60,8 +60,8 @@
                         @csrf
                         <div class="div_design">
                             <label>Product Title:</label>
-                            <input type="text" name="title" placeholder="Write a title" required=""
-                                value="{{$product->title}}">
+                            <input type="text" name="name" placeholder="Write a title" required=""
+                                value="{{$product->name}}">
                         </div>
                         <div class="div_design">
                             <label>Product Description:</label>
@@ -76,7 +76,7 @@
                         <div class="div_design">
                             <label>Discounted Price:</label>
                             <input type="Number" name="dis_price" placeholder="Write discounted price if applicable"
-                                required="" value="{{$product->discount_price}}">
+                                 value="{{$product->discount_price}}">
                         </div>
 
                         <div class="div_design">
@@ -103,7 +103,7 @@
 
                         <div class="div_design">
                             <label> Current Product Image:</label>
-                            <img height="200px" src="product/{{$product->image}}">
+                            <img height="200px" src="{{$product->image_path}}">
                         </div>
 
 
