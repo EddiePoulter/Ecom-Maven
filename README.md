@@ -38,23 +38,25 @@ Welcome to the Maven Ecommerce Project repository! This project aims to develop 
    ```sh
    cp .env.example .env
    ```
-
-4. Generate application key
+4. Ensure that the `DB_CONNECTION` in your `.env` file is set to `sqlite`.
+   
+   Create an empty database file. You can do this manually or by running:
+   ```sh
+   touch database/database.sqlite
+   ```
+5. Generate application key
    ```sh
    php artisan key:generate
    ```
-
-5. Create Database then migrate and seed
+6. Create Database then migrate and seed
    ```sh
    php artisan migrate --seed
    ```
-
-6. Linking Storage folder to public
+7. Linking Storage folder to public
    ```sh
    php artisan storage:link
    ```
-
-7. Serve the application
+8. Serve the application
    ```sh
    php artisan serve
    ```
