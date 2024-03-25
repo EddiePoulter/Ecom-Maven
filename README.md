@@ -93,6 +93,24 @@ Remember to replace `Unit` and `Integration` with the actual names of your test 
 
 For more information, please refer to the Laravel testing documentation.
 
+## Deployment
+
+- **Website URL:** [https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/](https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/)
+
+## Admin Dashboard
+
+- **Admin Dashboard URL:** [https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/admin](https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/redirect)
+
+## Login Credentials
+
+- **Admin Login:**
+  - Email: admin@mavenecommerce.com
+  - Password: SecureAdminPassword123!
+
+- **Sample User Login:**
+  - Email: user@example.com
+  - Password: SampleUserPassword!
+
 ## Contributing
 
 We welcome contributions! If you would like to contribute to the project, please follow our Contribution Guidelines.
