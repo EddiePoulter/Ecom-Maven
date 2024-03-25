@@ -8,7 +8,8 @@ Welcome to the Maven Ecommerce Project repository, a comprehensive ecommerce web
 
 - **Website URL:** [Maven.com](https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/)
 
-## Admin Dashboard
+## Admin Dashboard 
+Must be logged in as an admin first to view the admin dashboard - click admin dashboard button in nav bar after signing in
 
 - **Admin Dashboard URL:** [Maven.com/admin](https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/redirect)
 
