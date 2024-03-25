@@ -1,8 +1,38 @@
 # Maven Ecommerce Project
 
-Welcome to the Maven Ecommerce Project repository! This project aims to develop a comprehensive ecommerce website for a fictional ski goods retailer.
+Welcome to the Maven Ecommerce Project repository, a comprehensive ecommerce website development initiative for a fictional ski goods retailer!
 
 <img src="./public/images/maven-high-resolution-color-logo.png" width="400" height="300">
+
+## Deployment
+
+- **Website URL:** [Maven.com](https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/)
+
+## Admin Dashboard
+
+- **Admin Dashboard URL:** [Maven.com/admin](https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/redirect)
+
+## Login Credentials
+
+- **Admin Login:**
+  - Email: admin@mavenecommerce.com
+  - Password: SecureAdminPassword123!
+
+- **Sample User Login:**
+  - Email: user@example.com
+  - Password: SampleUserPassword!
+
+## Table of Contents
+- [Overview](#project-overview)
+- [Tech Stack](#technology-stack)
+- [Project Management](#project-management)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+- [SQLite Setup](#setting-up-sqlite-command-line-tool-on-windows)
+- [Running Tests](#running-tests)
+  - [Running all tests](#running-all-tests)
+  - [Running Unit Tests](#running-unit-tests)
+  - [Running Integration Tests](#running-integration-tests)
 
 ## Project Overview
 
@@ -42,7 +72,7 @@ Welcome to the Maven Ecommerce Project repository! This project aims to develop 
    
    Create an empty database file. You can do this manually or by running:
    ```sh
-   touch database/database.sqlite
+   type nul > database\database.sqlite
    ```
 5. Generate application key
    ```sh
@@ -60,6 +90,35 @@ Welcome to the Maven Ecommerce Project repository! This project aims to develop 
    ```sh
    php artisan serve
    ```
+Production server is making usage of MySQL however as tested SQLlite is much more efficient for local systems.
+
+### Setting Up SQLite Command-Line Tool on Windows
+
+To view and interact with the SQLite database tables directly from the command line, follow these steps to set up the SQLite command-line tool on Windows:
+
+1. **Download SQLite:**
+   - Go to the official SQLite website: [SQLite Downloads](https://www.sqlite.org/download.html)
+   - Download the latest bundle for Windows.
+
+2. **Extract and Add to PATH:**
+   - Extract the downloaded ZIP to `C:\sqlite`.
+   - Add `C:\sqlite` to the system PATH.
+
+3. **Open PowerShell:**
+   - Open a new PowerShell window.
+
+4. **Navigate to your project directory.**
+
+5. **Open SQLite Prompt:**
+   - Run `sqlite3 database.sqlite`.
+
+6. **Execute Commands:**
+   - Use SQLite commands (`sqlite>`).
+
+7. **Exit:**
+   - To exit, run `.exit`.
+
+Remember, you can also run `sqlite3.exe` directly if needed.
 
 ## Running Tests
 
@@ -92,31 +151,3 @@ php artisan test --filter Integration
 Remember to replace `Unit` and `Integration` with the actual names of your test classes.
 
 For more information, please refer to the Laravel testing documentation.
-
-## Deployment
-
-- **Website URL:** [https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/](https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/)
-
-## Admin Dashboard
-
-- **Admin Dashboard URL:** [https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/admin](https://220253804.cs2410-web01pvm.aston.ac.uk/Ecom-Maven-main/public/redirect)
-
-## Login Credentials
-
-- **Admin Login:**
-  - Email: admin@mavenecommerce.com
-  - Password: SecureAdminPassword123!
-
-- **Sample User Login:**
-  - Email: user@example.com
-  - Password: SampleUserPassword!
-
-## Contributing
-
-We welcome contributions! If you would like to contribute to the project, please follow our Contribution Guidelines.
-
-## License
-
-This project is licensed under the [License Name] - see the LICENSE.md file for details. -->
-
-Happy coding!
