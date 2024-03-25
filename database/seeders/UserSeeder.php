@@ -21,5 +21,21 @@ class UserSeeder extends Seeder
             'usertype' => 1,
             'email_verified_at' => "2024-03-24 17:30:00",
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'user',
+            'email' => 'user@example.com',
+            'password' => Hash::make('SampleUserPassword!'),
+            'usertype' => 0,
+            'email_verified_at' => "2024-03-24 17:30:00",
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@mavenecommerce.com',
+            'password' => Hash::make('SecureAdminPassword123!'),
+            'usertype' => 1,
+            'email_verified_at' => "2024-03-24 17:30:00",
+        ]);
     }
 }
